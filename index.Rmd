@@ -120,5 +120,16 @@ Alternatively, you can put that content in files like 00--prelim.Rmd and
 "Chapter 0." You can also use {-} for no numbers on chapters.
 -->
 
-# Introduction {# intro}
-Mortgage bonds have a long history in Denmark, originating from 1797 where a fire in Copenhagen destroyed most of the city in 1795, this event initiated the first mortgage bank in Copenhagen, The general idea on how the mortgage system in Denmark has since only seen minor changes thus a source of high stability
+# Introduction {#intro}
+
+Mortgage bonds have a long history in Denmark, originating from 1797 where a fire in Copenhagen destroyed most of the city in 1795, this event initiated the first mortgage bank[@jensen2013rentesregning].
+The general idea on how the mortgage system in Denmark has since only seen minor changes thus a source of high stability. 
+The idea being the system that instead of having a one-to-one relationship between the borrower mortgage loan and the investors mortgage bond. The Danish mortgage system is structured such that the mortgage bond issuer pools the mortgage loan  
+
+```{r, label='bnondCashFlow', echo = FALSE, fig.align='center', out.width="100%", fig.cap="Simplified illustration of the relationships and payment streams between the homeowner, the mortgage bank and the investor in the Danish mortgage system."}
+knitr::include_graphics("figure/bond_cash_flow_illustration_23012022.png")
+```
+
+
+
+

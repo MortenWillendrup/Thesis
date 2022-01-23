@@ -1,0 +1,25 @@
+\contentsline {chapter}{Chapter 1: Introduction}{1}{chapter.1}%
+\contentsline {chapter}{Chapter 2: R Markdown Basics}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Lists}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Line breaks}{4}{section.2.2}%
+\contentsline {section}{\numberline {2.3}R chunks}{4}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Inline code}{5}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Including plots}{5}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Loading and exploring data}{6}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Additional resources}{10}{section.2.7}%
+\contentsline {chapter}{Chapter 3: Mathematics and Science}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Math}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Chemistry 101: Symbols}{11}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Typesetting reactions}{12}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Other examples of reactions}{12}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Physics}{12}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Biology}{12}{section.3.4}%
+\contentsline {chapter}{Chapter 4: Graphics, References, and Labels}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Figures}{13}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Footnotes and Endnotes}{16}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Bibliographies}{16}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Anything else?}{18}{section.4.4}%
+\contentsline {chapter}{Conclusion}{19}{chapter*.13}%
+\contentsline {chapter}{Appendix A: The First Appendix}{21}{appendix.A}%
+\contentsline {chapter}{Appendix B: The Second Appendix, for Fun}{25}{appendix.B}%
+\contentsline {chapter}{References}{27}{appendix*.14}%
