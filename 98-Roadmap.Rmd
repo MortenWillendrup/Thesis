@@ -1,7 +1,7 @@
 # Roadmap {-}
 
 
-## Timeline
+## Timeline {-}
 
 ```{r roadmap, echo = FALSE, message = FALSE, warning = FALSE}
 # All packages used below must be installed first
@@ -115,8 +115,8 @@ in detail
 
 
 ## Data {-}
-Get data from DST
-Get data from Nasdaq
+Get data from DST.  
+Get data from Nasdaq.  
 Get data from Danske Bank Asset Management
 
 

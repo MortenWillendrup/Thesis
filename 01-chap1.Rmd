@@ -8,8 +8,60 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 
 # Introduction {#intro}
 
-Mortgage bonds have a long history in Denmark, originating from 1797 where a fire in Copenhagen destroyed most of the city in 1795, this event initiated the first mortgage bank[@jensen2013rentesregning]. The general idea on how the mortgage system in Denmark has since only seen minor changes thus a source of high stability. The idea being the system that instead of having a one-to-one relationship between the borrower mortgage loan and the investors mortgage bond. The Danish mortgage system is structured such that the mortgage bond issuer pools the mortgage loan \@ref(fig:bondCashFlow)
+Mortgage bonds have a long history in Denmark, originating from 1797 where a fire in Copenhagen destroyed most of the city in 1795, this event initiated the first mortgage bank [@jensen2013rentesregning]. 
+
+The general idea on how the mortgage system in Denmark has since only seen minor changes thus a source of high stability. 
+
+The idea being the system that instead of having a one-to-one relationship between the borrower mortgage loan and the investors mortgage bond. 
+
+The Danish mortgage system is structured such that borrowers have their loans pooled, to which bonds is issue.  
+
+When an investor buys a bond issued from the pool, this is equivalent to buying a share of the pooled loans, in which the investor is entitled to receive interest payments and repayment proportional to the invested amount.  
+
+What makes the Danish mortgage system distinguishable is the balance principle. This principle ensures an almost perfect match between the interest and repayments paid and received by tyhe borrowers and investors respectivly.  
+
+Figure \@ref(fig:bondCashFlow) illustrates the cash flows that occurs between the borrow, the mortgage bank and the investor. When a loan is granted to a borrower, the mortgage bank issues a bond in the primary market accordingly. The investor then buys the bonds and the process from the trades go to the borrower thus giving the borrower liquidity to purchase the dwelling on which the loan is based.  
+
+The borrower will pay interest, repayments and fees known as the so-called "bidragssats" to the mortgage bank, who facilitate that the interest and repayments are passed through to the investor and thereby keeping the fees to cover their costs of issuing the bonds and the adherent risk associated with the issuance of bonds, since the issuing mortgage bank takes on the risk opposed to the borrower.  
+
+The credit risk of the borrower is towards the mortgage bank, and since the housing is used at collateral in the agreement the credit risk is lowered in the viewpoint of the mortgage bank.  
+
+The default risk held by the investor is even more reduced since the mortgage bank has go into default before the investor will be exposed to a credit event. In a potential credit event of the mortgage bank, the investors will have the right to the cover pool, which is separate legal structure ensuring that the bond investors in a credit event does not have share to their claim towards the mortgage bank along with other creditors.  
+
+The cover pool will consist of collateral in therms of the claims against the borrows as well as additional securities posed by the mortgage bank to protect the investor from losses. These securities constitute what is known as overcollateralization and should be of very high credit quality.  
+
+Since modelling will be performed from the investors point of view, and the default risk held by the investor has been brought to a minimum, the paper will not include default risk in our model
+
+
 
 ```{r bondCashFlow, echo = FALSE, fig.align='center', out.width="100%", fig.cap="Simplified illustration of the relationships and payment streams between the homeowner, the mortgage bank and the investor in the Danish mortgage system."}
 knitr::include_graphics("figure/bond_cash_flow_illustration_23012022.png")
 ```
+
+
+```{r BondMarketSize, echo = FALSE, warning = FALSE, message=FALSE, error=FALSE}
+library(statsDK); library(dplyr); library(stringr); library(lubridate); library(ggplot2); library(tidyr); library(zoo)
+real_marked <- sdk_retrieve_data("DNVPDKR2", DATAT = "B1", VALUTA = "DKK", TYPREAL ="A0", LØBETID2="A0", KUPON2="A0", UDSTED="A0", INVSEKTOR="A0", DAEKOBL="A0")
+real_marked$TID <- ymd(paste0(as.Date(as.yearmon(as.character(real_marked[["TID"]]), "%YM%m"))))
+market_size <- real_marked[ which(real_marked$TID==max(real_marked$TID) & real_marked$LØBETID3 == "All original maturities"), ][[11]]
+
+```
+
+
+
+
+
+The outstanding amount as of `r str_to_sentence(format(zoo::as.yearmon(real_marked[ which(real_marked$TID==max(real_marked$TID)), ][[10]][[1]]), "%B %Y"))` in the Danish mortgage market is DKK `r format(market_size/1000, scientific=F)` Billions 
+
+
+
+
+
+
+
+
+
+
+
+
+

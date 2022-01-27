@@ -71,22 +71,62 @@
 % \usepackage{times} % other fonts are available like times, bookman, charter, palatino
 
 % Syntax highlighting #22
+  \usepackage{color}
+  \usepackage{fancyvrb}
+  \newcommand{\VerbBar}{|}
+  \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+  % Add ',fontsize=\small' for more characters per line
+  \usepackage{framed}
+  \definecolor{shadecolor}{RGB}{248,248,248}
+  \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+  \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+  \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+  \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+  \newcommand{\BuiltInTok}[1]{#1}
+  \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+  \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+  \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+  \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+  \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+  \newcommand{\ExtensionTok}[1]{#1}
+  \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+  \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\ImportTok}[1]{#1}
+  \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+  \newcommand{\NormalTok}[1]{#1}
+  \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+  \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+  \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+  \newcommand{\RegionMarkerTok}[1]{#1}
+  \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
 % To pass between YAML and LaTeX the dollar signs are added by CII
-\title{My Final College Paper}
+\title{Pricing Danish Mortgage Bonds using Machine learning for estimation}
 \author{Morten Søby Willendrup}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
-\date{May 2022}
-\division{Mathematics and Natural Sciences}
+\date{Last compiled on 03 februar, 2022}
+\division{Faculty of Social Sciences}
 \advisor{Stefan Voigt}
 \institution{University of Copenhagen}
-\degree{Bachelor of Arts}
+\degree{Master Thesis}
 %If you have two advisors for some reason, you can use the following
 % Uncommented out by CII
 % End of CII addition
 
 %%% Remember to use the correct department!
-\department{Mathematics}
+\department{Department of economics}
 % if you're writing a thesis in an interdisciplinary major,
 % uncomment the line below and change the text as appropriate.
 % check the Senior Handbook if unsure.
@@ -110,6 +150,32 @@
 \makeatother
 
 % From {rticles}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {}%
+  {\par}
+% For Pandoc 2.11+
+% As noted by @mirh [2] is needed instead of [3] for 2.12
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \renewcommand{\contentsname}{Table of Contents}
 % End of CII addition
@@ -183,16 +249,60 @@ Second paragraph of abstract starts here.
 \mainmatter % here the regular arabic numbering starts
 \pagestyle{fancyplain} % turns page numbering back on
 
-\hypertarget{the-next-two-lines-allow-you-to-change-the-spacing-in-your-thesis.-you-can}{%
-\chapter{The next two lines allow you to change the spacing in your thesis. You can}\label{the-next-two-lines-allow-you-to-change-the-spacing-in-your-thesis.-you-can}}
+\hypertarget{abstract}{%
+\chapter*{Abstract}\label{abstract}}
+\addcontentsline{toc}{chapter}{Abstract}
 
-Placeholder
+Kind words go a long way
 
-\hypertarget{rmd-basics}{%
-\chapter{R Markdown Basics}\label{rmd-basics}}
+\hypertarget{intro}{%
+\chapter{Introduction}\label{intro}}
 
-\hypertarget{math-sci}{%
-\chapter{Mathematics and Science}\label{math-sci}}
+Mortgage bonds have a long history in Denmark, originating from 1797 where a fire in Copenhagen destroyed most of the city in 1795, this event initiated the first mortgage bank (Jensen 2013).
+
+The general idea on how the mortgage system in Denmark has since only seen minor changes thus a source of high stability.
+
+The idea being the system that instead of having a one-to-one relationship between the borrower mortgage loan and the investors mortgage bond.
+
+The Danish mortgage system is structured such that borrowers have their loans pooled, to which bonds is issue.
+
+When an investor buys a bond issued from the pool, this is equivalent to buying a share of the pooled loans, in which the investor is entitled to receive interest payments and repayment proportional to the invested amount.
+
+What makes the Danish mortgage system distinguishable is the balance principle. This principle ensures an almost perfect match between the interest and repayments paid and received by tyhe borrowers and investors respectivly.
+
+Figure \ref{fig:bondCashFlow} illustrates the cash flows that occurs between the borrow, the mortgage bank and the investor. When a loan is granted to a borrower, the mortgage bank issues a bond in the primary market accordingly. The investor then buys the bonds and the process from the trades go to the borrower thus giving the borrower liquidity to purchase the dwelling on which the loan is based.
+
+The borrower will pay interest, repayments and fees known as the so-called ``bidragssats'' to the mortgage bank, who facilitate that the interest and repayments are passed through to the investor and thereby keeping the fees to cover their costs of issuing the bonds and the adherent risk associated with the issuance of bonds, since the issuing mortgage bank takes on the risk opposed to the borrower.
+
+The credit risk of the borrower is towards the mortgage bank, and since the housing is used at collateral in the agreement the credit risk is lowered in the viewpoint of the mortgage bank.
+
+The default risk held by the investor is even more reduced since the mortgage bank has go into default before the investor will be exposed to a credit event. In a potential credit event of the mortgage bank, the investors will have the right to the cover pool, which is separate legal structure ensuring that the bond investors in a credit event does not have share to their claim towards the mortgage bank along with other creditors.
+
+The cover pool will consist of collateral in therms of the claims against the borrows as well as additional securities posed by the mortgage bank to protect the investor from losses. These securities constitute what is known as overcollateralization and should be of very high credit quality.
+
+Since modelling will be performed from the investors point of view, and the default risk held by the investor has been brought to a minimum, the paper will not include default risk in our model
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figure/bond_cash_flow_illustration_23012022} 
+
+}
+
+\caption{Simplified illustration of the relationships and payment streams between the homeowner, the mortgage bank and the investor in the Danish mortgage system.}\label{fig:bondCashFlow}
+\end{figure}
+The outstanding amount as of December 2021 in the Danish mortgage market is DKK 31773.96 Billions
+
+\hypertarget{theory}{%
+\chapter{Theory}\label{theory}}
+
+\hypertarget{data}{%
+\chapter{Data}\label{data}}
+
+\hypertarget{estimation}{%
+\chapter{Estimation}\label{estimation}}
+
+\hypertarget{discussion}{%
+\chapter*{Discussion}\label{discussion}}
+\addcontentsline{toc}{chapter}{Discussion}
 
 \hypertarget{conclusion}{%
 \chapter*{Conclusion}\label{conclusion}}
@@ -200,31 +310,54 @@ Placeholder
 
 \appendix
 
-\appendix
-
 \hypertarget{the-first-appendix}{%
 \chapter{The First Appendix}\label{the-first-appendix}}
-
-\appendix
-
-\hypertarget{the-first-appendix-1}{%
-\chapter{The First Appendix}\label{the-first-appendix-1}}
 
 This first appendix includes all of the R chunks of code that were hidden throughout the document (using the \texttt{include\ =\ FALSE} chunk tag) to help with readibility and/or setup.
 
 \textbf{In the main Rmd file}
-
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# This chunk ensures that the thesisdown package is}
+\CommentTok{\# installed and loaded. This thesisdown package includes}
+\CommentTok{\# the template files for the thesis.}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(remotes)) \{}
+  \ControlFlowTok{if}\NormalTok{ (params}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Install needed packages for \{thesisdown\}}\StringTok{\textasciigrave{}}\NormalTok{) \{}
+    \FunctionTok{install.packages}\NormalTok{(}\StringTok{"remotes"}\NormalTok{, }\AttributeTok{repos =} \StringTok{"https://cran.rstudio.com"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{stop}\NormalTok{(}
+      \FunctionTok{paste}\NormalTok{(}\StringTok{\textquotesingle{}You need to run install.packages("remotes")",}
+\StringTok{            "first in the Console.\textquotesingle{}}\NormalTok{)}
+\NormalTok{    )}
+\NormalTok{  \}}
+\NormalTok{\}}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(thesisdown)) \{}
+  \ControlFlowTok{if}\NormalTok{ (params}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Install needed packages for \{thesisdown\}}\StringTok{\textasciigrave{}}\NormalTok{) \{}
+\NormalTok{    remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"ismayc/thesisdown"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{stop}\NormalTok{(}
+      \FunctionTok{paste}\NormalTok{(}
+        \StringTok{"You need to run"}\NormalTok{,}
+        \StringTok{\textquotesingle{}remotes::install\_github("ismayc/thesisdown")\textquotesingle{}}\NormalTok{,}
+        \StringTok{"first in the Console."}
+\NormalTok{      )}
+\NormalTok{    )}
+\NormalTok{  \}}
+\NormalTok{\}}
+\FunctionTok{library}\NormalTok{(thesisdown)}
+\CommentTok{\# Set how wide the R output will go}
+\FunctionTok{options}\NormalTok{(}\AttributeTok{width =} \DecValTok{70}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 \textbf{In Chapter \ref{ref-labels}:}
-
-\hypertarget{the-second-appendix-for-fun}{%
-\chapter{The Second Appendix, for Fun}\label{the-second-appendix-for-fun}}
 
 \hypertarget{roadmap}{%
 \chapter*{Roadmap}\label{roadmap}}
 \addcontentsline{toc}{chapter}{Roadmap}
 
 \hypertarget{timeline}{%
-\section{Timeline}\label{timeline}}
+\section*{Timeline}\label{timeline}}
+\addcontentsline{toc}{section}{Timeline}
 
 \includegraphics{thesis_files/figure-latex/roadmap-1.pdf}
 
@@ -235,27 +368,48 @@ This first appendix includes all of the R chunks of code that were hidden throug
 Need to write a full introduction of the Danish Mortgage Market, furthermore
 leave space for a brief walkthorugh of the thesis
 
-\hypertarget{theory}{%
-\section*{Theory}\label{theory}}
+\hypertarget{theory-1}{%
+\section*{Theory}\label{theory-1}}
 \addcontentsline{toc}{section}{Theory}
 
 Relevant theory should be Machine Learning, which is relevent should be discussed
 in detail
 
-\hypertarget{data}{%
-\section*{Data}\label{data}}
+\hypertarget{data-1}{%
+\section*{Data}\label{data-1}}
 \addcontentsline{toc}{section}{Data}
 
-Get data from DST
-Get data from Nasdaq
+Get data from DST.\\
+Get data from Nasdaq.\\
 Get data from Danske Bank Asset Management
+
+\backmatter
 
 \hypertarget{references}{%
 \chapter*{References}\label{references}}
 \addcontentsline{toc}{chapter}{References}
 
-Placeholder
+\markboth{References}{References}
 
+\noindent
+
+\setlength{\parindent}{-0.20in}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-angel2000}{}}%
+Angel, Edward. 2000. \emph{Interactive Computer Graphics : A Top-down Approach with OpenGL}. Boston, MA: Addison Wesley Longman.
+
+\leavevmode\vadjust pre{\hypertarget{ref-angel2001}{}}%
+---------. 2001a. \emph{Batch-File Computer Graphics : A Bottom-up Approach with QuickTime}. Boston, MA: Wesley Addison Longman.
+
+\leavevmode\vadjust pre{\hypertarget{ref-angel2002a}{}}%
+---------. 2001b. \emph{Test Second Book by Angel}. Boston, MA: Wesley Addison Longman.
+
+\leavevmode\vadjust pre{\hypertarget{ref-jensen2013rentesregning}{}}%
+Jensen, Bjarne Astrup. 2013. \emph{Rentesregning: S{æ}rtryk Af 6. Udgave}. Dj{ø}f Forlag.
+
+\end{CSLReferences}
 
 % Index?
 

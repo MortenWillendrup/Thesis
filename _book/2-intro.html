@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 2 Introduction | Pricing Danish Mortgage Bonds using Machine learning for estimation</title>
+  <meta name="description" content=" 2 Introduction | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 2 Introduction | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 2 Introduction | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  
+  
+  
+
+<meta name="author" content="Morten Søby Willendrup" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="abstract.html"/>
+<link rel="next" href="3-theory.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> The next two lines allow you to change the spacing in your thesis. You can</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="2" data-path="2-intro.html"><a href="2-intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="3-theory.html"><a href="3-theory.html"><i class="fa fa-check"></i><b>3</b> Theory</a></li>
+<li class="chapter" data-level="4" data-path="4-data.html"><a href="4-data.html"><i class="fa fa-check"></i><b>4</b> Data</a></li>
+<li class="chapter" data-level="5" data-path="5-estimation.html"><a href="5-estimation.html"><i class="fa fa-check"></i><b>5</b> Estimation</a></li>
+<li class="chapter" data-level="" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i>Discussion</a></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html"><i class="fa fa-check"></i>Roadmap</a>
+<ul>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#timeline"><i class="fa fa-check"></i>Timeline</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#theory-1"><i class="fa fa-check"></i>Theory</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#data-1"><i class="fa fa-check"></i>Data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Pricing Danish Mortgage Bonds using Machine learning for estimation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1" number="2">
+<h1><span class="header-section-number"> 2</span> Introduction</h1>
+<p>Mortgage bonds have a long history in Denmark, originating from 1797 where a fire in Copenhagen destroyed most of the city in 1795, this event initiated the first mortgage bank <span class="citation">(Jensen 2013)</span>.</p>
+<p>The general idea on how the mortgage system in Denmark has since only seen minor changes thus a source of high stability.</p>
+<p>The idea being the system that instead of having a one-to-one relationship between the borrower mortgage loan and the investors mortgage bond.</p>
+<p>The Danish mortgage system is structured such that borrowers have their loans pooled, to which bonds is issue.</p>
+<p>When an investor buys a bond issued from the pool, this is equivalent to buying a share of the pooled loans, in which the investor is entitled to receive interest payments and repayment proportional to the invested amount.</p>
+<p>What makes the Danish mortgage system distinguishable is the balance principle. This principle ensures an almost perfect match between the interest and repayments paid and received by tyhe borrowers and investors respectivly.</p>
+<p>Figure <a href="2-intro.html#fig:bondCashFlow">2.1</a> illustrates the cash flows that occurs between the borrow, the mortgage bank and the investor. When a loan is granted to a borrower, the mortgage bank issues a bond in the primary market accordingly. The investor then buys the bonds and the process from the trades go to the borrower thus giving the borrower liquidity to purchase the dwelling on which the loan is based.</p>
+<p>The borrower will pay interest, repayments and fees known as the so-called “bidragssats” to the mortgage bank, who facilitate that the interest and repayments are passed through to the investor and thereby keeping the fees to cover their costs of issuing the bonds and the adherent risk associated with the issuance of bonds, since the issuing mortgage bank takes on the risk opposed to the borrower.</p>
+<p>The credit risk of the borrower is towards the mortgage bank, and since the housing is used at colletral in the aggrement the credit risk is lower</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bondCashFlow"></span>
+<img src="figure/bond_cash_flow_illustration_23012022.png" alt="Simplified illustration of the relationships and payment streams between the homeowner, the mortgage bank and the investor in the Danish mortgage system." width="100%" />
+<p class="caption">
+Figure 2.1: Simplified illustration of the relationships and payment streams between the homeowner, the mortgage bank and the investor in the Danish mortgage system.
+</p>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="2-intro.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(statsDK); <span class="fu">library</span>(dplyr); <span class="fu">library</span>(stringr); <span class="fu">library</span>(lubridate); <span class="fu">library</span>(ggplot2); <span class="fu">library</span>(tidyr); <span class="fu">library</span>(zoo)</span></code></pre></div>
+<pre><code>
+Vedhæfter pakke: &#39;dplyr&#39;</code></pre>
+<pre><code>De følgende objekter er maskerede fra &#39;package:stats&#39;:
+
+    filter, lag</code></pre>
+<pre><code>De følgende objekter er maskerede fra &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union</code></pre>
+<pre><code>
+Vedhæfter pakke: &#39;lubridate&#39;</code></pre>
+<pre><code>De følgende objekter er maskerede fra &#39;package:base&#39;:
+
+    date, intersect, setdiff, union</code></pre>
+<pre><code>
+Vedhæfter pakke: &#39;zoo&#39;</code></pre>
+<pre><code>De følgende objekter er maskerede fra &#39;package:base&#39;:
+
+    as.Date, as.Date.numeric</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="2-intro.html#cb9-1" aria-hidden="true" tabindex="-1"></a>real_marked <span class="ot">&lt;-</span> <span class="fu">sdk_retrieve_data</span>(<span class="st">&quot;DNVPDKR2&quot;</span>, <span class="at">DATAT =</span> <span class="st">&quot;B1&quot;</span>, <span class="at">VALUTA =</span> <span class="st">&quot;DKK&quot;</span>, <span class="at">TYPREAL =</span><span class="st">&quot;A0&quot;</span>, LØBETID2<span class="ot">=</span><span class="st">&quot;A0&quot;</span>, <span class="at">KUPON2=</span><span class="st">&quot;A0&quot;</span>, <span class="at">UDSTED=</span><span class="st">&quot;A0&quot;</span>, <span class="at">INVSEKTOR=</span><span class="st">&quot;A0&quot;</span>, <span class="at">DAEKOBL=</span><span class="st">&quot;A0&quot;</span>)</span></code></pre></div>
+<pre><code>Autosetting missing values to * for: LØBETID3, Tid</code></pre>
+<pre><code>Getting data. This can take a while, if the data is very large.</code></pre>
+<pre><code>Data collected succesfully</code></pre>
+<pre><code>Rows: 1855 Columns: 11</code></pre>
+<pre><code>-- Column specification --------------------------------------------------------
+Delimiter: &quot;;&quot;
+chr (10): DATAT, VALUTA, TYPREAL, LØBETID2, KUPON2, UDSTED, INVSEKTOR, DAEKO...</code></pre>
+<pre><code>
+i Use `spec()` to retrieve the full column specification for this data.
+i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="2-intro.html#cb16-1" aria-hidden="true" tabindex="-1"></a>real_marked<span class="sc">$</span>TID <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="fu">paste0</span>(<span class="fu">as.Date</span>(<span class="fu">as.yearmon</span>(<span class="fu">as.character</span>(real_marked[[<span class="st">&quot;TID&quot;</span>]]), <span class="st">&quot;%YM%m&quot;</span>))))</span>
+<span id="cb16-2"><a href="2-intro.html#cb16-2" aria-hidden="true" tabindex="-1"></a>market_size <span class="ot">&lt;-</span> real_marked[ <span class="fu">which</span>(real_marked<span class="sc">$</span>TID<span class="sc">==</span><span class="fu">max</span>(real_marked<span class="sc">$</span>TID) <span class="sc">&amp;</span> real_marked<span class="sc">$</span>LØBETID3 <span class="sc">==</span> <span class="st">&quot;All original maturities&quot;</span>), ][[<span class="dv">11</span>]]</span></code></pre></div>
+<p>The oustanding amount in the Danish mortgage market is 3.177396^{7}</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="abstract.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-theory.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
