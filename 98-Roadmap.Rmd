@@ -1,0 +1,124 @@
+# Roadmap {-}
+
+
+## Timeline
+
+```{r roadmap, echo = FALSE, message = FALSE, warning = FALSE}
+# All packages used below must be installed first
+library(devtools)
+# devtools::install_github("laresbernardo/lares")
+library(lares)
+library(ggplot2)
+
+plot_timeline2 <- function(event, start, end = start + 1, label = NA, group = NA,
+                           title = "Master Thesis - The road to Cand.Polit", subtitle = "",
+                           size = 7, colour = "orange", save = FALSE, subdir = NA) {
+  df <- data.frame(
+    Role = as.character(event), Place = as.character(label),
+    Start = lubridate::date(start), End = lubridate::date(end),
+    Type = group
+  )
+  cvlong <- data.frame(pos = rep(
+    as.numeric(rownames(df)),
+    2
+  ), name = rep(as.character(df$Role), 2), type = rep(factor(df$Type,
+    ordered = TRUE
+  ), 2), where = rep(
+    as.character(df$Place),
+    2
+  ), value = c(df$Start, df$End), label_pos = rep(df$Start +
+    floor((df$End - df$Start) / 2), 2))
+  maxdate <- max(df$End)
+  p <- ggplot(cvlong, aes(
+    x = value, y = reorder(name, -pos),
+    label = where, group = pos
+  )) + geom_vline(
+    xintercept = maxdate,
+    alpha = 0.8, linetype = "dotted"
+  ) + labs(
+    title = title,
+    subtitle = subtitle, x = NULL, y = NULL, colour = NULL
+  ) +
+    theme_minimal() + theme(panel.background = element_rect(
+      fill = "white",
+      colour = NA
+    ), axis.ticks = element_blank(), panel.grid.major.x = element_line(
+      size = 0.25,
+      colour = "grey80"
+    ))
+  if (!is.na(cvlong$type)[1] | length(unique(cvlong$type)) >
+    1) {
+    p <- p + geom_line(aes(color = type), size = size) +
+      facet_grid(type ~ ., scales = "free", space = "free") +
+      guides(colour = "none") +
+      scale_colour_hue()
+  }
+  else {
+    p <- p + geom_line(size = size, colour = colour)
+  }
+  p <- p + geom_label(aes(x = label_pos),
+    colour = "black",
+    size = 2, alpha = 0.7
+  )
+  if (save) {
+    file_name <- "cv_timeline.png"
+    if (!is.na(subdir)) {
+      dir.create(file.path(getwd(), subdir), recursive = T)
+      file_name <- paste(subdir, file_name, sep = "/")
+    }
+    p <- p + ggsave(file_name, width = 8, height = 6)
+    message(paste("Saved plot as", file_name))
+  }
+  return(p)
+}
+
+order <- c("Role", "Place", "Type", "Start", "End")
+today <- as.character(Sys.Date())
+
+
+### Edit from here ###
+cv <- data.frame(rbind(
+  #c("Master Thesis Process", NA, "Writing Process", today, "2022-05-31"),
+  c("Introduction & Theory", NA, "Writing Process", today, "2022-02-06"),
+  c("Data", NA, "Writing Process", "2022-02-07", "2022-02-13"),
+  c("Modelling", NA, "Writing Process", "2022-02-13", "2022-03-21"),
+  c("Estimation", NA, "Writing Process", "2022-03-21", "2022-03-31"),
+  c("Project Baby", "Paternity leave", "Personal", "2022-03-31", "2022-04-30"),
+  c("Conclusion", NA, "Writing Process", "2022-04-15", "2022-05-15"),
+  c("Finish", NA, "Writing Process", "2022-05-15", "2022-05-31")
+))
+### Edit until here ###
+
+
+colnames(cv) <- order
+colour <- c("red", "blue", "green")
+
+plot_timeline2(
+  event = cv$Role,
+  start = cv$Start,
+  end = cv$End,
+  label = cv$Place,
+  group = cv$Type,
+  save = FALSE,
+  subtitle = "Morten Willendrup" # replace with your name
+)
+```
+
+
+## Introduction {-}
+Need to write a full introduction of the Danish Mortgage Market, furthermore
+leave space for a brief walkthorugh of the thesis
+
+## Theory {-}
+Relevant theory should be Machine Learning, which is relevent should be discussed 
+in detail
+
+
+## Data {-}
+Get data from DST
+Get data from Nasdaq
+Get data from Danske Bank Asset Management
+
+
+
+

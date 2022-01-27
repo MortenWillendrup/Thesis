@@ -1,12 +1,10 @@
 ---
 title: 'My Final College Paper'
-author: 'Your R. Name'
-date: 'May 20xx'
-institution: 'Reed College'
+author: 'Morten Søby Willendrup'
+date: 'May 2022'
+institution: 'University of Copenhagen'
 division: 'Mathematics and Natural Sciences'
-advisor: 'Advisor F. Name'
-# If you have more two advisors, un-silence line 7
-#altadvisor: 'Your Other Advisor'
+advisor: 'Stefan Voigt'
 department: 'Mathematics'
 degree: 'Bachelor of Arts'
 knit: bookdown::render_book
@@ -25,8 +23,8 @@ params:
 # Remove the hashtag to specify which version of output you would like.
 # Can only choose one at a time.
 output:
-  thesisdown::thesis_pdf: default 
-#  thesisdown::thesis_gitbook: default         
+#  thesisdown::thesis_pdf: default 
+  thesisdown::thesis_gitbook: default         
 #  thesisdown::thesis_word: default
 #  thesisdown::thesis_epub: default
 
@@ -54,6 +52,7 @@ lot: true
 lof: true
 ---
 
+```{=html}
 <!--
 Above is the YAML (YAML Ain't Markup Language) header that includes a lot of 
 metadata used to produce the document.  Be careful with spacing in this header!
@@ -66,7 +65,7 @@ If you'd like to include a comment that won't be produced in your resulting file
 
 If you receive a duplicate label error after knitting, make sure to delete the index.Rmd file and then knit again.
 -->
-
+```
 ```{r include_packages, include=FALSE}
 # This chunk ensures that the thesisdown package is
 # installed and loaded. This thesisdown package includes
@@ -99,15 +98,14 @@ library(thesisdown)
 options(width = 70)
 ```
 
+```{=html}
 <!--
 The acknowledgments, preface, dedication, and abstract are added into the PDF
 version automatically by inputting them in the YAML at the top of this file.
 Alternatively, you can put that content in files like 00--prelim.Rmd and
 00-abstract.Rmd like done below.
 -->
-
-
-
+```
 ```{r eval=!knitr::is_latex_output(), child=here::here("prelims", "00--prelim.Rmd")}
 
 ```
@@ -116,20 +114,15 @@ Alternatively, you can put that content in files like 00--prelim.Rmd and
 
 ```
 
+```{=html}
 <!-- The {.unnumbered} option here means that the introduction will be 
 "Chapter 0." You can also use {-} for no numbers on chapters.
 -->
-
+```
 # Introduction {#intro}
 
-Mortgage bonds have a long history in Denmark, originating from 1797 where a fire in Copenhagen destroyed most of the city in 1795, this event initiated the first mortgage bank[@jensen2013rentesregning].
-The general idea on how the mortgage system in Denmark has since only seen minor changes thus a source of high stability. 
-The idea being the system that instead of having a one-to-one relationship between the borrower mortgage loan and the investors mortgage bond. The Danish mortgage system is structured such that the mortgage bond issuer pools the mortgage loan  
+Mortgage bonds have a long history in Denmark, originating from 1797 where a fire in Copenhagen destroyed most of the city in 1795, this event initiated the first mortgage bank[@jensen2013rentesregning]. The general idea on how the mortgage system in Denmark has since only seen minor changes thus a source of high stability. The idea being the system that instead of having a one-to-one relationship between the borrower mortgage loan and the investors mortgage bond. The Danish mortgage system is structured such that the mortgage bond issuer pools the mortgage loan \@ref(fig:bondCashFlow)
 
-```{r, label='bnondCashFlow', echo = FALSE, fig.align='center', out.width="100%", fig.cap="Simplified illustration of the relationships and payment streams between the homeowner, the mortgage bank and the investor in the Danish mortgage system."}
+```{r bondCashFlow, echo = FALSE, fig.align='center', out.width="100%", fig.cap="Simplified illustration of the relationships and payment streams between the homeowner, the mortgage bank and the investor in the Danish mortgage system."}
 knitr::include_graphics("figure/bond_cash_flow_illustration_23012022.png")
 ```
-
-
-
-
