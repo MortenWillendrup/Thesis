@@ -30,7 +30,7 @@ The default risk held by the investor is even more reduced since the mortgage ba
 
 The cover pool will consist of collateral in therms of the claims against the borrows as well as additional securities posed by the mortgage bank to protect the investor from losses. These securities constitute what is known as overcollateralization and should be of very high credit quality.  
 
-Since modelling will be performed from the investors point of view, and the default risk held by the investor has been brought to a minimum, the paper will not include default risk in our model
+Since modelling will be performed from the investors point of view, and the default risk held by the investor has been brought to a minimum, the paper will not include default risk in our model.
 
 
 
@@ -47,13 +47,20 @@ market_size <- real_marked[ which(real_marked$TID==max(real_marked$TID) & real_m
 
 ```
 
+To understand why the Danish mortgage system is of interest is due to impact on
+the Danish economy and the significant size of the market, being the largest covered
+bond market in Europe [@ECBC2021], where in `r str_to_sentence(format(zoo::as.yearmon(real_marked[ which(real_marked$TID==max(real_marked$TID)), ][[10]][[1]]), "%B %Y"))` the Danish mortgage market amounted to DKK `r format(round((market_size/10000)), scientific=F)` billions.  
+
+According to the Danish central bank, Nationalization, the foreign ownership of Danish Mortgage bonds totalled DKK 802 billions as of Dec 2021 or equivalent to 24% of the total amount outstanding in the Danish mortgage system.  
+
+  
+  
+THe market for Danish mortgage bonds consits mainly of fixed coupon callable bonds, adjustable rate mortgage bonds and capped floating rate bonds.
+
+The focus of this thesis will be on the fixed income coupon callable bonds due it being the most complex of the aforementioned.,
 
 
-
-
-The outstanding amount as of `r str_to_sentence(format(zoo::as.yearmon(real_marked[ which(real_marked$TID==max(real_marked$TID)), ][[10]][[1]]), "%B %Y"))` in the Danish mortgage market is DKK `r format(market_size/1000, scientific=F)` Billions 
-
-
+In order to understand the different aspects of a callable bond, we will first have to introduce the term structure theory and build a framework for descrying the behaviour of the yield curve. This in done in \@ref(theory)
 
 
 
