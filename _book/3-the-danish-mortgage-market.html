@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 3 The Danish Mortgage Market | Pricing Danish Mortgage Bonds using Machine learning for estimation</title>
+  <meta name="description" content=" 3 The Danish Mortgage Market | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 3 The Danish Mortgage Market | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 3 The Danish Mortgage Market | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  
+  
+  
+
+<meta name="author" content="Morten Søby Willendrup" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="2-intro.html"/>
+<link rel="next" href="4-theory.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> The next two lines allow you to change the spacing in your thesis. You can</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="2" data-path="2-intro.html"><a href="2-intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="3-the-danish-mortgage-market.html"><a href="3-the-danish-mortgage-market.html"><i class="fa fa-check"></i><b>3</b> The Danish Mortgage Market</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-the-danish-mortgage-market.html"><a href="3-the-danish-mortgage-market.html#types-of-mortgage-bonds"><i class="fa fa-check"></i><b>3.1</b> Types of mortgage bonds</a></li>
+<li class="chapter" data-level="3.2" data-path="3-the-danish-mortgage-market.html"><a href="3-the-danish-mortgage-market.html#the-danish-mortgage-model"><i class="fa fa-check"></i><b>3.2</b> The Danish mortgage model</a></li>
+<li class="chapter" data-level="3.3" data-path="3-the-danish-mortgage-market.html"><a href="3-the-danish-mortgage-market.html#match-funding-principle"><i class="fa fa-check"></i><b>3.3</b> Match funding principle</a></li>
+<li class="chapter" data-level="3.4" data-path="3-the-danish-mortgage-market.html"><a href="3-the-danish-mortgage-market.html#delivery-and-prepayment"><i class="fa fa-check"></i><b>3.4</b> Delivery and prepayment</a></li>
+<li class="chapter" data-level="3.5" data-path="3-the-danish-mortgage-market.html"><a href="3-the-danish-mortgage-market.html#prepayment-risk"><i class="fa fa-check"></i><b>3.5</b> Prepayment Risk</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-theory.html"><a href="4-theory.html"><i class="fa fa-check"></i><b>4</b> Theory</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4-theory.html"><a href="4-theory.html#term-strucutre"><i class="fa fa-check"></i><b>4.1</b> Term Strucutre</a></li>
+<li class="chapter" data-level="4.2" data-path="4-theory.html"><a href="4-theory.html#callable-mortgage-bonds"><i class="fa fa-check"></i><b>4.2</b> Callable Mortgage Bonds</a></li>
+<li class="chapter" data-level="4.3" data-path="4-theory.html"><a href="4-theory.html#estimating-prepayments-application-of-machine-learning"><i class="fa fa-check"></i><b>4.3</b> Estimating prepayments, application of machine learning</a></li>
+<li class="chapter" data-level="4.4" data-path="4-theory.html"><a href="4-theory.html#ke"><i class="fa fa-check"></i><b>4.4</b> Ke</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-data.html"><a href="5-data.html"><i class="fa fa-check"></i><b>5</b> Data</a></li>
+<li class="chapter" data-level="6" data-path="6-estimation.html"><a href="6-estimation.html"><i class="fa fa-check"></i><b>6</b> Estimation</a></li>
+<li class="chapter" data-level="" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i>Discussion</a></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html"><i class="fa fa-check"></i>Roadmap</a>
+<ul>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#timeline"><i class="fa fa-check"></i>Timeline</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#theory-1"><i class="fa fa-check"></i>Theory</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#data-1"><i class="fa fa-check"></i>Data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Pricing Danish Mortgage Bonds using Machine learning for estimation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="the-danish-mortgage-market" class="section level1" number="3">
+<h1><span class="header-section-number"> 3</span> The Danish Mortgage Market</h1>
+<p>Being one of the oldest and most stable bond markets in the world, the Danish Bond market has it’s root all the way back to 1797 where the first mortgage bank Kreditkassen for Husejere i Kjøbenhavn was established to help rebuild Copenhagen after the devastating fire of 1795 where a quarter of the city was lost to the fire.</p>
+<p>The objective of stabilibty can also be seen in the resistance of the Danish Mortgage Market to economic crises, as the Danish economy has gone through several crises the past 50 years.</p>
+<ul>
+<li>The two oil crises of the 1970’s</li>
+<li>The 1986 austerity package and the 1987 tax reform</li>
+<li>The Dot-com bubble in 2000</li>
+<li>The financial crises</li>
+</ul>
+<p>Arguable each crises has had an effect on the mortgage system differently and have even caused substitutional losses to the mortgage banks. However the losses have never affected the investors, as not one Danish Mortgage bondholder has lost the investment or even part of it. Moreover, the market stayed active and liquid under the financial crisis as evidenced by <span class="citation">(Dick-Nielsen, Feldhütter, and Lando 2012; Gundersen, Hesselberg, and Hove 2011)</span>, where both find that the Danish Mortgage Bonds were as liqui as the Danish Government bonds during years from 2008 to 2009.</p>
+<div id="types-of-mortgage-bonds" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Types of mortgage bonds</h2>
+<p>The Danish mortgage market mainly consists of the following types of mortgage bonds</p>
+<ul>
+<li><p>ARMs - Adjustable Rate Mortgage Securities. which are subject to refinancing until the longer-term underlying loan has matured. The maturities match the fixed-rate period of the underlying loan, and are mainly 1 to 5 yers and the bond type is bullet</p></li>
+<li><p>Floating-rate note - Variable-rate annuities with redemptions matching the underlying loans. The maturites mainly range from 1 to 5 years.</p></li>
+<li><p>Capped floater - Variable-rate annuities with redemptions not matching the underlying loans. The maturites are mainly from 5 to 30 years</p></li>
+<li><p>Callable bonds - Fixed rate callable annuities, where payments and redemptions match the underlying loan. The maturities are mainly 15, 20 or 30 years.</p></li>
+</ul>
+<p>All 4 types of mortgage bonds have underlying loans where maturires of up to 30 years are available. Furthermore, most loans can be offered with an interest only(IO) period up to 30 years. If the IO option is chosen, the loan must be repaid as an bullet bond at maturity, otherwise if a IO period of 10 years is chosen, the loan must be repaid as an annuity profile for the remaining lifetime of the loan i.e. 20 years. In recent years the amount of loans with interest only option has declined and as of December 2021, interest only loans accounts for 43.5 %<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> of the loans to Danish house-holds.</p>
+</div>
+<div id="the-danish-mortgage-model" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> The Danish mortgage model</h2>
+<p>The Danish mortgage model is based upon a stable and transparent system, with several advantages and unique features. Since mortgage banks does not function as commercial banks, and only able to fund loans through the sale of bonds which limits the risk of the mortgage banks Hence, the mortgage bank protects the investor from borrower defaulting. The mortgage bank secures the issued bond by using the cover pool which consist of collateral in terms of the claims against the borrows as well as additional securities posed by the mortgage bank to protect the investor from losses. These securities constitute what is known as overcollateralization and should be of very high credit quality.</p>
+</div>
+<div id="match-funding-principle" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Match funding principle</h2>
+<p>The match-funding principle entails that for every loan made by the mortgage bank, a new bond is issued with matching cash-flow properties. This eliminates mismatch in cash-flows and refinancing risk for the mortgage bank, which also secures payments to the bondholder. In the Danish mortgage system the mortgage bank functions as an intermediary between the investor and the borrower. Mortgage banks funds loans on a current basis, meaning that hte bond must be sold before the loan can be given. This also entails that the market price of the bond determines the loan rate. THe loan is therefore equal to the investment, which passes through the mortgage bank. Repayment and interest from the borrower to investor also passed through them mortgage bank, however the mortgage bank changes the borrower a margin though the lifetime of the loan, which is a percentage of the debt outstanding.</p>
+<p>Since mortgage banks is only an intermediary it is not affected by changes in the floating rate, as it passes repayments and interest through to the investor. The drawback for the mortgage bank is that it endures the credit risk in the event of a default of the borrower, as it still has to make repayment and interest to the bond holder. This however protects the investor as the credit risk is removed, but is also a great incentive for the mortgage bank to put an emphasis on the due diligence process when issuing loans and adds to the stability of the system. Part of the due diligence is not only the valuing the property when making a credit assessment of a potential borrower, but also assessing the borrower’s current economic situation including income and wealth based on legislation that dictates eligibility for granting and funding loans.</p>
+</div>
+<div id="delivery-and-prepayment" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Delivery and prepayment</h2>
+<p>A central unique feature of the Danish mortgage model is the delivery option which means that the borrower always ahs the possibility of buying the underlying bond in the market, and delivering it back to the mortgage bank, which then cancels the loan. This is unique way for the borrower to reduce the notional amount of the loan if interest rate rises, and the related bond price falls. It is also a hedging effect on the expected drop in house prices that follows increasing interest rates as the two effect offset each other. This has no effect on the investor in terms of payments made from the investors to the bondholders.</p>
+<p>Callables bonds also have a prepayment option( embedded call-option). The prepayment option gives the borrower the opportunity to repay the loan at pari (100) at every quarter throughout the lifetime of the loan.</p>
+<p>Capped floaters have a similar prepayment option, however the prices depends on the contract is typically 105. This is favorable when the current available coupon rate is below the coupon rate on the mortgage.</p>
+<p>The prepayment on Danish callables and capped floaters are more difficult to price than corresponding bond without the prepayment option and come with an additional option and come with an additional prepayment risk for the investor, this is however compensated with a higher interest rate.</p>
+<p>The prepayment risk arises from the option to prepay the loan at pari, which exposes the investor to the risk of not being able to reinvest at the same conditions. The rational scenarios for prepayment are depicted in figure <a href="3-the-danish-mortgage-market.html#fig:prepayment">3.1</a></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:prepayment"></span>
+<img src="figure/Prepay.png" alt="Pricing curve of Callabalbe Bonds and Non-callable bonds." width="100%" />
+<p class="caption">
+Figure 3.1: Pricing curve of Callabalbe Bonds and Non-callable bonds.
+</p>
+</div>
+<p>When prices are close to par the price of the callable bond is lower than the price of a non-callable bond, i.e. government bond, as the chance of prepayment increases. However the borrowers are not always rational, which can create opportunities for the active investor, but is also a source of risk for a buy-and-hold strategy.</p>
+</div>
+<div id="prepayment-risk" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Prepayment Risk</h2>
+<p>The borrowers have the possibility to repay (part of) the notional before maturity, these kinds of anticipated and unexpected payments are called prepayment. this make the duration of the mortgage bond stochastic, which create complication in the refinancing policy the investor. The bank is interested in prepayment rate on a security level, rather than a single borrower. Prepayment is a risk from the point of view of the issuer of the Loan. A prepayment option is an option which “reflect the differnece beetween the value of the ouatsnading loan repayments at the nterate rate at the time of the prepayment for the reaming in term of the loan minus the amound of the loan then oustandn (which is the value of the outstanding loan repayments at the ortopnal loan interes rate)</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Nationalbanken Statistics - DNRUDDKI<a href="3-the-danish-mortgage-market.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-theory.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

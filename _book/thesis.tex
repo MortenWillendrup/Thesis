@@ -116,7 +116,7 @@
 \title{Pricing Danish Mortgage Bonds using Machine learning for estimation}
 \author{Morten Søby Willendrup}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
-\date{Last compiled on 03 februar, 2022}
+\date{Last compiled on 09 februar, 2022}
 \division{Faculty of Social Sciences}
 \advisor{Stefan Voigt}
 \institution{University of Copenhagen}
@@ -268,7 +268,7 @@ The Danish mortgage system is structured such that borrowers have their loans po
 
 When an investor buys a bond issued from the pool, this is equivalent to buying a share of the pooled loans, in which the investor is entitled to receive interest payments and repayment proportional to the invested amount.
 
-What makes the Danish mortgage system distinguishable is the balance principle. This principle ensures an almost perfect match between the interest and repayments paid and received by tyhe borrowers and investors respectivly.
+What makes the Danish mortgage system distinguishable is the balance principle. This principle ensures an almost perfect match between the interest and repayments paid and received by the borrowers and investors respectively.
 
 Figure \ref{fig:bondCashFlow} illustrates the cash flows that occurs between the borrow, the mortgage bank and the investor. When a loan is granted to a borrower, the mortgage bank issues a bond in the primary market accordingly. The investor then buys the bonds and the process from the trades go to the borrower thus giving the borrower liquidity to purchase the dwelling on which the loan is based.
 
@@ -278,9 +278,9 @@ The credit risk of the borrower is towards the mortgage bank, and since the hous
 
 The default risk held by the investor is even more reduced since the mortgage bank has go into default before the investor will be exposed to a credit event. In a potential credit event of the mortgage bank, the investors will have the right to the cover pool, which is separate legal structure ensuring that the bond investors in a credit event does not have share to their claim towards the mortgage bank along with other creditors.
 
-The cover pool will consist of collateral in therms of the claims against the borrows as well as additional securities posed by the mortgage bank to protect the investor from losses. These securities constitute what is known as overcollateralization and should be of very high credit quality.
+The cover pool will consist of collateral in terms of the claims against the borrows as well as additional securities posed by the mortgage bank to protect the investor from losses. These securities constitute what is known as overcollateralization and should be of very high credit quality.
 
-Since modelling will be performed from the investors point of view, and the default risk held by the investor has been brought to a minimum, the paper will not include default risk in our model
+Since modelling will be performed from the investors point of view, and the default risk held by the investor has been brought to a minimum, the paper will not include default risk in our model.
 \begin{figure}
 
 {\centering \includegraphics[width=1\linewidth]{figure/bond_cash_flow_illustration_23012022} 
@@ -289,10 +289,121 @@ Since modelling will be performed from the investors point of view, and the defa
 
 \caption{Simplified illustration of the relationships and payment streams between the homeowner, the mortgage bank and the investor in the Danish mortgage system.}\label{fig:bondCashFlow}
 \end{figure}
-The outstanding amount as of December 2021 in the Danish mortgage market is DKK 31773.96 Billions
+To understand why the Danish mortgage system is of interest is due to impact on
+the Danish economy and the significant size of the market, being the largest covered
+bond market in Europe (ECBC 2021), where in December 2021 the Danish mortgage market amounted to DKK 3,177 billions.
+
+According to the Danish central bank, Nationalization, the foreign ownership of Danish Mortgage bonds totalled DKK 802 billions as of Dec 2021 or equivalent to 24\% of the total amount outstanding in the Danish mortgage system.
+
+THe market for Danish mortgage bonds consits mainly of fixed coupon callable bonds, adjustable rate mortgage bonds and capped floating rate bonds.
+
+The focus of this thesis will be on the fixed income coupon callable bonds due it being the most complex of the aforementioned.,
+
+In order to understand the different aspects of a callable bond, we will first have to introduce the term structure theory and build a framework for descrying the behaviour of the yield curve. This in done in \ref{theory}
+
+\hypertarget{the-danish-mortgage-market}{%
+\chapter{The Danish Mortgage Market}\label{the-danish-mortgage-market}}
+
+Being one of the oldest and most stable bond markets in the world, the Danish Bond market has it's root all the way back to 1797 where the first mortgage bank Kreditkassen for Husejere i Kjøbenhavn was established to help rebuild Copenhagen after the devastating fire of 1795 where a quarter of the city was lost to the fire.
+
+The objective of stabilibty can also be seen in the resistance of the Danish Mortgage Market to economic crises, as the Danish economy has gone through several crises the past 50 years.
+\begin{itemize}
+\tightlist
+\item
+  The two oil crises of the 1970's
+\item
+  The 1986 austerity package and the 1987 tax reform
+\item
+  The Dot-com bubble in 2000
+\item
+  The financial crises
+\end{itemize}
+Arguable each crises has had an effect on the mortgage system differently and have even caused substitutional losses to the mortgage banks. However the losses have never affected the investors, as not one Danish Mortgage bondholder has lost the investment or even part of it. Moreover, the market stayed active and liquid under the financial crisis as evidenced by (Dick-Nielsen, Feldhütter, and Lando 2012; Gundersen, Hesselberg, and Hove 2011), where both find that the Danish Mortgage Bonds were as liqui as the Danish Government bonds during years from 2008 to 2009.
+
+\hypertarget{types-of-mortgage-bonds}{%
+\section{Types of mortgage bonds}\label{types-of-mortgage-bonds}}
+
+The Danish mortgage market mainly consists of the following types of mortgage bonds
+\begin{itemize}
+\item
+  ARMs - Adjustable Rate Mortgage Securities. which are subject to refinancing until the longer-term underlying loan has matured. The maturities match the fixed-rate period of the underlying loan, and are mainly 1 to 5 yers and the bond type is bullet
+\item
+  Floating-rate note - Variable-rate annuities with redemptions matching the underlying loans. The maturites mainly range from 1 to 5 years.
+\item
+  Capped floater - Variable-rate annuities with redemptions not matching the underlying loans. The maturites are mainly from 5 to 30 years
+\item
+  Callable bonds - Fixed rate callable annuities, where payments and redemptions match the underlying loan. The maturities are mainly 15, 20 or 30 years.
+\end{itemize}
+All 4 types of mortgage bonds have underlying loans where maturires of up to 30 years are available. Furthermore, most loans can be offered with an interest only(IO) period up to 30 years. If the IO option is chosen, the loan must be repaid as an bullet bond at maturity, otherwise if a IO period of 10 years is chosen, the loan must be repaid as an annuity profile for the remaining lifetime of the loan i.e.~20 years. In recent years the amount of loans with interest only option has declined and as of December 2021, interest only loans accounts for 43.5 \%\footnote{Nationalbanken Statistics - DNRUDDKI} of the loans to Danish house-holds.
+
+\hypertarget{the-danish-mortgage-model}{%
+\section{The Danish mortgage model}\label{the-danish-mortgage-model}}
+
+The Danish mortgage model is based upon a stable and transparent system, with several advantages and unique features. Since mortgage banks does not function as commercial banks, and only able to fund loans through the sale of bonds which limits the risk of the mortgage banks Hence, the mortgage bank protects the investor from borrower defaulting. The mortgage bank secures the issued bond by using the cover pool which consist of collateral in terms of the claims against the borrows as well as additional securities posed by the mortgage bank to protect the investor from losses. These securities constitute what is known as overcollateralization and should be of very high credit quality.
+
+\hypertarget{match-funding-principle}{%
+\section{Match funding principle}\label{match-funding-principle}}
+
+The match-funding principle entails that for every loan made by the mortgage bank, a new bond is issued with matching cash-flow properties. This eliminates mismatch in cash-flows and refinancing risk for the mortgage bank, which also secures payments to the bondholder. In the Danish mortgage system the mortgage bank functions as an intermediary between the investor and the borrower. Mortgage banks funds loans on a current basis, meaning that hte bond must be sold before the loan can be given. This also entails that the market price of the bond determines the loan rate. THe loan is therefore equal to the investment, which passes through the mortgage bank. Repayment and interest from the borrower to investor also passed through them mortgage bank, however the mortgage bank changes the borrower a margin though the lifetime of the loan, which is a percentage of the debt outstanding.
+
+Since mortgage banks is only an intermediary it is not affected by changes in the floating rate, as it passes repayments and interest through to the investor. The drawback for the mortgage bank is that it endures the credit risk in the event of a default of the borrower, as it still has to make repayment and interest to the bond holder. This however protects the investor as the credit risk is removed, but is also a great incentive for the mortgage bank to put an emphasis on the due diligence process when issuing loans and adds to the stability of the system. Part of the due diligence is not only the valuing the property when making a credit assessment of a potential borrower, but also assessing the borrower's current economic situation including income and wealth based on legislation that dictates eligibility for granting and funding loans.
+
+\hypertarget{delivery-and-prepayment}{%
+\section{Delivery and prepayment}\label{delivery-and-prepayment}}
+
+A central unique feature of the Danish mortgage model is the delivery option which means that the borrower always ahs the possibility of buying the underlying bond in the market, and delivering it back to the mortgage bank, which then cancels the loan. This is unique way for the borrower to reduce the notional amount of the loan if interest rate rises, and the related bond price falls. It is also a hedging effect on the expected drop in house prices that follows increasing interest rates as the two effect offset each other. This has no effect on the investor in terms of payments made from the investors to the bondholders.
+
+Callables bonds also have a prepayment option( embedded call-option). The prepayment option gives the borrower the opportunity to repay the loan at pari (100) at every quarter throughout the lifetime of the loan.
+
+Capped floaters have a similar prepayment option, however the prices depends on the contract is typically 105. This is favorable when the current available coupon rate is below the coupon rate on the mortgage.
+
+The prepayment on Danish callables and capped floaters are more difficult to price than corresponding bond without the prepayment option and come with an additional option and come with an additional prepayment risk for the investor, this is however compensated with a higher interest rate.
+
+The prepayment risk arises from the option to prepay the loan at pari, which exposes the investor to the risk of not being able to reinvest at the same conditions. The rational scenarios for prepayment are depicted in figure \ref{fig:prepayment}
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figure/prepay} 
+
+}
+
+\caption{Pricing curve of Callabalbe Bonds and Non-callable bonds.}\label{fig:prepayment}
+\end{figure}
+When prices are close to par the price of the callable bond is lower than the price of a non-callable bond, i.e.~government bond, as the chance of prepayment increases. However the borrowers are not always rational, which can create opportunities for the active investor, but is also a source of risk for a buy-and-hold strategy.
+
+\hypertarget{prepayment-risk}{%
+\section{Prepayment Risk}\label{prepayment-risk}}
+
+The borrowers have the possibility to repay (part of) the notional before maturity, these kinds of anticipated and unexpected payments are called prepayment. this make the duration of the mortgage bond stochastic, which creates complication in refinancing for the investor. The investor is interested in prepayment rate on a security level, rather than a single borrower.\\
+A prepayment option is an option which ``reflect the difference between the value of the outstanding loan repayments at the interest rate at the time of the prepayment for the remaining term of the loan minus the amount of the loan then outstanding (which is the value of the outstanding loan repayments at the original loan interest rate) (SHERRIS 1994).\\
+if the interest rate goes down then the option is in the money, controversially if the interest rate goes up the optionality is out of the money. The exercise price of this call is equal to the loan outstanding. Rationally, the call should be exercised only if the difference mentioned above is positive since, otherwise, the option is worth more if you don't exercise it. Meaning thta it is more convenient to put money in a saving account rather than prepay the mortgage. However borrowers does not always act economically rational though, from now on we will use the the term non-ration to identify something that differs from the economically rational behaviour explained earlier.
+
+An American call option on an amortizing reducing term swap could be a good instrument to hedge the prepayment option, but the ideal hedge instrument may not exist. For instance, assuming that the duration on the financing and of the loan are perfectly matched, suppose a 20 years mortgage loan at 4\% is financed with a 20 years bond paying 3.5 \%. If the interest rate goes down to 3\%, the borrower will have to refinance at the new rate prepaying the old mortgage and opening a new one at the lower interest rate. However, the bank will still have the obligation of paying 3.5 \% interest on the bond used to finance the first loan. Moreover, since the price of the perfect hedge instrument is equal to the cost of the prepayment option., if this instrument existed, it could be use to price the option (SHERRIS 1994).
+
+The possibility to prepay exposes the bank to prepayment risk, which can be divided in two classes (Consalvi and Freca 2010)
+\begin{itemize}
+\item
+  Interest rate risk - This arises because fixed rate mortgage are hedged against interest rate change using Interest Rate Swaps (IRS). The bank receives the floating rate and pays the fixed one, this means that a prepayment may expose the bank to the possibility of paying a fixed rate on the derivative which is higher than the one obatined on the new loans.
+\item
+  Liquidity risk - Arises from the fact that the liquidity profile of the bank is strongly influence by the maturity profile of the mortgage conditional to prepayments. An incorrect estimation of this quantity leads to the risk of under or over funding and of higher long-term liquidity costs.
+\end{itemize}
+Since prepayment are substation risk for the investor, is is fundamental to be able to predict the conditional prepayment rate (CPR), which is the proportion of the pricing of a pool of loans assumed to prepay in each period, in order to better forecast future cash flows.\\
+When modelling mortgage prepayment, we cannot just use the rational assumption as mentioned earlier to evaluate contracts (e.g.~prepay only when the interest rate goes down), but we have to take into account the behaviour aspect as well, and hence we need to have a behavioural approach. In such a model we take into account factors usually estimated through statical analysis, in order to explain effect that otherwise could not have been explained. These kinds of techniques are called exogenous models, in opposition to optional prepayment models that see prepayment just as a consequence of rational behaviour e.g prepayment is always exercised at an optimal time by the borrower.\\
+For these reason, rather than using a rational prepayment model for which the prepayment rate depends on just the rate evolution, an empirical model which is capable of taking into account other factors is chosen. This CPR is a function of some variable like the refinance incentive, the seasoning, the age of the loan, etc,
 
 \hypertarget{theory}{%
 \chapter{Theory}\label{theory}}
+
+\hypertarget{term-strucutre}{%
+\section{Term Strucutre}\label{term-strucutre}}
+
+\hypertarget{callable-mortgage-bonds}{%
+\section{Callable Mortgage Bonds}\label{callable-mortgage-bonds}}
+
+\hypertarget{estimating-prepayments-application-of-machine-learning}{%
+\section{Estimating prepayments, application of machine learning}\label{estimating-prepayments-application-of-machine-learning}}
+
+\hypertarget{ke}{%
+\section{Ke}\label{ke}}
 
 \hypertarget{data}{%
 \chapter{Data}\label{data}}
@@ -406,8 +517,23 @@ Angel, Edward. 2000. \emph{Interactive Computer Graphics : A Top-down Approach w
 \leavevmode\vadjust pre{\hypertarget{ref-angel2002a}{}}%
 ---------. 2001b. \emph{Test Second Book by Angel}. Boston, MA: Wesley Addison Longman.
 
+\leavevmode\vadjust pre{\hypertarget{ref-consalvi2010measuring}{}}%
+Consalvi, Matteo, and G Scotto di Freca. 2010. {``Measuring Prepayment Risk: An Application to UniCredit Family Financing.''} \emph{UniCredit and Universities, Working Paper}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-dick2012corporate}{}}%
+Dick-Nielsen, Jens, Peter Feldhütter, and David Lando. 2012. {``Corporate Bond Liquidity Before and After the Onset of the Subprime Crisis.''} \emph{Journal of Financial Economics} 103 (3). Elsevier: 471--92.
+
+\leavevmode\vadjust pre{\hypertarget{ref-ECBC2021}{}}%
+ECBC. 2021. {``European Covered Bond Fact Bbook 2021.''} \url{https://hypo.org/app/uploads/sites/3/2021/09/ECBC-Fact-Book-2021-FINAL.pdf}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Gundersen2011}{}}%
+Gundersen, Poul, Stig Hesselberg, and Sean Hove. 2011. {``Danish Mortgage Credit.''} \emph{Monetary Review}. Nationalbanken.
+
 \leavevmode\vadjust pre{\hypertarget{ref-jensen2013rentesregning}{}}%
 Jensen, Bjarne Astrup. 2013. \emph{Rentesregning: S{æ}rtryk Af 6. Udgave}. Dj{ø}f Forlag.
+
+\leavevmode\vadjust pre{\hypertarget{ref-sherris1994pricing}{}}%
+SHERRIS, MICHAEL. 1994. {``Pricing and Hedging Loan Prepayment Risk.''} \emph{Transactions of Society of Actuaries}.
 
 \end{CSLReferences}
 

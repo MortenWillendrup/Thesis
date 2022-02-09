@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="abstract-1.html"/>
-<link rel="next" href="2-theory.html"/>
+<link rel="next" href="2-the-danish-mortgage-market.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -165,9 +165,23 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="abstract-1.html"><a href="abstract-1.html"><i class="fa fa-check"></i>Abstract</a></li>
 <li class="chapter" data-level="1" data-path="1-intro.html"><a href="1-intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="2-theory.html"><a href="2-theory.html"><i class="fa fa-check"></i><b>2</b> Theory</a></li>
-<li class="chapter" data-level="3" data-path="3-data.html"><a href="3-data.html"><i class="fa fa-check"></i><b>3</b> Data</a></li>
-<li class="chapter" data-level="4" data-path="4-estimation.html"><a href="4-estimation.html"><i class="fa fa-check"></i><b>4</b> Estimation</a></li>
+<li class="chapter" data-level="2" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html"><i class="fa fa-check"></i><b>2</b> The Danish Mortgage Market</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#types-of-mortgage-bonds"><i class="fa fa-check"></i><b>2.1</b> Types of mortgage bonds</a></li>
+<li class="chapter" data-level="2.2" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#the-danish-mortgage-model"><i class="fa fa-check"></i><b>2.2</b> The Danish mortgage model</a></li>
+<li class="chapter" data-level="2.3" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#match-funding-principle"><i class="fa fa-check"></i><b>2.3</b> Match funding principle</a></li>
+<li class="chapter" data-level="2.4" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#delivery-and-prepayment"><i class="fa fa-check"></i><b>2.4</b> Delivery and prepayment</a></li>
+<li class="chapter" data-level="2.5" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#prepayment-risk"><i class="fa fa-check"></i><b>2.5</b> Prepayment Risk</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-theory.html"><a href="3-theory.html"><i class="fa fa-check"></i><b>3</b> Theory</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-theory.html"><a href="3-theory.html#term-strucutre"><i class="fa fa-check"></i><b>3.1</b> Term Strucutre</a></li>
+<li class="chapter" data-level="3.2" data-path="3-theory.html"><a href="3-theory.html#callable-mortgage-bonds"><i class="fa fa-check"></i><b>3.2</b> Callable Mortgage Bonds</a></li>
+<li class="chapter" data-level="3.3" data-path="3-theory.html"><a href="3-theory.html#estimating-prepayments-application-of-machine-learning"><i class="fa fa-check"></i><b>3.3</b> Estimating prepayments, application of machine learning</a></li>
+<li class="chapter" data-level="3.4" data-path="3-theory.html"><a href="3-theory.html#ke"><i class="fa fa-check"></i><b>3.4</b> Ke</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-data.html"><a href="4-data.html"><i class="fa fa-check"></i><b>4</b> Data</a></li>
+<li class="chapter" data-level="5" data-path="5-estimation.html"><a href="5-estimation.html"><i class="fa fa-check"></i><b>5</b> Estimation</a></li>
 <li class="chapter" data-level="" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i>Discussion</a></li>
 <li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -206,21 +220,26 @@ div.csl-indent {
 <p>The idea being the system that instead of having a one-to-one relationship between the borrower mortgage loan and the investors mortgage bond.</p>
 <p>The Danish mortgage system is structured such that borrowers have their loans pooled, to which bonds is issue.</p>
 <p>When an investor buys a bond issued from the pool, this is equivalent to buying a share of the pooled loans, in which the investor is entitled to receive interest payments and repayment proportional to the invested amount.</p>
-<p>What makes the Danish mortgage system distinguishable is the balance principle. This principle ensures an almost perfect match between the interest and repayments paid and received by tyhe borrowers and investors respectivly.</p>
+<p>What makes the Danish mortgage system distinguishable is the balance principle. This principle ensures an almost perfect match between the interest and repayments paid and received by the borrowers and investors respectively.</p>
 <p>Figure <a href="1-intro.html#fig:bondCashFlow">1.1</a> illustrates the cash flows that occurs between the borrow, the mortgage bank and the investor. When a loan is granted to a borrower, the mortgage bank issues a bond in the primary market accordingly. The investor then buys the bonds and the process from the trades go to the borrower thus giving the borrower liquidity to purchase the dwelling on which the loan is based.</p>
 <p>The borrower will pay interest, repayments and fees known as the so-called “bidragssats” to the mortgage bank, who facilitate that the interest and repayments are passed through to the investor and thereby keeping the fees to cover their costs of issuing the bonds and the adherent risk associated with the issuance of bonds, since the issuing mortgage bank takes on the risk opposed to the borrower.</p>
 <p>The credit risk of the borrower is towards the mortgage bank, and since the housing is used at collateral in the agreement the credit risk is lowered in the viewpoint of the mortgage bank.</p>
 <p>The default risk held by the investor is even more reduced since the mortgage bank has go into default before the investor will be exposed to a credit event. In a potential credit event of the mortgage bank, the investors will have the right to the cover pool, which is separate legal structure ensuring that the bond investors in a credit event does not have share to their claim towards the mortgage bank along with other creditors.</p>
-<p>The cover pool will consist of collateral in therms of the claims against the borrows as well as additional securities posed by the mortgage bank to protect the investor from losses. These securities constitute what is known as overcollateralization and should be of very high credit quality.</p>
-<p>Since modelling will be performed from the investors point of view, and the default risk held by the investor has been brought to a minimum, the paper will not include default risk in our model</p>
+<p>The cover pool will consist of collateral in terms of the claims against the borrows as well as additional securities posed by the mortgage bank to protect the investor from losses. These securities constitute what is known as overcollateralization and should be of very high credit quality.</p>
+<p>Since modelling will be performed from the investors point of view, and the default risk held by the investor has been brought to a minimum, the paper will not include default risk in our model.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:bondCashFlow"></span>
 <img src="figure/bond_cash_flow_illustration_23012022.png" alt="Simplified illustration of the relationships and payment streams between the homeowner, the mortgage bank and the investor in the Danish mortgage system." width="100%" />
 <p class="caption">
 Figure 1.1: Simplified illustration of the relationships and payment streams between the homeowner, the mortgage bank and the investor in the Danish mortgage system.
 </p>
 </div>
-<p>The outstanding amount as of December 2021 in the Danish mortgage market is DKK 31773.96 Billions</p>
-
+<p>To understand why the Danish mortgage system is of interest is due to impact on
+the Danish economy and the significant size of the market, being the largest covered
+bond market in Europe <span class="citation">(ECBC 2021)</span>, where in December 2021 the Danish mortgage market amounted to DKK 3,177 billions.</p>
+<p>According to the Danish central bank, Nationalization, the foreign ownership of Danish Mortgage bonds totalled DKK 802 billions as of Dec 2021 or equivalent to 24% of the total amount outstanding in the Danish mortgage system.</p>
+<p>THe market for Danish mortgage bonds consits mainly of fixed coupon callable bonds, adjustable rate mortgage bonds and capped floating rate bonds.</p>
+<p>The focus of this thesis will be on the fixed income coupon callable bonds due it being the most complex of the aforementioned.,</p>
+<p>In order to understand the different aspects of a callable bond, we will first have to introduce the term structure theory and build a framework for descrying the behaviour of the yield curve. This in done in <a href="3-theory.html#theory">3</a></p>
 </div>
             </section>
 
@@ -228,7 +247,7 @@ Figure 1.1: Simplified illustration of the relationships and payment streams bet
         </div>
       </div>
 <a href="abstract-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="2-theory.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="2-the-danish-mortgage-market.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
