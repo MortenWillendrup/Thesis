@@ -37,7 +37,7 @@ abstract: '`r if(knitr:::is_latex_output()) paste(readLines(here::here("prelims"
 # like below, use a command like that for the abstract above.  Note that a tab 
 # is needed on the line after the `|`.  
 acknowledgements: |
-  I want to thank a few people.
+
 dedication: |
   You can have a dedication here if you wish. 
 preface: |
@@ -99,7 +99,7 @@ options(width = 70)
 ```
 
 ```{=html}
-<!--
+<!-- 
 The acknowledgments, preface, dedication, and abstract are added into the PDF
 version automatically by inputting them in the YAML at the top of this file.
 Alternatively, you can put that content in files like 00--prelim.Rmd and

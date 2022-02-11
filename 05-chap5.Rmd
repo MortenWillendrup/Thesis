@@ -1,4 +1,364 @@
-# Discussion {-}
+
+# Callable Mortgage Bonds
+
+In this section we will look into the properties of the callable mortgage bond and build a model suited for the Danish market. Our baseline model will be the one suggested by Stanton (1995) [24], who applied the model to the US market. Since 1995, interest rates have found their way into the negative territory, meaning that we will have to make some necessary adjustments to the model later on. For the fixed rate callable mortgage bond, the borrower will commit himself to deliver some agreed stream of payments. This payment stream could for example be defined through an annuity type loan, possibly including periods of deferred amortisation. The borrower will also hold the option to terminate the payments at any given time against paying the remaining principal. Hence, effectively the borrower is short one non-callable bond and long one call option on the bond with strike equal to the remaining principal. In contrast to usual option theory, borrowers are assumed to be faced with some barriers preventing them from prepaying as it becomes optimal. These barriers will be described in the following.
 
 
+## Callability
 
+Since the borrower is effectively short one non-callable bond and long one call option, we may write the value of the mortgage liabilities to the borrower as follows
+$$
+M_{t}^{\ell}=B_{t}^{T}+V_{t}^{\ell}
+$$
+where $B_{t}^{T}$ is the value of the non-callable bond and $V_{t}^{\ell}$ the value of the call option as seen from the borrower. When calling the option the borrower will be faced with a fee of size $X$ per unit of remaining principal, $F_{t}$, where $X$ may vary across borrowers. Think of $X$ as the monetary costs associated with prepaying but also the non-monetary or implicit costs. If the borrower has to take time off from work in order to go to the bank, then this could be an example of an implicit cost held by the borrower. The strike value of the option therefore becomes $(1+X) F_{t}$. The value of the mortgage bond as seen from the investors point of view will be given by
+$$
+M_{t}^{a}=B_{t}^{T}+V_{t}^{a}
+$$
+$M_{t}^{\ell}$ and $M_{t}^{a}$ differ as the holder of the mortgage bond does not receive the costs, $X$, associated with prepayment. If the mortgage liabilities are greater than the remaining principal plus prepayment costs, i.e. $M_{t}^{\ell}>(1+X) F_{t}$, then it will be optimal to prepay the mortgage. Given that it is optimal to prepay the mortgage loan, we will assume that there is a given probability that the borrower will perform a prepayment over a given period of time. That borrowers will only prepay with a certain probability when
+
+
+it becomes optimal, may simply be ascribed to the fact that they cannot be expected to monitor the financial market continuously. Hence, we will assume that borrowers check for optimal prepayment at discrete points in time.
+
+## Prepayment
+
+We will assume that the time at which a borrower checks for optimal prepayment is a stochastic event. Let $\tau \in \mathbb{R}_{+}$denote the next time the borrower checks for optimal prepayment, and let $F(t)=\mathbb{P}(\tau<t)$ be the associated density. Then the so called hazard rate $\lambda_{t}$, defined by
+$$
+\lambda_{t}=\lim _{h \rightarrow 0^{+}} \frac{1}{h} \mathbb{P}(t \leq \tau<t+h \mid \tau \geq t)
+$$
+will fully describe the probability of checking for optimal prepayment. To see this we rewrite (3.3) as follows
+$$
+\lambda_{t}=\lim _{h \rightarrow 0^{+}} \frac{1}{h} \frac{\mathbb{P}(\tau<t+h)-\mathbb{P}(\tau<t)}{\mathbb{P}(\tau>t)}=\lim _{h \rightarrow 0^{+}} \frac{F(t+h)-F(t)}{(1-F(t)) h}=\frac{\frac{\mathrm{d} F(t)}{\mathrm{dt}}}{1-F(t)},
+$$
+which can be solved for $F$ as $F(t)=1-\mathrm{e}^{-\int_{0}^{t} \lambda_{x} \mathrm{~d} s}$. We see that an increasing $\lambda_{t}$ increases the probability of checking for optimal prepayment. It could be justified that $\lambda_{t}$ should be a function of one or more market variables, but Stanton simply assumes that the intensity parameter can be in two possible states. Specifically, $\lambda_{t}$ is defined as follows:
+$$
+\lambda_{t}= \begin{cases}\lambda_{1} & \text { if } M_{t}^{\ell}<\left(1+X_{i}\right) F_{t} \\ \lambda_{1}+\lambda_{2} & \text { if } M_{t}^{\ell} \geq\left(1+X_{i}\right) F_{t}\end{cases}
+$$
+where $\lambda_{1}, \lambda_{2} \geq 0$ are constants. That is, if it is not optimal to prepay, i.e. $M_{t}^{\ell}<\left(1+X_{i}\right) F_{t}$, then a prepayment will happen according to some baseline prepayment rate $\lambda_{1}$. If it is optimal to prepay, i.e. $M_{t}^{\ell} \geq\left(1+X_{i}\right) F_{t}$, then $\lambda_{t}$ will be increased to $\lambda_{1}+\lambda_{2}$. The reason for this split is due to the way prepayments work in the US. In the US, borrowers cannot buy back their mortgage bond in the market if the price goes below par. Nevertheless, there might be exogenous reasons making it necessary for borrowers to prepay their loan before maturity. Since these suboptimal prepayments will expectedly happen less frequently compared to the optimal prepayments, it makes sense to assume different states of the intensity parameter $\lambda_{t}$. It is important to note, that the positive probability of investors receiving back their money at par, when the bond trades below, is a feature of the US market. In Denmark, borrowers may buy back the bonds linked to their loans, which provide them with an extra optionality to be discussed later.
+
+## The Mortgage PDE
+
+We will now derive a PDE for the mortgage bond and the mortgage liabilities. As we have introduced a new source of risk through prepayments, we cannot simply let the value of a callable mortgage bond depend only on time and the short rate, as was the case for the zero coupon bond. In fact, we will have to let the price depend on both time, the short rate and some new prepayment variable, $y_{t} .$ We will define the prepayment variable $y_{t}$ to be a Poisson process with intensity parameter $\lambda_{t}$. We will let $y_{t}=0$ indicate that no prepayment has occurred and $y_{t} \geq 1$ indicate that prepayment has occurred. The mortgager's obligations terminate at $\tau=\inf \left\{t \in \mathbb{R} \mid y_{t} \geq 1\right\} .$ At the time of prepayment, the mortgage liabilities will jump from $M_{\tau-}^{\ell}$ to $M_{\tau+}^{\ell}=\left(1+X_{i}\right) F_{\tau}$ while the mortgage bond will jump from $M_{\tau-}^{a}$ to $M_{\tau+}^{a}=F_{\tau}$. In order to properly handle functions of discontinuous processes, we will have to shortly introduce a variation of Ito's lemma for jump processes. We will say that $Y_{t}$ is a jump process if it takes the form
+$$
+Y_{t}=Y_{0}+\int_{0}^{t} \mu\left(s, Y_{s}\right) \mathrm{d} s+\int_{0}^{t} \sigma\left(s, Y_{s}\right) \mathrm{d} W_{s}+J_{t}
+$$
+where $\mu\left(t, Y_{t}\right)$ and $\sigma\left(t, Y_{t}\right)$ are adapted processes, $W_{t}$ is a standard Brownian motion and $J_{t}$ is an adapted pure jump process. That is, at the jump times $\left\{\tau_{1}, \tau_{2}, \ldots\right\}, J_{t}$ will jump an amount $\mathrm{d} J_{t}=J_{t}-J_{t-}$, where both jump times and jumps themselves may be stochastic. For such a jump process there exists a natural extension of Ito's formula and we refer to theorems 11.5.1 and 11.5.4 in Shreve (2004) [30] for one- and two-dimensional versions of the formula as well as proofs. In the present case, we have two dimensions as both the short rate, $r_{t}$, and the prepayment variable, $y_{t}$, follow stochastic processes. Hence, we are in a special case of a two-dimensional jump process which leads to the following corollary to theorem 11.5.4 in Shreve (2004).
+
+Corollary 3.1. The price function of a security $M_{t}$ depending on time, the short rate and the prepayment variable, i.e. $M_{t}=M\left(t, r_{t}, y_{t}\right)$, will satisfy
+$$
+\begin{aligned}
+M_{\mathrm{t}}=& M_{0}+\int_{0}^{t} \frac{\partial M}{\partial t}\left(s, r_{s}, y_{s}\right) \mathrm{d} s+\int_{0}^{t} \frac{\partial M}{\partial r}\left(s, r_{s}, y_{s}\right) \mathrm{d} r_{s}+\int_{0}^{t} \frac{1}{2} \frac{\partial^{2} M}{\partial r^{2}}\left(s, r_{s}, y_{s}\right)\left(\mathrm{d} r_{s}\right)^{2} \\
+&+\left[M\left(\tau, r_{\tau}, y_{\tau}\right)-M\left(\tau-, r_{\tau-}, y_{\tau-}\right)\right] 1(\tau \leq t)
+\end{aligned}
+$$
+We see that the only difference in (3.7) from the usual Ito's lemma is the square bracket, ensuring that when $y_{t}$ jumps then so does $M_{t}$. If we write $M_{t}$ on differential form and insert for $r_{t}$ we get
+$$
+\mathrm{d} M_{t}=\alpha_{t}^{M} M_{t} \mathrm{~d} t+\beta_{t}^{M} M_{t} \mathrm{~d} W_{t}^{\mathrm{P}}+\left(M_{t}-M_{t-}\right) \mathrm{d} y_{t}
+$$
+where
+$$
+\alpha_{t}^{M}=\frac{\frac{\partial M}{\partial t}+\alpha\left(t, r_{t}\right) \frac{\partial M}{\partial r}+\frac{1}{2} \beta^{2}\left(t, r_{t}\right) \frac{\theta^{2} M}{\theta r^{2}}}{M_{t}} \text { and } \beta_{t}^{M}=\frac{\beta\left(t, r_{t}\right) \frac{\partial M}{\theta_{r}}}{M_{t}} .
+$$
+If the security is the callable mortgage bond then the value of the bond immediately after a jump will be the remaining principal, i.e. $M_{\tau}^{\alpha}=F_{\tau}$. Likewise, for the mortgage liabilities we will have $M_{\tau}^{\ell}=\left(1+X_{i}\right) F_{\tau}$. Since we can now distinguish $M_{t}$ from $M_{t-}$ we may replace $\left(M_{t}-M_{t-}\right) \mathrm{d} y_{t}$ with $\left(F_{t}-M_{t}^{a}\right) \mathrm{d} y_{t}$ for the bond and $\left(\left(1+X_{i}\right) F_{t}-M_{t}^{\ell}\right) \mathrm{d} y_{t}$ for the liability. Since the callable mortgage bond pays out dividends at a rate $C_{t}$, the total gain from holding the security over an infinitesimal time-period must be $\mathrm{d} M_{t}^{a}+C_{t} \mathrm{~d} t$. We would now like to hedge the interest rate risk of the callable bond by constructing a portfolio, $V_{t}$, consisting of one callable mortgage bond and $h_{t}^{T}=-\frac{\partial P_{1}^{T}}{\theta_{r}} / \frac{\partial M_{t}^{a}}{\partial r}$ zero coupon bonds maturing at time $T$. Since the portfolio will pay dividends, we will assume that these are placed in the short rate. The amount placed in the short rate will be denoted $h_{t}^{A}$. The self-financing condition becomes
+$$
+\begin{aligned}
+V_{t} &=M_{t}^{a}+h_{t}^{T} P_{t}^{T}+h_{t}^{A} \\
+\mathrm{~d} V_{t} &=\mathrm{d} M_{t}^{a}+C_{t} \mathrm{~d} t+h_{t}^{T} \mathrm{~d} P_{t}^{T}+h_{t}^{A} r_{t} \mathrm{~d} t
+\end{aligned}
+$$
+Inserting the dynamics of the callable mortgage bond from (3.8) and the zero coupon bond from (2.6) we find the dynamics to be
+$$
+\mathrm{d} V_{t}=\left(\alpha_{t}^{M} M_{t}^{a}+C_{t}+h_{t}^{T} \alpha_{t}^{T} P_{t}^{T}+h_{t}^{A} r_{t}\right) \mathrm{d} t+\left(F_{t}-M_{t}^{a}\right) \mathrm{d} y_{t}
+$$
+Equation (3.12) looks almost risk free in the sense that we have eliminated all terms including Brownian increments. However, we are still left with the prepayment risk from $y_{t}$, which we are not able to hedge. The problem is that we have introduced an idiosyncratic source of risk, as prepayment risk will vary across mortgage pools. Equation (3.12) is a dead end as seen from the perspective of arbitrage free pricing, as it defines a jump process with no other securities in the market depending on this exact source of risk. The same problem was encountered by Merton (1976) [25] when pricing options where the underlying stock price is discontinuous and Ingersoll (1977) [14] when pricing corporate convertible bonds. A pragmatic way of proceeding, used by both Merton and Ingersoll, is to replace $\mathrm{d} y_{t}$ by its expected value, namely $\mathbb{E}\left(\mathrm{d} y_{t}\right)=\lambda_{t} \mathrm{~d} t$. Stanton, on the other hand, implicitly assumes that prepayments will only occur at payment dates. This means that we can safely put $\mathrm{d} y_{t}=0$ between payment dates. Strictly speaking, $y_{t}$ is also no longer a Poisson process in this case. With this in mind, we will set $\mathrm{d} y_{t}=0$, meaning that between payment dates equation (3.12) becomes
+$$
+\mathrm{d} V_{t}=\left(\alpha_{t}^{M} M_{t}+C_{t} \mathrm{~d} t+h_{t}^{T} \alpha_{t}^{T} P_{t}^{T}+h_{t}^{A} r_{t}\right) \mathrm{d} t
+$$
+Since equation (3.13) has been left without any stochastic sources it should earn the risk free rate, i.e. $\mathrm{d} V_{t}=r_{t} V_{t} \mathrm{~d} t$. Using this relation we get
+$$
+\left(\alpha_{t}^{M} M_{t}+C_{t}+h_{t}^{T} \alpha_{t}^{T} P_{t}^{T}+h_{t}^{A} r_{t}\right) \mathrm{d} t=r_{t}\left(M_{t}^{a}+h_{t}^{T} P_{t}^{T}+h_{t}^{A}\right) \mathrm{d} t
+$$
+From our derivations of the term structure PDE in section $2.2$ we know, that under the alternative measure $\mathbb{Q}$, the zero coupon bond has drift $r_{t}$. Hence, by inserting $\alpha_{t}^{M}$, switching to the $\mathbb{Q}$ measure and using that $\alpha_{t}^{T}=r_{t}$ under $\mathbb{Q}$, equation (3.14) reduces to
+$$
+\frac{\partial M^{a}}{\partial t}+\left(\alpha\left(t, r_{t}\right)-q_{t} \beta\left(t, r_{t}\right)\right) \frac{\partial M^{a}}{\partial r}+\frac{1}{2} \beta^{2}\left(t, r_{t}\right) \frac{\partial^{2} M^{a}}{\partial r^{2}}+C_{t}=r_{t} M_{t}^{a}
+$$
+What is left now is to specify the dynamics of the short rate. Stanton chooses to use the CIR model by Cox, Ingersoll \& Ross (1985) [12], where the short rate is assumed to have the $\mathbb{P}$-dynamics,
+$$
+\mathrm{d} r_{t}=\kappa\left(\mu-r_{t}\right) \mathrm{d} t+\sigma \sqrt{r_{t}} \mathrm{~d} W_{t}^{\mathrm{P}} .
+$$
+This specification fits into our general short rate dynamics from equation (2.1) with $\alpha\left(t, r_{t}\right)=\kappa\left(\mu-r_{t}\right)$ and $\beta\left(t, r_{t}\right)=\sigma \sqrt{r_{t}}$. Recall that the $\mathbb{Q}$-dynamics take the form
+$$
+\mathrm{d} r_{t}=\left(\alpha\left(t, r_{t}\right)-q_{t} \beta\left(t, r_{t}\right)\right) \mathrm{d} t+\beta\left(t, r_{t}\right) \mathrm{d} W_{t}^{Q} .
+$$
+Inserting for $\alpha\left(t, r_{t}\right)$ and $\beta\left(t, r_{t}\right)$, the $\mathbb{Q}$-dynamics of the CIR model becomes
+$$
+\mathrm{d} r_{t}=\left(\kappa\left(\mu-r_{t}\right)-q_{t} \sigma \sqrt{r_{t}}\right) \mathrm{d} t+\sigma \sqrt{r_{t}} \mathrm{~d} W_{t}^{\mathrm{Q}}
+$$
+As discussed earlier, it is now possible to either specify a structure for $q_{t}$ or imply $q_{t}$ from market prices. Cox, Ingersoll \& Ross chooses to specify $q_{t}$ as being linear in $\sqrt{r_{t}}{ }^{2}$ In this case we get
+$$
+\mathrm{d} r_{t}=\left(\kappa \mu-(\kappa+q) r_{t}\right) \mathrm{d} t+\sigma \sqrt{r_{t}} \mathrm{~d} W_{t}^{Q}
+$$
+for some constant $q$. With this specification, the mortgage PDE (3.15) becomes
+$$
+\frac{\partial M^{a}}{\partial t}+\left(\kappa \mu-(\kappa+q) r_{t}\right) \frac{\partial M^{a}}{\partial r}+\frac{1}{2} \sigma^{2} r_{t} \frac{\partial^{2} M^{a}}{\partial r^{2}}+C_{t}=r_{t} M_{t}^{a}
+$$
+Similarly, the PDE obeyed by the mortgage liabilities will be given by
+$$
+\frac{\partial M^{\ell}}{\partial t}+\left(\kappa \mu-(\kappa+q) r_{t}\right) \frac{\partial M^{\ell}}{\partial r}+\frac{1}{2} \sigma^{2} r_{t} \frac{\partial^{2} M^{\ell}}{\partial r^{2}}+C_{t}=r_{t} M_{t}^{\ell}
+$$
+Before solving equations $(3.20)$ and (3.21), we will have to define the payments from $C_{t}$. Typically, the size as well as the time of the mortgage bond payments are scheduled, and this payment schedule is distributed by the mortgage institution to the investor. However, since the mortgage bonds from a pool are not issued all at once, the payment schedule per unit of notional will change over time as issuance and prepayments occur. We will disregard this fact and simply consider a stylised world with annuity type payment streams. Given a yearly coupon rate $R$, an initial principal $F_{0}$ and a time to maturity $T$, the annuity will pay a constant payment $\bar{Y}$ at each payment date $t_{i}$ where $i \in\{1,2, \ldots, N\}$ and $t_{N}=T$. Using that $F_{t_{N}}=0$ we find that
+$$
+\bar{Y}=\frac{\widetilde{R}}{1-(1+\widetilde{R})^{-N}} F_{0}
+$$
+where $\widetilde{R}=\frac{R}{n}$ is the periodic interest rate when there are $n$ payments per year. 
+
+The principal will now amortise according to the following equation
+$$
+\frac{x^{2}-1}{x^{2}}
+$$
+Both results follow by standard calculations. Since the payments happen discretely in time, a smart choice is to set $C_{t}$ equal to a sum of so called delta functions. Inspired by Wilmot et. al. (1993) [23] we can define the Dirac delta function, $\delta(x)$, as the limit of $f(x)$ when $\varepsilon \rightarrow 0^{+}$where
+$$
+f(x)= \begin{cases}\frac{1}{2 \varepsilon} & |x| \leq \varepsilon \\ 0 & |x|>\varepsilon\end{cases}
+$$
+The special thing about $f(x)$ is that $\int_{-\infty}^{\infty} f(x) \mathrm{d} x=1$ for any $\varepsilon>0$. Define now
+$$
+C_{t}=\sum_{i=1}^{N} \bar{Y} \delta\left(t-t_{i}\right)
+$$
+Then the accumulated payments, $D_{t}$, will be given by
+$$
+D_{t}=\int_{0}^{t} C_{s} \mathrm{~d} s=\int_{0}^{t} \sum_{i=1}^{N} \bar{Y} \delta\left(s-t_{i}\right) \mathrm{d} s=\sum_{t_{i} \leq t} \bar{Y} .
+$$
+We know that from holding the mortgage bond, we will be receiving the gain $\mathrm{d} M_{t}^{a}+C_{t} \mathrm{~d} t$ over each time-period $[t ; t+\mathrm{d} t]$. C $_{t}$ will be zero everywhere except at payment dates, where $\bar{Y}$ is paid out. As payment dates and prepayment dates coincide, we get notationally challenged and for this reason we will explain the jump in asset values in words. Over the payment date $t_{i}$ the bond value $M_{t_{i}-}^{a}$ will change to $M_{t_{i}}^{a}$ if prepayment does not occur, but if prepayment occurs, then $M_{t_{1}-}^{a}$ will drop to $F_{t_{1}}$. In both cases the payment $\bar{Y}$ is also delivered. Since this implies a stochastic boundary condition, Stanton makes the pragmatic assumption that $M_{t_{1}-}^{a}$ - will be the expected value of the bond at time $t_{i}$ plus the payment. We therefore have,
+$$
+M_{t_{i}-}^{a}=\left(1-\mathbb{P}\left(\tau=t_{i} \mid \tau \geq t_{i}\right)\right) M_{t_{i}}^{a}+\mathbb{P}\left(\tau=t_{i} \mid \tau \geq t_{i}\right) F_{t_{i}}+\bar{Y}
+$$
+Stanton assumes that the probability of prepayment at time $t_{i}$ is given by $\mathbb{P}\left(\tau=t_{i} \mid \tau \geq\right.$ $\left.t_{i}\right)=1-\mathrm{e}^{-\int_{t_{i}}^{t_{i}+1} \lambda_{t} \mathrm{dt}} \approx 1-\mathrm{e}^{-\frac{1}{n} \lambda_{t_{i}}}$ as would be the probability if prepayment happened continuously. We therefore end up with the boundary condition
+$$
+M_{t_{\mathrm{u}}-}^{a}=\mathrm{e}^{-\frac{1}{n} \lambda_{t_{1}}} M_{t_{i}}^{a}+\left(1-\mathrm{e}^{-\frac{1}{m} \lambda_{t_{i}}}\right) F_{t_{i}}+\bar{Y} \quad \forall i
+$$
+Hence, we may solve the mortgage PDEs over each interval $\left[t_{i-1}, t_{i}\right)$ with boundary conditions given by (3.28). We summarise our results in the following theorem.
+
+Theorem 3.1. A callable mortgage bond delivering discrete payments of size $\bar{Y}$ will satisfy the following PDEs over the half-open interval $\left[t_{i-1}, t_{i}\right)$
+$$
+\begin{aligned}
+&\frac{\partial M^{a}}{\partial t}+\left(\kappa \mu-(\kappa+q) r_{t}\right) \frac{\partial M^{a}}{\partial r}+\frac{1}{2} \sigma^{2} r_{t} \frac{\partial^{2} M^{a}}{\partial r^{2}}=r_{t} M_{t}^{a}, \\
+&\frac{\partial M^{\ell}}{\partial t}+\left(\kappa \mu-(\kappa+q) r_{t}\right) \frac{\partial M^{\ell}}{\partial r}+\frac{1}{2} \sigma^{2} r_{t} \frac{\partial^{2} M^{\ell}}{\partial r^{2}}=r_{t} M_{t}^{\ell},
+\end{aligned}
+$$
+with boundary conditions given by
+$$
+\begin{aligned}
+&M_{t_{1}-}^{a}=\mathrm{e}^{-\frac{1}{n} \lambda_{t_{i}}} M_{t_{i}}^{a}+\left(1-\mathrm{e}^{-\frac{1}{n} \lambda_{t_{2}}}\right) F_{t_{1}}+\bar{Y} \\
+&M_{t_{1}-}^{\ell}=\mathrm{e}^{-\frac{1}{n} \lambda_{t_{1}}} M_{t_{1}}^{\ell}+\left(1-\mathrm{e}^{-\frac{1}{n} \lambda_{t_{i}}}\right)(1+X) F_{t_{1}}+\bar{Y}
+\end{aligned}
+$$
+where
+$$
+\lambda_{t_{2}}= \begin{cases}\lambda_{1} & \text { if } M_{t_{i}}^{\ell}<(1+X) F_{t_{1}} \\ \lambda_{1}+\lambda_{2} & \text { if } M_{t_{i}}^{\ell} \geq(1+X) F_{t_{i}}\end{cases}
+$$
+for $i \in\{0,1, \ldots, N\}$ and $M_{t_{N}}^{a}=M_{t_{N}}^{\ell}=0$
+It is not obvious how we should solve for the mortgage bond in the theorem above analytically. Therefore, we will now look at how to approximate the solution.
+
+## Pricing by Finite Differences
+
+The solution to the PDEs (3.64) and (3.65) can be approximated by use of so called finite difference techniques. The idea is simply to approximate the partial derivatives with difference quotients. For a function $f=f(t, x)$ of time and space, we will discretise time as $\left\{t_{0}, t_{1}, \ldots, t_{j}, \ldots, t_{J}\right\}=\{0, \Delta t, \ldots, j \Delta t, \ldots, T\}$ where $\Delta t=\frac{T}{J}$, and space as $\left\{x_{0}, x_{1}, \ldots, x_{i}, \ldots, x_{N}\right\}=\left\{x_{\min }, x_{\min }+\Delta x, \ldots, x_{\min }+i \Delta x, \ldots, x_{\max }\right\}$ where $\Delta x=\frac{1}{N}\left(x_{\max }-\right.$ $\left.x_{\min }\right)$. With this discretisation we will denote by $f_{i, j}$ the function $f$ evaluated in $\left(t_{j}, x_{i}\right)$. The most common difference operators are now given in the following definition.
+
+Definition 3.1. The forward, backward, central and second-order central differences of $f(t, x)$ w.r.t. $x$ are given by
+$$
+\begin{aligned}
+D_{x}^{+} f_{i, j} &=\frac{f_{i+1, j}-f_{i, j}}{\Delta x} \\
+D_{x}^{-} f_{i, j} &=\frac{f_{i, j}-f_{i-1, j}}{\Delta x} \\
+D_{x} f_{i, j} &=\frac{f_{i+1, j}-f_{i-1, j}}{2 \Delta x}
+\end{aligned}
+$$
+
+$$
+D_{x x} f_{i, j}=\frac{f_{i+1, j}-2 f_{i, j}+f_{i-1, j}}{(\Delta x)^{2}}
+$$
+Different schemes exists applying different combinations of the above difference operators. The most common ones are the explicit, the implicit and the Crank-Nicolson schemes. The explicit scheme makes use of the backward difference for the time derivative as well as central and second order central differences for the first and second derivatives in space. The implicit scheme does the same in the space direction but makes use of a forward difference in the time direction. Finally, the Crank-Nicolson scheme averages the two methods. As shown in Seydel (2009) [27], the error from approximating by use of the Crank-Nicolson scheme is of order $\mathcal{O}\left(\Delta t^{2}\right)+\mathcal{O}\left(\Delta x^{2}\right)$ compared to the implicit and explicit methods, which are of first order in the time direction. The Crank-Nicolson method has therefore gained popularity, as it tends to be more stable than the other two methods. Defining $m_{i, j}^{a}$ as the approximation to $M_{t}^{a}$ in (3.64), the Crank-Nicolson method becomes
+$$
+\begin{array}{r}
+\frac{1}{2}\left[D_{t}^{-} m_{i, j+1}^{a}+\hat{\mu}_{i} D_{r} m_{i, j+1}^{a}+\frac{1}{2} \hat{\sigma}_{i} D_{r r} m_{i, j+1}^{a}+D_{t}^{+} m_{i, j}^{a}+\hat{\mu}_{i} D_{r} m_{i, j}^{a}+\frac{1}{2} \hat{\sigma}_{i} D_{r r} m_{i, j}^{a}\right] \\
+=\frac{1}{2}\left(r_{i, j+1} m_{i, j+1}^{a}+r_{i, j} m_{i, j}^{a}\right)
+\end{array}
+$$
+where $\hat{\mu}_{i}=\kappa \mu-(\kappa+q) r_{i, j}$ and $\hat{\sigma}_{i}=\sigma^{2} r_{i, j}$. By inserting equations (3.34)-(3.37) and rearranging we can find the relation
+$$
+A_{i} m_{i-1, j}^{a}+B_{i} m_{i, j}^{a}+C_{i} m_{i+1, j}^{a}=-A_{i} m_{i-1, j+1}^{a}+D_{i} m_{i, j+1}^{a}-C_{i} m_{i+1, j+1}^{a},
+$$
+where
+$$
+\begin{aligned}
+A_{i} &=\frac{1}{4 \Delta r} \hat{\mu}_{i}-\frac{1}{4(\Delta r)^{2}} \hat{\sigma}_{i} \\
+B_{i} &=\frac{1}{\Delta t}+\frac{1}{2(\Delta r)^{2}} \hat{\sigma}_{i}+\frac{1}{2} r_{i, j} \\
+C_{i} &=-\frac{1}{4 \Delta r} \hat{\mu}_{i}-\frac{1}{4(\Delta r)^{2}} \hat{\sigma}_{i} \\
+D_{i} &=\frac{1}{\Delta t}-\frac{1}{2(\Delta r)^{2}} \hat{\sigma}_{i}-\frac{1}{2} r_{i, j+1}
+\end{aligned}
+$$
+Define now the vector $\mathbf{m}_{j}^{a}$ with elements $\left[\mathbf{m}_{j}^{a}\right]_{i}=m_{i, j}^{a}$ for $i=0,1, \ldots, N$. Having computed $\mathrm{m}_{j+1}^{a}$, the equations (3.39)-(3.43) will define $N-1$ equations with $N+1$ unknowns when setting $i=1,2, \ldots, N-1$. We encounter problems when $i \in\{0, N\}$, since we get outside the grid by using the central differences. If we can come up with some boundary condition for $i \in\{0, N\}$, or equivalently $r \in\left\{r_{\min }, r_{\max }\right\}$, then it will be possible to complete the linear system of equations. A clever way to come up with boundary conditions is to consider the behaviour of either the function itself or its derivatives at high and low values of the short rate, as we might have additional information about the behaviour of the function at these values. If for example we assume the mortgage bond to have zero convexity for very high and low values of the short rate, then we may set the second derivative equal to zero in the PDEs (3.64) and (3.65). This will make the $D_{r r}$ terms vanish in equation (3.38). The zero convexity can be justified since the embedded optionality will be either deep in or out of the money at these values. If also we replace $D_{r} m_{0, j}$ with $D_{r}^{+} m_{0, j}$ and replace $D_{r} m_{N, j}$ with $D_{r}^{-} m_{N, j}$, then we avoid using values outside the grid. All in all we can establish the following two equations:
+$$
+\begin{gathered}
+B_{0} m_{0, j}^{a}+C_{0} m_{1, j}^{a}=D_{0} m_{0, j+1}^{a}-C_{0} m_{1, j+1}^{a} \\
+A_{N} m_{N-1, j}^{a}+B_{N} m_{N, j}^{a}=-A_{N} m_{N-1, j+1}^{a}+D_{N} m_{N, j+1}^{a}
+\end{gathered}
+$$
+where
+$$
+\begin{aligned}
+&B_{0}=\frac{1}{\Delta t}+\frac{\hat{\mu}_{0}}{2 \Delta r}+\frac{1}{2} r_{0, j}, \quad C_{0}=-\frac{\hat{\mu}_{0}}{2 \Delta r}, \quad D_{0}=\frac{1}{\Delta t}-\frac{\hat{\mu}_{0}}{2 \Delta r}-\frac{1}{2} r_{0, j}, \\
+&A_{N}=\frac{\hat{\mu}_{N}}{2 \Delta r}, \quad B_{N}=\frac{1}{\Delta t}-\frac{\hat{\mu}_{N}}{2 \Delta r}+\frac{1}{2} r_{N, j} \quad \text { and } \quad D_{N}=\frac{1}{\Delta t}+\frac{\hat{\mu}_{N}}{2 \Delta r}-\frac{1}{2} r_{N, j+1} .
+\end{aligned}
+$$
+Since we now have $N+1$ equations with $N+1$ unknowns, we may write our system of equations on matrix form as follows
+$$
+\mathrm{Am}_{j}^{a}=\mathrm{Cm}_{j+1}^{a}
+$$
+where
+$$
+\mathbf{A}=\left[\begin{array}{ccccccc}
+B_{0} & C_{0} & 0 & 0 & 0 & \cdots & 0 \\
+A_{1} & B_{1} & C_{1} & 0 & 0 & \cdots & 0 \\
+0 & A_{2} & B_{2} & C_{2} & 0 & \cdots & 0 \\
+\vdots & & \ddots & \ddots & \ddots & & \vdots \\
+\vdots & & & \ddots & \ddots & \ddots & \vdots \\
+0 & \cdots & \cdots & 0 & A_{N-1} & B_{N-1} & C_{N-1} \\
+0 & \cdots & \cdots & \cdots & 0 & A_{N} & B_{N}
+\end{array}\right], \quad \mathbf{C}=\left[\begin{array}{cccccccc}
+D_{0} & -C_{0} & 0 & 0 & 0 & \cdots & 0 \\
+-A_{1} & D_{1} & -C_{1} & 0 & 0 & \cdots & 0 \\
+0 & -A_{2} & D_{2} & -C_{2} & 0 & \cdots & 0 \\
+\vdots & & \ddots & \ddots & \ddots & & \vdots \\
+\vdots & & & \ddots & \ddots & \ddots & \vdots \\
+0 & \cdots & \cdots & 0 & -A_{N-1} & D_{N-1} & -C_{N-1} \\
+0 & \cdots & \cdots & \cdots & 0 & -A_{N} & D_{N}
+\end{array}\right] .
+$$
+Performing a similar discretisation for $M_{t}^{\ell}$ and we are able to solve for the bond price and mortgage liabilities iteratively. Algorithm $3.1$ below gives a non-technical illustration of an implementation. The final thing that we have to do before using our finite difference solver is to choose the upper and lower values for $r_{t}$. Since we are in the CIR model, and negative interest rates cannot occur, a natural lower bound will be $r_{\min }=0$. In order to come up with an upper bound, we will use a value so high that it is likely not to occur. One such value could be three standard deviations away from the mean for a horizon equal to the time to maturity of the bond considered. With the upper and lower values in place, we have completed our pricing PDE solver.
+
+The pricing algorithm has been implemented in Matlab and is available through appendix A.6. Figure 4 below shows the price of a 30 year $12.5 \%$ annuity mortgage bond for varying prepayment intensities $\lambda_{2}$ and varying initial short rates. As is evident from the graph, higher prepayment intensities are associated with lower values of the mortgage bond. Especially at low interest rate levels the bond exhibits negative convexity for sufficiently high prepayment intensities. Not only is the model capable of generating negative convexity, but also will the duration of the bond be negative whenever the slope of the price function is positive. This phenomenon is a consequence of the costs associated with prepayment, since the prepayment costs constitute a barrier to the mortgager who will defer a potential prepayment to a time of lower interest rates.
+
+Before estimating and applying the model to the Danish market for callable mortgage bonds, we will consider some reasonable and necessary adjustments to the model. The CIR model used by Stanton has been developed at a time where very low and even negative interest rates had never occurred. Since the CIR model is only defined for positive interest rates, we will have to choose a short rate model capable of generating negative interest rates. Secondly, Stanton assumes that if a borrower, for some exogenous reason, choses to prepay when the mortgage bond trades below par, then the borrower will still have to prepay at par. In Denmark, all mortgage bonds are born with the option to deliver back the mortgage bond to the mortgage institution in case a borrower want to terminate his payment obligations. In the next two sections we will investigate the effect of these two adjustments.
+
+## The Extended Vasicek Model
+
+In order to incorporate the presence of negative interest rates, we will introduce the extended Vasicek model by Hull \& White (1990) [13]. In this model the short rate dynamics are assumed to take the form:
+$$
+\mathrm{d} r_{t}=\kappa\left[\theta(t)-r_{t}\right] \mathrm{d} t+\sigma \mathrm{d} W_{t}^{\mathbb{P}}
+$$
+The model allows for a deterministic time dependent mean level, $\theta(t)$. We will see that with this specification, it will be possible for the model to fit the initial term structure of interest rates if $\theta(t)$ is chosen properly. In order to fit the model to market observables, our first job is to find the prices for zero coupon bonds in the model. From theorem $(2.4)$ we must have that the price of a zero coupon bond will satisfy the following PDE
+$$
+\frac{\partial P_{t}^{T}}{\partial t}+\kappa\left[\hat{\theta}(t)-r_{t}\right] \frac{\partial P_{t}^{T}}{\partial r}+\frac{1}{2} \sigma^{2} \frac{\partial^{2} P_{t}^{T}}{\partial r^{2}}=r_{t} P_{t}^{T}, \quad\left(t, r_{t}\right) \in[0 ; T) \times \mathbb{R}
+$$
+where $\hat{\theta}(t)=\theta(t)-\frac{\sigma}{\kappa} q_{t}$. If we guess the general solution $P_{t}^{T}=\mathrm{e}^{-A(t, T)-B(t, T) \mathrm{r}_{\mathrm{t}}}$ and insert into equation $(3.48)$, then we get
+$$
+\left[-A^{\prime}(t, T)-B^{\prime}(t, T) r_{t}\right] P_{t}^{T}-\kappa\left[\hat{\theta}(t)-r_{t}\right] B(t, T) P_{t}^{T}+\frac{1}{2} \sigma^{2} B^{2}(t, T) P_{t}^{T}=r_{t} P_{t}^{T}
+$$
+Dividing through by $P_{t}^{T}$ and rearranging we obtain
+$$
+-A^{\prime}(t, T)-\kappa \hat{\theta}(t) B(t, T)+\frac{1}{2} \sigma^{2} B^{2}(t, T)-\left[1+B^{\prime}(t, T)-\kappa B(t, T)\right] r_{t}=0 .
+$$
+If equation (3.50) has to hold for all $r_{t}$, and considering $T$ as a parameter, then we must have that the following two ordinary differential equations must hold:
+$$
+\begin{array}{r}
+\frac{\mathrm{d} A(t, T)}{\mathrm{d} t}+\kappa \hat{\theta}(t) B(t, T)-\frac{1}{2} \sigma^{2} B^{2}(t, T)=0 \\
+1+\frac{\mathrm{d} B(t, T)}{\mathrm{d} t}-\kappa B(t, T)=0
+\end{array}
+$$
+with terminal conditions $A(T, T)=B(T, T)=0$. The solution to these ordinary differential equations can easily be shown to be
+$$
+\begin{aligned}
+&B(t, T)=\frac{1}{\kappa}\left(1-\mathrm{e}^{-\kappa(T-t)}\right) \\
+&A(t, T)=\kappa \int_{t}^{T} \hat{\theta}(s) B(s, T) \mathrm{d} s+\frac{\sigma^{2}}{4 \kappa} B^{2}(t, T)+\frac{\sigma^{2}}{2 \kappa^{2}}(B(t, T)-(T-t))
+\end{aligned}
+$$
+see appendix A.1. If we at time zero observe zero coupon bond prices $\bar{P}_{0}^{T}$ for each maturity $T$, then the idea of Hull \& White was to choose the function $\hat{\theta}(t)$ such that the model prices are consistent with the market prices. The function of $\hat{\theta}(t)$ ensuring this property can be shown to be given by
+$$
+\hat{\theta}(t)=\bar{f}(0, t)+\frac{1}{\kappa} \frac{\mathrm{d} \bar{f}(0, t)}{\mathrm{d} t}+\frac{\sigma^{2}}{2 \kappa^{2}}\left(1-\mathrm{e}^{-2 \kappa t}\right)
+$$
+which implies that
+$$
+A(t, T)=-\ln \left(\frac{\bar{P}_{0}^{T}}{\bar{P}_{0}^{t}}\right)-B(t, T) \bar{f}(0, t)+\frac{\sigma^{2}}{4 \kappa} B^{2}(t, T)\left(1-\mathrm{e}^{-2 \kappa t}\right),
+$$
+where we assume that $\bar{f}(0, t)$, the observed forward curve for the short rate, is differentiable. The derivations of equations (3.55) and (3.56) are extensive and for that reason also left in appendix A.2. To verify that we indeed fit the initial term structure, one can simply insert $A(0, T)$ into the formula for $P_{0}^{T}$ using that $f(0,0)=r_{0}$.
+
+At this point it is appropriate to have a discussion of what we have achieved by choosing $\hat{\theta}(t)$ according to (3.55). If we had let $\theta(t)$ be a constant, then we would be back in the original Vasicek model. Estimating the model parameters by maximum likelihood and agreeing on a specification of the market price of risk, we would be able to price zero coupon bonds and swaps by their closed form solutions. The problem with this approach is that the model most likely will not replicate the prices in the market. This is the reason why the literature and market practitioners have turned to the procedure of estimating model parameters by calibration. By this procedure we minimise the deviations of model prices from market prices by adjusting the model parameters. As is evident from this procedure, the model will lose its ability to describe the behaviour of the short rate, since the model parameters are not determined by any sound statistical estimation procedure. However, this might not necessarily be a problem. Instead of specifying the function $q_{t}=q\left(t, r_{t}\right)$ which influences the drift part of the short rate process, we can take the market as given and let the market specify the drift rate used for pricing. Since we have assumed that a full term structure of interest rates is available in the market, we may simply regard $q_{t}$, or equivalently $\hat{\theta}(t)=\theta(t)-\frac{\sigma}{\kappa} q_{t}$, as being chosen by the market. For this reason we will not have a problem with our choice of $\hat{\theta}(t)$, but we have to be aware that $\hat{\theta}(t)$ is deterministic and therefore our choice of $\hat{\theta}(t)$ today should also apply tomorrow. As discussed by Hull \& White themselves this assumption is likely to fail and the market practice is simply to respecify $\theta(t)$ each time a new curve is available. It is hard to justify this practice from a theoretical viewpoint, and the main argument for proceeding with this practice anyway is the following: If we are able to price the most simple fixed income securities in the market accurately, then we will hopefully also be pricing the more complex products, like the callable bond, more accurately.
+
+With our choice of $\hat{\theta}(t)$ in place, we still need the parameters $\kappa$ and $\sigma$. As discussed by Hull \& White these could in principle also be functions of time, but in this thesis we will keep these as constants $^{3}$. In reality we will often observe that interest rates exhibit stochastic volatility, which is of course in conflict with the constant volatility of our model. A pragmatic approach is therefore to imply the volatility and mean reversion from volatility dependent securities like the cap. In order to calibrate our model to the market for caps, we will need to be able to price these contracts. In the following we will show how to do so in the extended Vasicek model. Section $2.5$ showed that the cap contract could be valued by computing the probabilities in the following valuation formula.
+$$
+\operatorname{Cap}_{t}^{T_{N}}=\frac{1}{K^{*}} \sum_{i=1}^{N} P_{t}^{T_{i-1}} K^{*} \mathbb{Q}_{t}^{T_{i-1}}\left(K^{*}>P_{T_{i-1}}^{T_{1}}\right)-P_{t}^{T_{1}} \mathbb{Q}_{t}^{T_{1}}\left(K^{*}>P_{T_{i-1}}^{T_{i}}\right)
+$$
+Since we have an explicit model now, we can find the dynamics under the $\mathbb{Q}^{T}$ measure. Using that $\beta^{T}\left(t, r_{t}\right)=-\sigma B(t, T)$ along with equation $(2.40)$ and the relevant dynamics of the short rate becomes
+$$
+\mathrm{d} r_{t}=\left[\kappa\left(\theta(t)-r_{t}\right)-\sigma^{2} B(t, T)\right] \mathrm{d} t+\sigma \mathrm{d} W_{t}^{\mathrm{Q}^{T}}
+$$
+To evaluate the probability of the event $\left\{K^{*}>P_{T}^{S}\right\}$ we will use the result from appendix A.3 saying that $r_{T}$ is Gaussian under both $\mathbb{Q}^{T}$ and $\mathbb{Q}^{S}$. Since $P_{T}^{S}=\mathrm{e}^{-A(T, S)-B(T, S) r T}$we will have that $P_{T}^{S}$ is log-normal since $-A(T, S)-B(T, S) r_{T}$ is simply a linear combination of a Gaussian variable. Let $r_{T} \mid r_{t} \sim \mathcal{N}\left(\mu(t, T), \nu^{2}(t, T)\right)$, then we must have that $\ln P_{T}^{S} \mid r_{t} \sim \mathcal{N}\left(\bar{\mu}(t, T, S), \bar{\nu}^{2}(t, T, S)\right)$ where $\bar{\mu}(t, T, S)=-A(T, S)-B(T, S) \mu(t, T)$ and $\bar{\nu}^{2}(t, T, S)=B^{2}(T, S) \nu^{2}(t, T) .$ For a log-normal random variable it holds that $\mathbb{E}_{t}^{Q^{T}}\left[P_{T}^{S}\right]=$ $\mathrm{e}^{\bar{\mu}(t, T, S)+\frac{1}{2} \bar{\nu}^{2}(t, T, S)}$ or equivalently $\tilde{\mu}(t, T, S)=\ln \mathbb{E}_{t}^{\mathrm{Q}^{T}}\left[P_{T}^{S}\right]-\frac{1}{2} \bar{\nu}^{2}(t, T, S)$. Using this, we may compute the probability of $\left\{K^{*}>P_{T}^{S}\right\}$ under $\mathbb{Q}^{T}$ as follows:
+$$
+\begin{aligned}
+\mathbb{Q}^{T}\left(K^{*}>P_{T}^{S}\right) &=\mathbb{Q}^{T}\left(\frac{\ln K^{*}-\bar{\mu}(t, T, S)}{\bar{\nu}(t, T, S)}>\frac{\ln P_{T}^{S}-\bar{\mu}(t, T, S)}{\bar{\nu}(t, T, S)}\right) \\
+&=\Phi\left(\frac{\ln K^{*}-\bar{\mu}(t, T, S)}{\bar{\nu}(t, T, S)}\right) \\
+&=\Phi\left(\frac{\ln \left(\frac{K^{*}}{\mathbb{E}_{t}^{0^{T}}\left[P_{T}^{S}\right]}\right)}{\bar{\nu}(t, T, S)}+\frac{1}{2} \bar{\nu}(t, T, S)\right)
+\end{aligned}
+$$
+where $\Phi(\cdot)$ denotes the standard normal CDF. We now recall that $\frac{p_{T}^{S}}{P_{T}^{T}}$ is a martingale under $\mathbb{Q}^{T}$. Using this property and inserting for $\bar{\nu}(t, T, S)$, the above probability becomes
+$$
+\mathbb{Q}^{T}\left(K^{*}>P_{T}^{S}\right)=\Phi\left(\frac{\ln \left(\frac{K^{*} P_{t}^{T}}{P_{t}^{S}}\right)}{B(T, S) \nu(t, T)}+\frac{1}{2} B(T, S) \nu(t, T)\right)
+$$
+The variance of the short rate is derived in appendix A.3 and is given by
+$$
+\nu^{2}(t, T)=\frac{\sigma^{2}}{2 \kappa}\left(1-\mathrm{e}^{-2 \kappa(T-t)}\right) .
+$$
+By similar argumentation, we can find the probability of $\left\{K^{*}>P_{T}^{S}\right\}$ under $\mathbb{Q}^{S}$. The only thing that will change is the expectation in (3.58), which should now be evaluated under the $\mathbb{Q}^{S}$-measure. Appendix A.4 evaluates this expectations and we have that
+$$
+\mathbb{E}^{Q^{S}}\left[P_{T}^{S}\right]=\frac{P_{t}^{S}}{P_{t}^{T}} \mathrm{e}^{B^{2}(T, S) \nu^{2}(t, T)}
+$$
+By replacing the expectation operator in equation (3.58) with (3.59) we find that
+$$
+\mathbb{Q}^{S}\left(K^{*}>P_{T}^{S}\right)=\Phi\left(\frac{\ln \left(\frac{K^{*} P_{t}^{T}}{P_{t}^{S}}\right)}{B(T, S) \nu(t, T)}-\frac{1}{2} B(T, S) \nu(t, T)\right)
+$$
+We will summarise the above results in the following theorem.
+
+Theorem 3.2. In the extended Vasicek model, the price of a cap contract is given by
+$$
+\operatorname{Cap}_{t}^{T_{N}}=\frac{1}{K^{*}} \sum_{i=1}^{N} P_{t}^{T_{i-1}} K^{*} \Phi\left(-d_{2, i}\right)-P_{t}^{T_{1}} \Phi\left(-d_{1, i}\right)
+$$
+where
+$$
+d_{1, i}=\frac{\ln \left(\frac{p_{t}^{T_{i}}}{K \cdot P_{t}^{T}-1}\right)}{B\left(T_{i-1}, T_{i}\right) \nu\left(t, T_{i-1}\right)}+\frac{1}{2} B\left(T_{i-1}, T_{i}\right) \nu\left(t, T_{i-1}\right)
+$$
+and
+$$
+d_{2, i}=d_{1, i}-B\left(T_{i-1}, T_{i}\right) \nu\left(t, T_{t-i}\right)
+$$
+Theorem $3.2$ gives us a closed form solution to the price of an interest rate cap. The price function can be seen as a sum of put options on zero coupon bonds with strike $K^{*}$, for which Jamshidian (1989) [8] was the first to derive a pricing formula equivalent to the above. It is now possible to calibrate the extended Vasicek model to market quotes. Since interest rate caps are not very liquid in the Danish market, we will use EURIBOR caps as a proxy. As the Danish krone is pegged to the Euro, and since EURIBOR and CIBOR rates tend to move together, we will expect the calibrated parameters to be a good approximation. Figure 5 shows an example of a calibration to Euro cap quotes on the $1^{\text {st }}$ of June 2017 . Given that we have seven quotes and two parameters to be calibrated, the calibration does rather well. The calibrated parameters are $\kappa=4.916 \cdot 10^{-11}$ and $\sigma=0.699 \%$.
+
+If we perform this calibration procedure over time, then we will end up with a time series of implied values for $\kappa$ and $\sigma$. Figure 6 shows the evolution of these parameters. From the figure it is clear that the parameters vary over time but do not diverge or explode. The volatility is low as would be expected for very short interest rates, but the mean reversion hits the zero floor in times of low interest rate levels. The mean reversion could in practice be allowed to become negative, but the model becomes unrealistic for negative $\kappa$ as the short rate will be a diverging process. Hence, it would be meaningless to allow for negative values of $\kappa$. An extremely low but positive $\kappa$ is also not desirable since $\kappa$ enters as a denominator in the equation for $\hat{\theta}(t)$ in $(3.55)$ leading to an explosive behaviour of $\hat{\theta}(t)$. This calibration problem seems to be very common, see for example Brigo \& Mercurio (2006) [5], and is most likely an indication that our model is too simple to describe the behaviour of the cap market. A pragmatic way of proceeding will be to estimate $\kappa$ by maximum likelihood as if we were in the classic Vasicek model and then use this $\kappa$ instead. Appendix A.5 derives the maximum likelihood estimator, and by using the one year swap rate as a proxy for the short rate dynamics we find a $\kappa$ of $7.5 \%$. Performing a recalibration using this fixed $\kappa$ results in a slightly higher implied volatility, a way more reasonable mean reversion and a non-explosive $\hat{\theta}(t)$.
+
+
+## The Delivery Option
+
+With the model extended to take into account the current negative interest rate environment, we remain to incorporate the so called delivery option. We will make the assumption that borrowers are never forced to prepay the remaining notional $F_{t}$ whenever $F_{t}>M_{t}^{a}$. In this scenario, we will allow the borrower to prepay $M_{t}^{a}$ instead of $F_{t}$, corresponding to the borrower buying back the bond and delivering it to the mortgage institution. In either case, the borrower will still have to pay the proportional prepayment cost of $X$, such that the prepaid amount totals $(1+X) F_{t}$ if $F_{t}<M_{t}^{a}$ and $(1+X) M_{t}^{a}$ if $F_{t}>M_{t}^{a}$, or equivalently, $(1+X) \min \left(F_{t}, M_{t}^{a}\right)$. We will also collapse the prepayment intensities $\lambda_{1}$ and $\lambda_{2}$ into one prepayment intensity, $\lambda$. We do so, since there is no longer reason to distinguish the two scenarios, as the mortgage owners can now prepay whenever they find it optimal. Compared to the case with no delivery option, the bond must decrease in value when introducing the delivery option, the reason being that the investor will no longer receive $\min \left(F_{t}, M_{t}^{a}\right) \leq F_{t}$ in a prepayment event. With the new assumptions about the short rate dynamics and the delivery option, we may now modify theorem $3.1$ as follows.
+
+Theorem 3.3. (The extended Stanton model) A callable mortgage bond will satisfy the following PDEs over the half-open interval $\left[t_{i-1}, t_{i}\right)$
+$$
+\begin{aligned}
+&\frac{\partial M^{a}}{\partial t}+\kappa\left(\hat{\theta}(t)-r_{t}\right) \frac{\partial M^{a}}{\partial r}+\frac{1}{2} \sigma^{2} \frac{\partial^{2} M^{a}}{\partial r^{2}}=r_{t} M_{t}^{a}, \\
+&\frac{\partial M^{\ell}}{\partial t}+\kappa\left(\hat{\theta}(t)-r_{t}\right) \frac{\partial M^{\ell}}{\partial r}+\frac{1}{2} \sigma^{2} \frac{\partial^{2} M^{\ell}}{\partial r^{2}}=r_{t} M_{t}^{\ell},
+\end{aligned}
+$$
+with boundary conditions given by
+$$
+\begin{aligned}
+M_{t_{1}-}^{a} &=\mathrm{e}^{-\frac{1}{n} \lambda_{t_{i}}} M_{t_{i}}^{a}+\left(1-\mathrm{e}^{-\frac{1}{n} \lambda_{t_{2}}}\right) \min \left(F_{t_{1}}, M_{t_{i}}^{a}\right)+\bar{Y} \\
+M_{t_{i}-}^{\ell} &=\mathrm{e}^{-\frac{1}{n} \lambda_{t_{i}}} M_{t_{i}}^{l}+\left(1-\mathrm{e}^{-\frac{1}{n} \lambda_{t_{4}}}\right)(1+X) \min \left(F_{t_{1}}, M_{t_{i}}^{a}\right)+\bar{Y} \\
+\lambda_{t_{i}} &=\lambda 1\left\{M_{t_{i}}^{\ell} \geq(1+X) \min \left(F_{t_{1}}, M_{t_{i}}^{a}\right)\right\}
+\end{aligned}
+$$
+for $i \in\{1,2, \ldots, N\}$ and $M_{t_{N}}^{a}=M_{t_{N}}^{\ell}=0$.
+Comparing theorem $3.3$ to theorem $3.1$ it might seem that not much has changed, but from a computational viewpoint, we have become challenged. Most importantly $\hat{\theta}(t)$ will have to be respecified each time a new swap curve is available and so will the implied volatility each time new cap quotes are available. From the finite difference implementation in section $3.4$ we found that the matrices $\mathrm{A}$ and $\mathrm{B}$ in equation (3.46) were not changing over time. Hence, only a single matrix inversion of $\mathbf{A}$ was needed, and for that reason we could keep it outside the loop of algorithm 1. Since A and B will now change over time, they will have to be computed in every each loop.
+
+Prices from the extended Stanton model have been illustrated in figure 7 for a 30 year $2.5 \%$ mortgage bond. From the figure it is clear how negative interest rates are no longer a problem. It can also be seen how the price of the bond decreases as the prepayment intensity increases since it becomes more likely that the borrower will prepay the bond when it becomes optimal. Finally, an increasing prepayment cost increases the price and adds negative convexity to the bond as borrowers will wait for interest rates to become lower before prepaying.
+
+# Estimating Prepayments
+
+## The Danish Prepayment Data
+
+Before we jump into the actual estimation of the model, we will have a look at the characteristics of the data used in the estimation procedure. In contrast to the mortgage market in the USA, the Danish market consists of rather few but very large mortgage pools. The large mortgage pools are a result of the demand for high liquidity in the underlying mortgage bonds. The Danish data are by law $^{4}$ published through the exchange and contains information on the borrower composition (CK92), preliminary prepayments (CK93), cash flows (CK94) and the final prepayments (CK95). The data is therefore very detailed and in practice, it is often seen that prepayment models are extended to take all kind of aspects of the data into account. In this thesis we will only consider the CK95 data, but one could for example extent the model to discriminate borrowers by loan size using the CK92 data. Figure 9 gives an example of the CK95 data for a $5 \% 30$ year callable mortgage bond issued by Nykredit Realkredit. From the figure it is clear how the prepayments increase during times of falling interest rates as the mortgage liabilities increase during these periods. We also see a tendency that some borrowers are more quickly prepaying compared to others. This tendency is consistent with borrowers having different costs associated with prepaying, which will imply that interest rates can stay in a falling trend while prepayments keep occurring. In the next subsection we will look into how these prepayment rates may be estimated.

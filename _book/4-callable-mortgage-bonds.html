@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 4 Callable Mortgage Bonds | Pricing Danish Mortgage Bonds using Machine learning for estimation</title>
+  <meta name="description" content=" 4 Callable Mortgage Bonds | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 4 Callable Mortgage Bonds | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 4 Callable Mortgage Bonds | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  
+  
+  
+
+<meta name="author" content="Morten Søby Willendrup" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="3-term-strucutre.html"/>
+<link rel="next" href="5-estimating-prepayments-1.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preliminary Content</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#preface"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#dedication"><i class="fa fa-check"></i>Dedication</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#abstract"><i class="fa fa-check"></i>Abstract</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="abstract-1.html"><a href="abstract-1.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="1-intro.html"><a href="1-intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html"><i class="fa fa-check"></i><b>2</b> The Danish Mortgage Market</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#types-of-mortgage-bonds"><i class="fa fa-check"></i><b>2.1</b> Types of mortgage bonds</a></li>
+<li class="chapter" data-level="2.2" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#the-danish-mortgage-model"><i class="fa fa-check"></i><b>2.2</b> The Danish mortgage model</a></li>
+<li class="chapter" data-level="2.3" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#balance"><i class="fa fa-check"></i><b>2.3</b> Balance principle</a></li>
+<li class="chapter" data-level="2.4" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#delivery-and-prepayment"><i class="fa fa-check"></i><b>2.4</b> Delivery and prepayment</a></li>
+<li class="chapter" data-level="2.5" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#callable-annuity-bonds"><i class="fa fa-check"></i><b>2.5</b> Callable annuity bonds</a></li>
+<li class="chapter" data-level="2.6" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#prepayment"><i class="fa fa-check"></i><b>2.6</b> Prepayment</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#calculating-prepayment-gains"><i class="fa fa-check"></i><b>2.6.1</b> Calculating prepayment gains</a></li>
+<li class="chapter" data-level="2.6.2" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#different-types-of-remortgaging-strategies"><i class="fa fa-check"></i><b>2.6.2</b> Different types of remortgaging strategies</a></li>
+<li class="chapter" data-level="2.6.3" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#remortgage-gain-depends-on-several-factors"><i class="fa fa-check"></i><b>2.6.3</b> Remortgage gain depends on several factors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#estimating-prepayments"><i class="fa fa-check"></i><b>2.7</b> Estimating prepayments</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#data-for-estimating-prepayments"><i class="fa fa-check"></i><b>2.7.1</b> Data for estimating prepayments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html"><i class="fa fa-check"></i><b>3</b> Term strucutre</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#the-short-rate"><i class="fa fa-check"></i><b>3.1</b> The Short Rate</a></li>
+<li class="chapter" data-level="3.2" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#zero-coupon-bonds"><i class="fa fa-check"></i><b>3.2</b> Zero Coupon Bonds</a></li>
+<li class="chapter" data-level="3.3" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#interest-rate-swaps"><i class="fa fa-check"></i><b>3.3</b> Interest Rate Swaps</a></li>
+<li class="chapter" data-level="3.4" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#zero-rates-forward-rates-and-curve-fitting"><i class="fa fa-check"></i><b>3.4</b> Zero Rates, Forward Rates and Curve Fitting</a></li>
+<li class="chapter" data-level="3.5" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#caps-floors"><i class="fa fa-check"></i><b>3.5</b> Caps &amp; Floors</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html"><i class="fa fa-check"></i><b>4</b> Callable Mortgage Bonds</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#callability"><i class="fa fa-check"></i><b>4.1</b> Callability</a></li>
+<li class="chapter" data-level="4.2" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#prepayment-1"><i class="fa fa-check"></i><b>4.2</b> Prepayment</a></li>
+<li class="chapter" data-level="4.3" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#the-mortgage-pde"><i class="fa fa-check"></i><b>4.3</b> The Mortgage PDE</a></li>
+<li class="chapter" data-level="4.4" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#pricing-by-finite-differences"><i class="fa fa-check"></i><b>4.4</b> Pricing by Finite Differences</a></li>
+<li class="chapter" data-level="4.5" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#the-extended-vasicek-model"><i class="fa fa-check"></i><b>4.5</b> The Extended Vasicek Model</a></li>
+<li class="chapter" data-level="4.6" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#the-delivery-option"><i class="fa fa-check"></i><b>4.6</b> The Delivery Option</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-estimating-prepayments-1.html"><a href="5-estimating-prepayments-1.html"><i class="fa fa-check"></i><b>5</b> Estimating Prepayments</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="5-estimating-prepayments-1.html"><a href="5-estimating-prepayments-1.html#the-danish-prepayment-data"><i class="fa fa-check"></i><b>5.1</b> The Danish Prepayment Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-theory.html"><a href="6-theory.html"><i class="fa fa-check"></i><b>6</b> Theory</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="6-theory.html"><a href="6-theory.html#term-strucutre-1"><i class="fa fa-check"></i><b>6.1</b> Term Strucutre</a></li>
+<li class="chapter" data-level="6.2" data-path="6-theory.html"><a href="6-theory.html#callable-mortgage-bonds-1"><i class="fa fa-check"></i><b>6.2</b> Callable Mortgage Bonds</a></li>
+<li class="chapter" data-level="6.3" data-path="6-theory.html"><a href="6-theory.html#estimating-prepayments-application-of-machine-learning"><i class="fa fa-check"></i><b>6.3</b> Estimating prepayments, application of machine learning</a></li>
+<li class="chapter" data-level="6.4" data-path="6-theory.html"><a href="6-theory.html#ke"><i class="fa fa-check"></i><b>6.4</b> Ke</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7-data.html"><a href="7-data.html"><i class="fa fa-check"></i><b>7</b> Data</a></li>
+<li class="chapter" data-level="8" data-path="8-estimation.html"><a href="8-estimation.html"><i class="fa fa-check"></i><b>8</b> Estimation</a></li>
+<li class="chapter" data-level="" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i>Discussion</a></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#vasicek-odes"><i class="fa fa-check"></i><b>A.1</b> Vasicek ODEs</a></li>
+<li class="chapter" data-level="A.2" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#fitting-the-initial-term-structure"><i class="fa fa-check"></i><b>A.2</b> Fitting the Initial Term structure</a></li>
+<li class="chapter" data-level="A.3" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#the-variance-of-the-short-rate"><i class="fa fa-check"></i><b>A.3</b> The Variance of the Short Rate</a></li>
+<li class="chapter" data-level="A.4" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#the-expected-value-under-mathbbqs"><i class="fa fa-check"></i><b>A.4</b> The Expected Value Under <span class="math inline">\(\mathbb{Q}\)</span>^S</a></li>
+<li class="chapter" data-level="A.5" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#vasicek-mle"><i class="fa fa-check"></i><b>A.5</b> Vasicek MLE</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html"><i class="fa fa-check"></i>Roadmap</a>
+<ul>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#timeline"><i class="fa fa-check"></i>Timeline</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#logbook"><i class="fa fa-check"></i>Logbook</a>
+<ul>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#theory-1"><i class="fa fa-check"></i>Theory</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#data-1"><i class="fa fa-check"></i>Data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Pricing Danish Mortgage Bonds using Machine learning for estimation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="callable-mortgage-bonds" class="section level1" number="4">
+<h1><span class="header-section-number"> 4</span> Callable Mortgage Bonds</h1>
+<p>In this section we will look into the properties of the callable mortgage bond and build a model suited for the Danish market. Our baseline model will be the one suggested by Stanton (1995) [24], who applied the model to the US market. Since 1995, interest rates have found their way into the negative territory, meaning that we will have to make some necessary adjustments to the model later on. For the fixed rate callable mortgage bond, the borrower will commit himself to deliver some agreed stream of payments. This payment stream could for example be defined through an annuity type loan, possibly including periods of deferred amortisation. The borrower will also hold the option to terminate the payments at any given time against paying the remaining principal. Hence, effectively the borrower is short one non-callable bond and long one call option on the bond with strike equal to the remaining principal. In contrast to usual option theory, borrowers are assumed to be faced with some barriers preventing them from prepaying as it becomes optimal. These barriers will be described in the following.</p>
+<div id="callability" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Callability</h2>
+<p>Since the borrower is effectively short one non-callable bond and long one call option, we may write the value of the mortgage liabilities to the borrower as follows
+<span class="math display">\[
+M_{t}^{\ell}=B_{t}^{T}+V_{t}^{\ell}
+\]</span>
+where <span class="math inline">\(B_{t}^{T}\)</span> is the value of the non-callable bond and <span class="math inline">\(V_{t}^{\ell}\)</span> the value of the call option as seen from the borrower. When calling the option the borrower will be faced with a fee of size <span class="math inline">\(X\)</span> per unit of remaining principal, <span class="math inline">\(F_{t}\)</span>, where <span class="math inline">\(X\)</span> may vary across borrowers. Think of <span class="math inline">\(X\)</span> as the monetary costs associated with prepaying but also the non-monetary or implicit costs. If the borrower has to take time off from work in order to go to the bank, then this could be an example of an implicit cost held by the borrower. The strike value of the option therefore becomes <span class="math inline">\((1+X) F_{t}\)</span>. The value of the mortgage bond as seen from the investors point of view will be given by
+<span class="math display">\[
+M_{t}^{a}=B_{t}^{T}+V_{t}^{a}
+\]</span>
+<span class="math inline">\(M_{t}^{\ell}\)</span> and <span class="math inline">\(M_{t}^{a}\)</span> differ as the holder of the mortgage bond does not receive the costs, <span class="math inline">\(X\)</span>, associated with prepayment. If the mortgage liabilities are greater than the remaining principal plus prepayment costs, i.e. <span class="math inline">\(M_{t}^{\ell}&gt;(1+X) F_{t}\)</span>, then it will be optimal to prepay the mortgage. Given that it is optimal to prepay the mortgage loan, we will assume that there is a given probability that the borrower will perform a prepayment over a given period of time. That borrowers will only prepay with a certain probability when</p>
+<p>it becomes optimal, may simply be ascribed to the fact that they cannot be expected to monitor the financial market continuously. Hence, we will assume that borrowers check for optimal prepayment at discrete points in time.</p>
+</div>
+<div id="prepayment-1" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Prepayment</h2>
+<p>We will assume that the time at which a borrower checks for optimal prepayment is a stochastic event. Let <span class="math inline">\(\tau \in \mathbb{R}_{+}\)</span>denote the next time the borrower checks for optimal prepayment, and let <span class="math inline">\(F(t)=\mathbb{P}(\tau&lt;t)\)</span> be the associated density. Then the so called hazard rate <span class="math inline">\(\lambda_{t}\)</span>, defined by
+<span class="math display">\[
+\lambda_{t}=\lim _{h \rightarrow 0^{+}} \frac{1}{h} \mathbb{P}(t \leq \tau&lt;t+h \mid \tau \geq t)
+\]</span>
+will fully describe the probability of checking for optimal prepayment. To see this we rewrite (3.3) as follows
+<span class="math display">\[
+\lambda_{t}=\lim _{h \rightarrow 0^{+}} \frac{1}{h} \frac{\mathbb{P}(\tau&lt;t+h)-\mathbb{P}(\tau&lt;t)}{\mathbb{P}(\tau&gt;t)}=\lim _{h \rightarrow 0^{+}} \frac{F(t+h)-F(t)}{(1-F(t)) h}=\frac{\frac{\mathrm{d} F(t)}{\mathrm{dt}}}{1-F(t)},
+\]</span>
+which can be solved for <span class="math inline">\(F\)</span> as <span class="math inline">\(F(t)=1-\mathrm{e}^{-\int_{0}^{t} \lambda_{x} \mathrm{~d} s}\)</span>. We see that an increasing <span class="math inline">\(\lambda_{t}\)</span> increases the probability of checking for optimal prepayment. It could be justified that <span class="math inline">\(\lambda_{t}\)</span> should be a function of one or more market variables, but Stanton simply assumes that the intensity parameter can be in two possible states. Specifically, <span class="math inline">\(\lambda_{t}\)</span> is defined as follows:
+<span class="math display">\[
+\lambda_{t}= \begin{cases}\lambda_{1} &amp; \text { if } M_{t}^{\ell}&lt;\left(1+X_{i}\right) F_{t} \\ \lambda_{1}+\lambda_{2} &amp; \text { if } M_{t}^{\ell} \geq\left(1+X_{i}\right) F_{t}\end{cases}
+\]</span>
+where <span class="math inline">\(\lambda_{1}, \lambda_{2} \geq 0\)</span> are constants. That is, if it is not optimal to prepay, i.e. <span class="math inline">\(M_{t}^{\ell}&lt;\left(1+X_{i}\right) F_{t}\)</span>, then a prepayment will happen according to some baseline prepayment rate <span class="math inline">\(\lambda_{1}\)</span>. If it is optimal to prepay, i.e. <span class="math inline">\(M_{t}^{\ell} \geq\left(1+X_{i}\right) F_{t}\)</span>, then <span class="math inline">\(\lambda_{t}\)</span> will be increased to <span class="math inline">\(\lambda_{1}+\lambda_{2}\)</span>. The reason for this split is due to the way prepayments work in the US. In the US, borrowers cannot buy back their mortgage bond in the market if the price goes below par. Nevertheless, there might be exogenous reasons making it necessary for borrowers to prepay their loan before maturity. Since these suboptimal prepayments will expectedly happen less frequently compared to the optimal prepayments, it makes sense to assume different states of the intensity parameter <span class="math inline">\(\lambda_{t}\)</span>. It is important to note, that the positive probability of investors receiving back their money at par, when the bond trades below, is a feature of the US market. In Denmark, borrowers may buy back the bonds linked to their loans, which provide them with an extra optionality to be discussed later.</p>
+</div>
+<div id="the-mortgage-pde" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> The Mortgage PDE</h2>
+<p>We will now derive a PDE for the mortgage bond and the mortgage liabilities. As we have introduced a new source of risk through prepayments, we cannot simply let the value of a callable mortgage bond depend only on time and the short rate, as was the case for the zero coupon bond. In fact, we will have to let the price depend on both time, the short rate and some new prepayment variable, <span class="math inline">\(y_{t} .\)</span> We will define the prepayment variable <span class="math inline">\(y_{t}\)</span> to be a Poisson process with intensity parameter <span class="math inline">\(\lambda_{t}\)</span>. We will let <span class="math inline">\(y_{t}=0\)</span> indicate that no prepayment has occurred and <span class="math inline">\(y_{t} \geq 1\)</span> indicate that prepayment has occurred. The mortgager’s obligations terminate at <span class="math inline">\(\tau=\inf \left\{t \in \mathbb{R} \mid y_{t} \geq 1\right\} .\)</span> At the time of prepayment, the mortgage liabilities will jump from <span class="math inline">\(M_{\tau-}^{\ell}\)</span> to <span class="math inline">\(M_{\tau+}^{\ell}=\left(1+X_{i}\right) F_{\tau}\)</span> while the mortgage bond will jump from <span class="math inline">\(M_{\tau-}^{a}\)</span> to <span class="math inline">\(M_{\tau+}^{a}=F_{\tau}\)</span>. In order to properly handle functions of discontinuous processes, we will have to shortly introduce a variation of Ito’s lemma for jump processes. We will say that <span class="math inline">\(Y_{t}\)</span> is a jump process if it takes the form
+<span class="math display">\[
+Y_{t}=Y_{0}+\int_{0}^{t} \mu\left(s, Y_{s}\right) \mathrm{d} s+\int_{0}^{t} \sigma\left(s, Y_{s}\right) \mathrm{d} W_{s}+J_{t}
+\]</span>
+where <span class="math inline">\(\mu\left(t, Y_{t}\right)\)</span> and <span class="math inline">\(\sigma\left(t, Y_{t}\right)\)</span> are adapted processes, <span class="math inline">\(W_{t}\)</span> is a standard Brownian motion and <span class="math inline">\(J_{t}\)</span> is an adapted pure jump process. That is, at the jump times <span class="math inline">\(\left\{\tau_{1}, \tau_{2}, \ldots\right\}, J_{t}\)</span> will jump an amount <span class="math inline">\(\mathrm{d} J_{t}=J_{t}-J_{t-}\)</span>, where both jump times and jumps themselves may be stochastic. For such a jump process there exists a natural extension of Ito’s formula and we refer to theorems 11.5.1 and 11.5.4 in Shreve (2004) [30] for one- and two-dimensional versions of the formula as well as proofs. In the present case, we have two dimensions as both the short rate, <span class="math inline">\(r_{t}\)</span>, and the prepayment variable, <span class="math inline">\(y_{t}\)</span>, follow stochastic processes. Hence, we are in a special case of a two-dimensional jump process which leads to the following corollary to theorem 11.5.4 in Shreve (2004).</p>
+<p>Corollary 3.1. The price function of a security <span class="math inline">\(M_{t}\)</span> depending on time, the short rate and the prepayment variable, i.e. <span class="math inline">\(M_{t}=M\left(t, r_{t}, y_{t}\right)\)</span>, will satisfy
+<span class="math display">\[
+\begin{aligned}
+M_{\mathrm{t}}=&amp; M_{0}+\int_{0}^{t} \frac{\partial M}{\partial t}\left(s, r_{s}, y_{s}\right) \mathrm{d} s+\int_{0}^{t} \frac{\partial M}{\partial r}\left(s, r_{s}, y_{s}\right) \mathrm{d} r_{s}+\int_{0}^{t} \frac{1}{2} \frac{\partial^{2} M}{\partial r^{2}}\left(s, r_{s}, y_{s}\right)\left(\mathrm{d} r_{s}\right)^{2} \\
+&amp;+\left[M\left(\tau, r_{\tau}, y_{\tau}\right)-M\left(\tau-, r_{\tau-}, y_{\tau-}\right)\right] 1(\tau \leq t)
+\end{aligned}
+\]</span>
+We see that the only difference in (3.7) from the usual Ito’s lemma is the square bracket, ensuring that when <span class="math inline">\(y_{t}\)</span> jumps then so does <span class="math inline">\(M_{t}\)</span>. If we write <span class="math inline">\(M_{t}\)</span> on differential form and insert for <span class="math inline">\(r_{t}\)</span> we get
+<span class="math display">\[
+\mathrm{d} M_{t}=\alpha_{t}^{M} M_{t} \mathrm{~d} t+\beta_{t}^{M} M_{t} \mathrm{~d} W_{t}^{\mathrm{P}}+\left(M_{t}-M_{t-}\right) \mathrm{d} y_{t}
+\]</span>
+where
+<span class="math display">\[
+\alpha_{t}^{M}=\frac{\frac{\partial M}{\partial t}+\alpha\left(t, r_{t}\right) \frac{\partial M}{\partial r}+\frac{1}{2} \beta^{2}\left(t, r_{t}\right) \frac{\theta^{2} M}{\theta r^{2}}}{M_{t}} \text { and } \beta_{t}^{M}=\frac{\beta\left(t, r_{t}\right) \frac{\partial M}{\theta_{r}}}{M_{t}} .
+\]</span>
+If the security is the callable mortgage bond then the value of the bond immediately after a jump will be the remaining principal, i.e. <span class="math inline">\(M_{\tau}^{\alpha}=F_{\tau}\)</span>. Likewise, for the mortgage liabilities we will have <span class="math inline">\(M_{\tau}^{\ell}=\left(1+X_{i}\right) F_{\tau}\)</span>. Since we can now distinguish <span class="math inline">\(M_{t}\)</span> from <span class="math inline">\(M_{t-}\)</span> we may replace <span class="math inline">\(\left(M_{t}-M_{t-}\right) \mathrm{d} y_{t}\)</span> with <span class="math inline">\(\left(F_{t}-M_{t}^{a}\right) \mathrm{d} y_{t}\)</span> for the bond and <span class="math inline">\(\left(\left(1+X_{i}\right) F_{t}-M_{t}^{\ell}\right) \mathrm{d} y_{t}\)</span> for the liability. Since the callable mortgage bond pays out dividends at a rate <span class="math inline">\(C_{t}\)</span>, the total gain from holding the security over an infinitesimal time-period must be <span class="math inline">\(\mathrm{d} M_{t}^{a}+C_{t} \mathrm{~d} t\)</span>. We would now like to hedge the interest rate risk of the callable bond by constructing a portfolio, <span class="math inline">\(V_{t}\)</span>, consisting of one callable mortgage bond and <span class="math inline">\(h_{t}^{T}=-\frac{\partial P_{1}^{T}}{\theta_{r}} / \frac{\partial M_{t}^{a}}{\partial r}\)</span> zero coupon bonds maturing at time <span class="math inline">\(T\)</span>. Since the portfolio will pay dividends, we will assume that these are placed in the short rate. The amount placed in the short rate will be denoted <span class="math inline">\(h_{t}^{A}\)</span>. The self-financing condition becomes
+<span class="math display">\[
+\begin{aligned}
+V_{t} &amp;=M_{t}^{a}+h_{t}^{T} P_{t}^{T}+h_{t}^{A} \\
+\mathrm{~d} V_{t} &amp;=\mathrm{d} M_{t}^{a}+C_{t} \mathrm{~d} t+h_{t}^{T} \mathrm{~d} P_{t}^{T}+h_{t}^{A} r_{t} \mathrm{~d} t
+\end{aligned}
+\]</span>
+Inserting the dynamics of the callable mortgage bond from (3.8) and the zero coupon bond from (2.6) we find the dynamics to be
+<span class="math display">\[
+\mathrm{d} V_{t}=\left(\alpha_{t}^{M} M_{t}^{a}+C_{t}+h_{t}^{T} \alpha_{t}^{T} P_{t}^{T}+h_{t}^{A} r_{t}\right) \mathrm{d} t+\left(F_{t}-M_{t}^{a}\right) \mathrm{d} y_{t}
+\]</span>
+Equation (3.12) looks almost risk free in the sense that we have eliminated all terms including Brownian increments. However, we are still left with the prepayment risk from <span class="math inline">\(y_{t}\)</span>, which we are not able to hedge. The problem is that we have introduced an idiosyncratic source of risk, as prepayment risk will vary across mortgage pools. Equation (3.12) is a dead end as seen from the perspective of arbitrage free pricing, as it defines a jump process with no other securities in the market depending on this exact source of risk. The same problem was encountered by Merton (1976) [25] when pricing options where the underlying stock price is discontinuous and Ingersoll (1977) [14] when pricing corporate convertible bonds. A pragmatic way of proceeding, used by both Merton and Ingersoll, is to replace <span class="math inline">\(\mathrm{d} y_{t}\)</span> by its expected value, namely <span class="math inline">\(\mathbb{E}\left(\mathrm{d} y_{t}\right)=\lambda_{t} \mathrm{~d} t\)</span>. Stanton, on the other hand, implicitly assumes that prepayments will only occur at payment dates. This means that we can safely put <span class="math inline">\(\mathrm{d} y_{t}=0\)</span> between payment dates. Strictly speaking, <span class="math inline">\(y_{t}\)</span> is also no longer a Poisson process in this case. With this in mind, we will set <span class="math inline">\(\mathrm{d} y_{t}=0\)</span>, meaning that between payment dates equation (3.12) becomes
+<span class="math display">\[
+\mathrm{d} V_{t}=\left(\alpha_{t}^{M} M_{t}+C_{t} \mathrm{~d} t+h_{t}^{T} \alpha_{t}^{T} P_{t}^{T}+h_{t}^{A} r_{t}\right) \mathrm{d} t
+\]</span>
+Since equation (3.13) has been left without any stochastic sources it should earn the risk free rate, i.e. <span class="math inline">\(\mathrm{d} V_{t}=r_{t} V_{t} \mathrm{~d} t\)</span>. Using this relation we get
+<span class="math display">\[
+\left(\alpha_{t}^{M} M_{t}+C_{t}+h_{t}^{T} \alpha_{t}^{T} P_{t}^{T}+h_{t}^{A} r_{t}\right) \mathrm{d} t=r_{t}\left(M_{t}^{a}+h_{t}^{T} P_{t}^{T}+h_{t}^{A}\right) \mathrm{d} t
+\]</span>
+From our derivations of the term structure PDE in section <span class="math inline">\(2.2\)</span> we know, that under the alternative measure <span class="math inline">\(\mathbb{Q}\)</span>, the zero coupon bond has drift <span class="math inline">\(r_{t}\)</span>. Hence, by inserting <span class="math inline">\(\alpha_{t}^{M}\)</span>, switching to the <span class="math inline">\(\mathbb{Q}\)</span> measure and using that <span class="math inline">\(\alpha_{t}^{T}=r_{t}\)</span> under <span class="math inline">\(\mathbb{Q}\)</span>, equation (3.14) reduces to
+<span class="math display">\[
+\frac{\partial M^{a}}{\partial t}+\left(\alpha\left(t, r_{t}\right)-q_{t} \beta\left(t, r_{t}\right)\right) \frac{\partial M^{a}}{\partial r}+\frac{1}{2} \beta^{2}\left(t, r_{t}\right) \frac{\partial^{2} M^{a}}{\partial r^{2}}+C_{t}=r_{t} M_{t}^{a}
+\]</span>
+What is left now is to specify the dynamics of the short rate. Stanton chooses to use the CIR model by Cox, Ingersoll &amp; Ross (1985) [12], where the short rate is assumed to have the <span class="math inline">\(\mathbb{P}\)</span>-dynamics,
+<span class="math display">\[
+\mathrm{d} r_{t}=\kappa\left(\mu-r_{t}\right) \mathrm{d} t+\sigma \sqrt{r_{t}} \mathrm{~d} W_{t}^{\mathrm{P}} .
+\]</span>
+This specification fits into our general short rate dynamics from equation (2.1) with <span class="math inline">\(\alpha\left(t, r_{t}\right)=\kappa\left(\mu-r_{t}\right)\)</span> and <span class="math inline">\(\beta\left(t, r_{t}\right)=\sigma \sqrt{r_{t}}\)</span>. Recall that the <span class="math inline">\(\mathbb{Q}\)</span>-dynamics take the form
+<span class="math display">\[
+\mathrm{d} r_{t}=\left(\alpha\left(t, r_{t}\right)-q_{t} \beta\left(t, r_{t}\right)\right) \mathrm{d} t+\beta\left(t, r_{t}\right) \mathrm{d} W_{t}^{Q} .
+\]</span>
+Inserting for <span class="math inline">\(\alpha\left(t, r_{t}\right)\)</span> and <span class="math inline">\(\beta\left(t, r_{t}\right)\)</span>, the <span class="math inline">\(\mathbb{Q}\)</span>-dynamics of the CIR model becomes
+<span class="math display">\[
+\mathrm{d} r_{t}=\left(\kappa\left(\mu-r_{t}\right)-q_{t} \sigma \sqrt{r_{t}}\right) \mathrm{d} t+\sigma \sqrt{r_{t}} \mathrm{~d} W_{t}^{\mathrm{Q}}
+\]</span>
+As discussed earlier, it is now possible to either specify a structure for <span class="math inline">\(q_{t}\)</span> or imply <span class="math inline">\(q_{t}\)</span> from market prices. Cox, Ingersoll &amp; Ross chooses to specify <span class="math inline">\(q_{t}\)</span> as being linear in <span class="math inline">\(\sqrt{r_{t}}{ }^{2}\)</span> In this case we get
+<span class="math display">\[
+\mathrm{d} r_{t}=\left(\kappa \mu-(\kappa+q) r_{t}\right) \mathrm{d} t+\sigma \sqrt{r_{t}} \mathrm{~d} W_{t}^{Q}
+\]</span>
+for some constant <span class="math inline">\(q\)</span>. With this specification, the mortgage PDE (3.15) becomes
+<span class="math display">\[
+\frac{\partial M^{a}}{\partial t}+\left(\kappa \mu-(\kappa+q) r_{t}\right) \frac{\partial M^{a}}{\partial r}+\frac{1}{2} \sigma^{2} r_{t} \frac{\partial^{2} M^{a}}{\partial r^{2}}+C_{t}=r_{t} M_{t}^{a}
+\]</span>
+Similarly, the PDE obeyed by the mortgage liabilities will be given by
+<span class="math display">\[
+\frac{\partial M^{\ell}}{\partial t}+\left(\kappa \mu-(\kappa+q) r_{t}\right) \frac{\partial M^{\ell}}{\partial r}+\frac{1}{2} \sigma^{2} r_{t} \frac{\partial^{2} M^{\ell}}{\partial r^{2}}+C_{t}=r_{t} M_{t}^{\ell}
+\]</span>
+Before solving equations <span class="math inline">\((3.20)\)</span> and (3.21), we will have to define the payments from <span class="math inline">\(C_{t}\)</span>. Typically, the size as well as the time of the mortgage bond payments are scheduled, and this payment schedule is distributed by the mortgage institution to the investor. However, since the mortgage bonds from a pool are not issued all at once, the payment schedule per unit of notional will change over time as issuance and prepayments occur. We will disregard this fact and simply consider a stylised world with annuity type payment streams. Given a yearly coupon rate <span class="math inline">\(R\)</span>, an initial principal <span class="math inline">\(F_{0}\)</span> and a time to maturity <span class="math inline">\(T\)</span>, the annuity will pay a constant payment <span class="math inline">\(\bar{Y}\)</span> at each payment date <span class="math inline">\(t_{i}\)</span> where <span class="math inline">\(i \in\{1,2, \ldots, N\}\)</span> and <span class="math inline">\(t_{N}=T\)</span>. Using that <span class="math inline">\(F_{t_{N}}=0\)</span> we find that
+<span class="math display">\[
+\bar{Y}=\frac{\widetilde{R}}{1-(1+\widetilde{R})^{-N}} F_{0}
+\]</span>
+where <span class="math inline">\(\widetilde{R}=\frac{R}{n}\)</span> is the periodic interest rate when there are <span class="math inline">\(n\)</span> payments per year.</p>
+<p>The principal will now amortise according to the following equation
+<span class="math display">\[
+\frac{x^{2}-1}{x^{2}}
+\]</span>
+Both results follow by standard calculations. Since the payments happen discretely in time, a smart choice is to set <span class="math inline">\(C_{t}\)</span> equal to a sum of so called delta functions. Inspired by Wilmot et. al. (1993) [23] we can define the Dirac delta function, <span class="math inline">\(\delta(x)\)</span>, as the limit of <span class="math inline">\(f(x)\)</span> when <span class="math inline">\(\varepsilon \rightarrow 0^{+}\)</span>where
+<span class="math display">\[
+f(x)= \begin{cases}\frac{1}{2 \varepsilon} &amp; |x| \leq \varepsilon \\ 0 &amp; |x|&gt;\varepsilon\end{cases}
+\]</span>
+The special thing about <span class="math inline">\(f(x)\)</span> is that <span class="math inline">\(\int_{-\infty}^{\infty} f(x) \mathrm{d} x=1\)</span> for any <span class="math inline">\(\varepsilon&gt;0\)</span>. Define now
+<span class="math display">\[
+C_{t}=\sum_{i=1}^{N} \bar{Y} \delta\left(t-t_{i}\right)
+\]</span>
+Then the accumulated payments, <span class="math inline">\(D_{t}\)</span>, will be given by
+<span class="math display">\[
+D_{t}=\int_{0}^{t} C_{s} \mathrm{~d} s=\int_{0}^{t} \sum_{i=1}^{N} \bar{Y} \delta\left(s-t_{i}\right) \mathrm{d} s=\sum_{t_{i} \leq t} \bar{Y} .
+\]</span>
+We know that from holding the mortgage bond, we will be receiving the gain <span class="math inline">\(\mathrm{d} M_{t}^{a}+C_{t} \mathrm{~d} t\)</span> over each time-period <span class="math inline">\([t ; t+\mathrm{d} t]\)</span>. C <span class="math inline">\(_{t}\)</span> will be zero everywhere except at payment dates, where <span class="math inline">\(\bar{Y}\)</span> is paid out. As payment dates and prepayment dates coincide, we get notationally challenged and for this reason we will explain the jump in asset values in words. Over the payment date <span class="math inline">\(t_{i}\)</span> the bond value <span class="math inline">\(M_{t_{i}-}^{a}\)</span> will change to <span class="math inline">\(M_{t_{i}}^{a}\)</span> if prepayment does not occur, but if prepayment occurs, then <span class="math inline">\(M_{t_{1}-}^{a}\)</span> will drop to <span class="math inline">\(F_{t_{1}}\)</span>. In both cases the payment <span class="math inline">\(\bar{Y}\)</span> is also delivered. Since this implies a stochastic boundary condition, Stanton makes the pragmatic assumption that <span class="math inline">\(M_{t_{1}-}^{a}\)</span> - will be the expected value of the bond at time <span class="math inline">\(t_{i}\)</span> plus the payment. We therefore have,
+<span class="math display">\[
+M_{t_{i}-}^{a}=\left(1-\mathbb{P}\left(\tau=t_{i} \mid \tau \geq t_{i}\right)\right) M_{t_{i}}^{a}+\mathbb{P}\left(\tau=t_{i} \mid \tau \geq t_{i}\right) F_{t_{i}}+\bar{Y}
+\]</span>
+Stanton assumes that the probability of prepayment at time <span class="math inline">\(t_{i}\)</span> is given by <span class="math inline">\(\mathbb{P}\left(\tau=t_{i} \mid \tau \geq\right.\)</span> <span class="math inline">\(\left.t_{i}\right)=1-\mathrm{e}^{-\int_{t_{i}}^{t_{i}+1} \lambda_{t} \mathrm{dt}} \approx 1-\mathrm{e}^{-\frac{1}{n} \lambda_{t_{i}}}\)</span> as would be the probability if prepayment happened continuously. We therefore end up with the boundary condition
+<span class="math display">\[
+M_{t_{\mathrm{u}}-}^{a}=\mathrm{e}^{-\frac{1}{n} \lambda_{t_{1}}} M_{t_{i}}^{a}+\left(1-\mathrm{e}^{-\frac{1}{m} \lambda_{t_{i}}}\right) F_{t_{i}}+\bar{Y} \quad \forall i
+\]</span>
+Hence, we may solve the mortgage PDEs over each interval <span class="math inline">\(\left[t_{i-1}, t_{i}\right)\)</span> with boundary conditions given by (3.28). We summarise our results in the following theorem.</p>
+<p>Theorem 3.1. A callable mortgage bond delivering discrete payments of size <span class="math inline">\(\bar{Y}\)</span> will satisfy the following PDEs over the half-open interval <span class="math inline">\(\left[t_{i-1}, t_{i}\right)\)</span>
+<span class="math display">\[
+\begin{aligned}
+&amp;\frac{\partial M^{a}}{\partial t}+\left(\kappa \mu-(\kappa+q) r_{t}\right) \frac{\partial M^{a}}{\partial r}+\frac{1}{2} \sigma^{2} r_{t} \frac{\partial^{2} M^{a}}{\partial r^{2}}=r_{t} M_{t}^{a}, \\
+&amp;\frac{\partial M^{\ell}}{\partial t}+\left(\kappa \mu-(\kappa+q) r_{t}\right) \frac{\partial M^{\ell}}{\partial r}+\frac{1}{2} \sigma^{2} r_{t} \frac{\partial^{2} M^{\ell}}{\partial r^{2}}=r_{t} M_{t}^{\ell},
+\end{aligned}
+\]</span>
+with boundary conditions given by
+<span class="math display">\[
+\begin{aligned}
+&amp;M_{t_{1}-}^{a}=\mathrm{e}^{-\frac{1}{n} \lambda_{t_{i}}} M_{t_{i}}^{a}+\left(1-\mathrm{e}^{-\frac{1}{n} \lambda_{t_{2}}}\right) F_{t_{1}}+\bar{Y} \\
+&amp;M_{t_{1}-}^{\ell}=\mathrm{e}^{-\frac{1}{n} \lambda_{t_{1}}} M_{t_{1}}^{\ell}+\left(1-\mathrm{e}^{-\frac{1}{n} \lambda_{t_{i}}}\right)(1+X) F_{t_{1}}+\bar{Y}
+\end{aligned}
+\]</span>
+where
+<span class="math display">\[
+\lambda_{t_{2}}= \begin{cases}\lambda_{1} &amp; \text { if } M_{t_{i}}^{\ell}&lt;(1+X) F_{t_{1}} \\ \lambda_{1}+\lambda_{2} &amp; \text { if } M_{t_{i}}^{\ell} \geq(1+X) F_{t_{i}}\end{cases}
+\]</span>
+for <span class="math inline">\(i \in\{0,1, \ldots, N\}\)</span> and <span class="math inline">\(M_{t_{N}}^{a}=M_{t_{N}}^{\ell}=0\)</span>
+It is not obvious how we should solve for the mortgage bond in the theorem above analytically. Therefore, we will now look at how to approximate the solution.</p>
+</div>
+<div id="pricing-by-finite-differences" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Pricing by Finite Differences</h2>
+<p>The solution to the PDEs (3.64) and (3.65) can be approximated by use of so called finite difference techniques. The idea is simply to approximate the partial derivatives with difference quotients. For a function <span class="math inline">\(f=f(t, x)\)</span> of time and space, we will discretise time as <span class="math inline">\(\left\{t_{0}, t_{1}, \ldots, t_{j}, \ldots, t_{J}\right\}=\{0, \Delta t, \ldots, j \Delta t, \ldots, T\}\)</span> where <span class="math inline">\(\Delta t=\frac{T}{J}\)</span>, and space as <span class="math inline">\(\left\{x_{0}, x_{1}, \ldots, x_{i}, \ldots, x_{N}\right\}=\left\{x_{\min }, x_{\min }+\Delta x, \ldots, x_{\min }+i \Delta x, \ldots, x_{\max }\right\}\)</span> where <span class="math inline">\(\Delta x=\frac{1}{N}\left(x_{\max }-\right.\)</span> <span class="math inline">\(\left.x_{\min }\right)\)</span>. With this discretisation we will denote by <span class="math inline">\(f_{i, j}\)</span> the function <span class="math inline">\(f\)</span> evaluated in <span class="math inline">\(\left(t_{j}, x_{i}\right)\)</span>. The most common difference operators are now given in the following definition.</p>
+<p>Definition 3.1. The forward, backward, central and second-order central differences of <span class="math inline">\(f(t, x)\)</span> w.r.t. <span class="math inline">\(x\)</span> are given by
+<span class="math display">\[
+\begin{aligned}
+D_{x}^{+} f_{i, j} &amp;=\frac{f_{i+1, j}-f_{i, j}}{\Delta x} \\
+D_{x}^{-} f_{i, j} &amp;=\frac{f_{i, j}-f_{i-1, j}}{\Delta x} \\
+D_{x} f_{i, j} &amp;=\frac{f_{i+1, j}-f_{i-1, j}}{2 \Delta x}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+D_{x x} f_{i, j}=\frac{f_{i+1, j}-2 f_{i, j}+f_{i-1, j}}{(\Delta x)^{2}}
+\]</span>
+Different schemes exists applying different combinations of the above difference operators. The most common ones are the explicit, the implicit and the Crank-Nicolson schemes. The explicit scheme makes use of the backward difference for the time derivative as well as central and second order central differences for the first and second derivatives in space. The implicit scheme does the same in the space direction but makes use of a forward difference in the time direction. Finally, the Crank-Nicolson scheme averages the two methods. As shown in Seydel (2009) [27], the error from approximating by use of the Crank-Nicolson scheme is of order <span class="math inline">\(\mathcal{O}\left(\Delta t^{2}\right)+\mathcal{O}\left(\Delta x^{2}\right)\)</span> compared to the implicit and explicit methods, which are of first order in the time direction. The Crank-Nicolson method has therefore gained popularity, as it tends to be more stable than the other two methods. Defining <span class="math inline">\(m_{i, j}^{a}\)</span> as the approximation to <span class="math inline">\(M_{t}^{a}\)</span> in (3.64), the Crank-Nicolson method becomes
+<span class="math display">\[
+\begin{array}{r}
+\frac{1}{2}\left[D_{t}^{-} m_{i, j+1}^{a}+\hat{\mu}_{i} D_{r} m_{i, j+1}^{a}+\frac{1}{2} \hat{\sigma}_{i} D_{r r} m_{i, j+1}^{a}+D_{t}^{+} m_{i, j}^{a}+\hat{\mu}_{i} D_{r} m_{i, j}^{a}+\frac{1}{2} \hat{\sigma}_{i} D_{r r} m_{i, j}^{a}\right] \\
+=\frac{1}{2}\left(r_{i, j+1} m_{i, j+1}^{a}+r_{i, j} m_{i, j}^{a}\right)
+\end{array}
+\]</span>
+where <span class="math inline">\(\hat{\mu}_{i}=\kappa \mu-(\kappa+q) r_{i, j}\)</span> and <span class="math inline">\(\hat{\sigma}_{i}=\sigma^{2} r_{i, j}\)</span>. By inserting equations (3.34)-(3.37) and rearranging we can find the relation
+<span class="math display">\[
+A_{i} m_{i-1, j}^{a}+B_{i} m_{i, j}^{a}+C_{i} m_{i+1, j}^{a}=-A_{i} m_{i-1, j+1}^{a}+D_{i} m_{i, j+1}^{a}-C_{i} m_{i+1, j+1}^{a},
+\]</span>
+where
+<span class="math display">\[
+\begin{aligned}
+A_{i} &amp;=\frac{1}{4 \Delta r} \hat{\mu}_{i}-\frac{1}{4(\Delta r)^{2}} \hat{\sigma}_{i} \\
+B_{i} &amp;=\frac{1}{\Delta t}+\frac{1}{2(\Delta r)^{2}} \hat{\sigma}_{i}+\frac{1}{2} r_{i, j} \\
+C_{i} &amp;=-\frac{1}{4 \Delta r} \hat{\mu}_{i}-\frac{1}{4(\Delta r)^{2}} \hat{\sigma}_{i} \\
+D_{i} &amp;=\frac{1}{\Delta t}-\frac{1}{2(\Delta r)^{2}} \hat{\sigma}_{i}-\frac{1}{2} r_{i, j+1}
+\end{aligned}
+\]</span>
+Define now the vector <span class="math inline">\(\mathbf{m}_{j}^{a}\)</span> with elements <span class="math inline">\(\left[\mathbf{m}_{j}^{a}\right]_{i}=m_{i, j}^{a}\)</span> for <span class="math inline">\(i=0,1, \ldots, N\)</span>. Having computed <span class="math inline">\(\mathrm{m}_{j+1}^{a}\)</span>, the equations (3.39)-(3.43) will define <span class="math inline">\(N-1\)</span> equations with <span class="math inline">\(N+1\)</span> unknowns when setting <span class="math inline">\(i=1,2, \ldots, N-1\)</span>. We encounter problems when <span class="math inline">\(i \in\{0, N\}\)</span>, since we get outside the grid by using the central differences. If we can come up with some boundary condition for <span class="math inline">\(i \in\{0, N\}\)</span>, or equivalently <span class="math inline">\(r \in\left\{r_{\min }, r_{\max }\right\}\)</span>, then it will be possible to complete the linear system of equations. A clever way to come up with boundary conditions is to consider the behaviour of either the function itself or its derivatives at high and low values of the short rate, as we might have additional information about the behaviour of the function at these values. If for example we assume the mortgage bond to have zero convexity for very high and low values of the short rate, then we may set the second derivative equal to zero in the PDEs (3.64) and (3.65). This will make the <span class="math inline">\(D_{r r}\)</span> terms vanish in equation (3.38). The zero convexity can be justified since the embedded optionality will be either deep in or out of the money at these values. If also we replace <span class="math inline">\(D_{r} m_{0, j}\)</span> with <span class="math inline">\(D_{r}^{+} m_{0, j}\)</span> and replace <span class="math inline">\(D_{r} m_{N, j}\)</span> with <span class="math inline">\(D_{r}^{-} m_{N, j}\)</span>, then we avoid using values outside the grid. All in all we can establish the following two equations:
+<span class="math display">\[
+\begin{gathered}
+B_{0} m_{0, j}^{a}+C_{0} m_{1, j}^{a}=D_{0} m_{0, j+1}^{a}-C_{0} m_{1, j+1}^{a} \\
+A_{N} m_{N-1, j}^{a}+B_{N} m_{N, j}^{a}=-A_{N} m_{N-1, j+1}^{a}+D_{N} m_{N, j+1}^{a}
+\end{gathered}
+\]</span>
+where
+<span class="math display">\[
+\begin{aligned}
+&amp;B_{0}=\frac{1}{\Delta t}+\frac{\hat{\mu}_{0}}{2 \Delta r}+\frac{1}{2} r_{0, j}, \quad C_{0}=-\frac{\hat{\mu}_{0}}{2 \Delta r}, \quad D_{0}=\frac{1}{\Delta t}-\frac{\hat{\mu}_{0}}{2 \Delta r}-\frac{1}{2} r_{0, j}, \\
+&amp;A_{N}=\frac{\hat{\mu}_{N}}{2 \Delta r}, \quad B_{N}=\frac{1}{\Delta t}-\frac{\hat{\mu}_{N}}{2 \Delta r}+\frac{1}{2} r_{N, j} \quad \text { and } \quad D_{N}=\frac{1}{\Delta t}+\frac{\hat{\mu}_{N}}{2 \Delta r}-\frac{1}{2} r_{N, j+1} .
+\end{aligned}
+\]</span>
+Since we now have <span class="math inline">\(N+1\)</span> equations with <span class="math inline">\(N+1\)</span> unknowns, we may write our system of equations on matrix form as follows
+<span class="math display">\[
+\mathrm{Am}_{j}^{a}=\mathrm{Cm}_{j+1}^{a}
+\]</span>
+where
+<span class="math display">\[
+\mathbf{A}=\left[\begin{array}{ccccccc}
+B_{0} &amp; C_{0} &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+A_{1} &amp; B_{1} &amp; C_{1} &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; A_{2} &amp; B_{2} &amp; C_{2} &amp; 0 &amp; \cdots &amp; 0 \\
+\vdots &amp; &amp; \ddots &amp; \ddots &amp; \ddots &amp; &amp; \vdots \\
+\vdots &amp; &amp; &amp; \ddots &amp; \ddots &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; \cdots &amp; 0 &amp; A_{N-1} &amp; B_{N-1} &amp; C_{N-1} \\
+0 &amp; \cdots &amp; \cdots &amp; \cdots &amp; 0 &amp; A_{N} &amp; B_{N}
+\end{array}\right], \quad \mathbf{C}=\left[\begin{array}{cccccccc}
+D_{0} &amp; -C_{0} &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+-A_{1} &amp; D_{1} &amp; -C_{1} &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; -A_{2} &amp; D_{2} &amp; -C_{2} &amp; 0 &amp; \cdots &amp; 0 \\
+\vdots &amp; &amp; \ddots &amp; \ddots &amp; \ddots &amp; &amp; \vdots \\
+\vdots &amp; &amp; &amp; \ddots &amp; \ddots &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; \cdots &amp; 0 &amp; -A_{N-1} &amp; D_{N-1} &amp; -C_{N-1} \\
+0 &amp; \cdots &amp; \cdots &amp; \cdots &amp; 0 &amp; -A_{N} &amp; D_{N}
+\end{array}\right] .
+\]</span>
+Performing a similar discretisation for <span class="math inline">\(M_{t}^{\ell}\)</span> and we are able to solve for the bond price and mortgage liabilities iteratively. Algorithm <span class="math inline">\(3.1\)</span> below gives a non-technical illustration of an implementation. The final thing that we have to do before using our finite difference solver is to choose the upper and lower values for <span class="math inline">\(r_{t}\)</span>. Since we are in the CIR model, and negative interest rates cannot occur, a natural lower bound will be <span class="math inline">\(r_{\min }=0\)</span>. In order to come up with an upper bound, we will use a value so high that it is likely not to occur. One such value could be three standard deviations away from the mean for a horizon equal to the time to maturity of the bond considered. With the upper and lower values in place, we have completed our pricing PDE solver.</p>
+<p>The pricing algorithm has been implemented in Matlab and is available through appendix A.6. Figure 4 below shows the price of a 30 year <span class="math inline">\(12.5 \%\)</span> annuity mortgage bond for varying prepayment intensities <span class="math inline">\(\lambda_{2}\)</span> and varying initial short rates. As is evident from the graph, higher prepayment intensities are associated with lower values of the mortgage bond. Especially at low interest rate levels the bond exhibits negative convexity for sufficiently high prepayment intensities. Not only is the model capable of generating negative convexity, but also will the duration of the bond be negative whenever the slope of the price function is positive. This phenomenon is a consequence of the costs associated with prepayment, since the prepayment costs constitute a barrier to the mortgager who will defer a potential prepayment to a time of lower interest rates.</p>
+<p>Before estimating and applying the model to the Danish market for callable mortgage bonds, we will consider some reasonable and necessary adjustments to the model. The CIR model used by Stanton has been developed at a time where very low and even negative interest rates had never occurred. Since the CIR model is only defined for positive interest rates, we will have to choose a short rate model capable of generating negative interest rates. Secondly, Stanton assumes that if a borrower, for some exogenous reason, choses to prepay when the mortgage bond trades below par, then the borrower will still have to prepay at par. In Denmark, all mortgage bonds are born with the option to deliver back the mortgage bond to the mortgage institution in case a borrower want to terminate his payment obligations. In the next two sections we will investigate the effect of these two adjustments.</p>
+</div>
+<div id="the-extended-vasicek-model" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> The Extended Vasicek Model</h2>
+<p>In order to incorporate the presence of negative interest rates, we will introduce the extended Vasicek model by Hull &amp; White (1990) [13]. In this model the short rate dynamics are assumed to take the form:
+<span class="math display">\[
+\mathrm{d} r_{t}=\kappa\left[\theta(t)-r_{t}\right] \mathrm{d} t+\sigma \mathrm{d} W_{t}^{\mathbb{P}}
+\]</span>
+The model allows for a deterministic time dependent mean level, <span class="math inline">\(\theta(t)\)</span>. We will see that with this specification, it will be possible for the model to fit the initial term structure of interest rates if <span class="math inline">\(\theta(t)\)</span> is chosen properly. In order to fit the model to market observables, our first job is to find the prices for zero coupon bonds in the model. From theorem <span class="math inline">\((2.4)\)</span> we must have that the price of a zero coupon bond will satisfy the following PDE
+<span class="math display">\[
+\frac{\partial P_{t}^{T}}{\partial t}+\kappa\left[\hat{\theta}(t)-r_{t}\right] \frac{\partial P_{t}^{T}}{\partial r}+\frac{1}{2} \sigma^{2} \frac{\partial^{2} P_{t}^{T}}{\partial r^{2}}=r_{t} P_{t}^{T}, \quad\left(t, r_{t}\right) \in[0 ; T) \times \mathbb{R}
+\]</span>
+where <span class="math inline">\(\hat{\theta}(t)=\theta(t)-\frac{\sigma}{\kappa} q_{t}\)</span>. If we guess the general solution <span class="math inline">\(P_{t}^{T}=\mathrm{e}^{-A(t, T)-B(t, T) \mathrm{r}_{\mathrm{t}}}\)</span> and insert into equation <span class="math inline">\((3.48)\)</span>, then we get
+<span class="math display">\[
+\left[-A^{\prime}(t, T)-B^{\prime}(t, T) r_{t}\right] P_{t}^{T}-\kappa\left[\hat{\theta}(t)-r_{t}\right] B(t, T) P_{t}^{T}+\frac{1}{2} \sigma^{2} B^{2}(t, T) P_{t}^{T}=r_{t} P_{t}^{T}
+\]</span>
+Dividing through by <span class="math inline">\(P_{t}^{T}\)</span> and rearranging we obtain
+<span class="math display">\[
+-A^{\prime}(t, T)-\kappa \hat{\theta}(t) B(t, T)+\frac{1}{2} \sigma^{2} B^{2}(t, T)-\left[1+B^{\prime}(t, T)-\kappa B(t, T)\right] r_{t}=0 .
+\]</span>
+If equation (3.50) has to hold for all <span class="math inline">\(r_{t}\)</span>, and considering <span class="math inline">\(T\)</span> as a parameter, then we must have that the following two ordinary differential equations must hold:
+<span class="math display">\[
+\begin{array}{r}
+\frac{\mathrm{d} A(t, T)}{\mathrm{d} t}+\kappa \hat{\theta}(t) B(t, T)-\frac{1}{2} \sigma^{2} B^{2}(t, T)=0 \\
+1+\frac{\mathrm{d} B(t, T)}{\mathrm{d} t}-\kappa B(t, T)=0
+\end{array}
+\]</span>
+with terminal conditions <span class="math inline">\(A(T, T)=B(T, T)=0\)</span>. The solution to these ordinary differential equations can easily be shown to be
+<span class="math display">\[
+\begin{aligned}
+&amp;B(t, T)=\frac{1}{\kappa}\left(1-\mathrm{e}^{-\kappa(T-t)}\right) \\
+&amp;A(t, T)=\kappa \int_{t}^{T} \hat{\theta}(s) B(s, T) \mathrm{d} s+\frac{\sigma^{2}}{4 \kappa} B^{2}(t, T)+\frac{\sigma^{2}}{2 \kappa^{2}}(B(t, T)-(T-t))
+\end{aligned}
+\]</span>
+see appendix A.1. If we at time zero observe zero coupon bond prices <span class="math inline">\(\bar{P}_{0}^{T}\)</span> for each maturity <span class="math inline">\(T\)</span>, then the idea of Hull &amp; White was to choose the function <span class="math inline">\(\hat{\theta}(t)\)</span> such that the model prices are consistent with the market prices. The function of <span class="math inline">\(\hat{\theta}(t)\)</span> ensuring this property can be shown to be given by
+<span class="math display">\[
+\hat{\theta}(t)=\bar{f}(0, t)+\frac{1}{\kappa} \frac{\mathrm{d} \bar{f}(0, t)}{\mathrm{d} t}+\frac{\sigma^{2}}{2 \kappa^{2}}\left(1-\mathrm{e}^{-2 \kappa t}\right)
+\]</span>
+which implies that
+<span class="math display">\[
+A(t, T)=-\ln \left(\frac{\bar{P}_{0}^{T}}{\bar{P}_{0}^{t}}\right)-B(t, T) \bar{f}(0, t)+\frac{\sigma^{2}}{4 \kappa} B^{2}(t, T)\left(1-\mathrm{e}^{-2 \kappa t}\right),
+\]</span>
+where we assume that <span class="math inline">\(\bar{f}(0, t)\)</span>, the observed forward curve for the short rate, is differentiable. The derivations of equations (3.55) and (3.56) are extensive and for that reason also left in appendix A.2. To verify that we indeed fit the initial term structure, one can simply insert <span class="math inline">\(A(0, T)\)</span> into the formula for <span class="math inline">\(P_{0}^{T}\)</span> using that <span class="math inline">\(f(0,0)=r_{0}\)</span>.</p>
+<p>At this point it is appropriate to have a discussion of what we have achieved by choosing <span class="math inline">\(\hat{\theta}(t)\)</span> according to (3.55). If we had let <span class="math inline">\(\theta(t)\)</span> be a constant, then we would be back in the original Vasicek model. Estimating the model parameters by maximum likelihood and agreeing on a specification of the market price of risk, we would be able to price zero coupon bonds and swaps by their closed form solutions. The problem with this approach is that the model most likely will not replicate the prices in the market. This is the reason why the literature and market practitioners have turned to the procedure of estimating model parameters by calibration. By this procedure we minimise the deviations of model prices from market prices by adjusting the model parameters. As is evident from this procedure, the model will lose its ability to describe the behaviour of the short rate, since the model parameters are not determined by any sound statistical estimation procedure. However, this might not necessarily be a problem. Instead of specifying the function <span class="math inline">\(q_{t}=q\left(t, r_{t}\right)\)</span> which influences the drift part of the short rate process, we can take the market as given and let the market specify the drift rate used for pricing. Since we have assumed that a full term structure of interest rates is available in the market, we may simply regard <span class="math inline">\(q_{t}\)</span>, or equivalently <span class="math inline">\(\hat{\theta}(t)=\theta(t)-\frac{\sigma}{\kappa} q_{t}\)</span>, as being chosen by the market. For this reason we will not have a problem with our choice of <span class="math inline">\(\hat{\theta}(t)\)</span>, but we have to be aware that <span class="math inline">\(\hat{\theta}(t)\)</span> is deterministic and therefore our choice of <span class="math inline">\(\hat{\theta}(t)\)</span> today should also apply tomorrow. As discussed by Hull &amp; White themselves this assumption is likely to fail and the market practice is simply to respecify <span class="math inline">\(\theta(t)\)</span> each time a new curve is available. It is hard to justify this practice from a theoretical viewpoint, and the main argument for proceeding with this practice anyway is the following: If we are able to price the most simple fixed income securities in the market accurately, then we will hopefully also be pricing the more complex products, like the callable bond, more accurately.</p>
+<p>With our choice of <span class="math inline">\(\hat{\theta}(t)\)</span> in place, we still need the parameters <span class="math inline">\(\kappa\)</span> and <span class="math inline">\(\sigma\)</span>. As discussed by Hull &amp; White these could in principle also be functions of time, but in this thesis we will keep these as constants <span class="math inline">\(^{3}\)</span>. In reality we will often observe that interest rates exhibit stochastic volatility, which is of course in conflict with the constant volatility of our model. A pragmatic approach is therefore to imply the volatility and mean reversion from volatility dependent securities like the cap. In order to calibrate our model to the market for caps, we will need to be able to price these contracts. In the following we will show how to do so in the extended Vasicek model. Section <span class="math inline">\(2.5\)</span> showed that the cap contract could be valued by computing the probabilities in the following valuation formula.
+<span class="math display">\[
+\operatorname{Cap}_{t}^{T_{N}}=\frac{1}{K^{*}} \sum_{i=1}^{N} P_{t}^{T_{i-1}} K^{*} \mathbb{Q}_{t}^{T_{i-1}}\left(K^{*}&gt;P_{T_{i-1}}^{T_{1}}\right)-P_{t}^{T_{1}} \mathbb{Q}_{t}^{T_{1}}\left(K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right)
+\]</span>
+Since we have an explicit model now, we can find the dynamics under the <span class="math inline">\(\mathbb{Q}^{T}\)</span> measure. Using that <span class="math inline">\(\beta^{T}\left(t, r_{t}\right)=-\sigma B(t, T)\)</span> along with equation <span class="math inline">\((2.40)\)</span> and the relevant dynamics of the short rate becomes
+<span class="math display">\[
+\mathrm{d} r_{t}=\left[\kappa\left(\theta(t)-r_{t}\right)-\sigma^{2} B(t, T)\right] \mathrm{d} t+\sigma \mathrm{d} W_{t}^{\mathrm{Q}^{T}}
+\]</span>
+To evaluate the probability of the event <span class="math inline">\(\left\{K^{*}&gt;P_{T}^{S}\right\}\)</span> we will use the result from appendix A.3 saying that <span class="math inline">\(r_{T}\)</span> is Gaussian under both <span class="math inline">\(\mathbb{Q}^{T}\)</span> and <span class="math inline">\(\mathbb{Q}^{S}\)</span>. Since <span class="math inline">\(P_{T}^{S}=\mathrm{e}^{-A(T, S)-B(T, S) r T}\)</span>we will have that <span class="math inline">\(P_{T}^{S}\)</span> is log-normal since <span class="math inline">\(-A(T, S)-B(T, S) r_{T}\)</span> is simply a linear combination of a Gaussian variable. Let <span class="math inline">\(r_{T} \mid r_{t} \sim \mathcal{N}\left(\mu(t, T), \nu^{2}(t, T)\right)\)</span>, then we must have that <span class="math inline">\(\ln P_{T}^{S} \mid r_{t} \sim \mathcal{N}\left(\bar{\mu}(t, T, S), \bar{\nu}^{2}(t, T, S)\right)\)</span> where <span class="math inline">\(\bar{\mu}(t, T, S)=-A(T, S)-B(T, S) \mu(t, T)\)</span> and <span class="math inline">\(\bar{\nu}^{2}(t, T, S)=B^{2}(T, S) \nu^{2}(t, T) .\)</span> For a log-normal random variable it holds that <span class="math inline">\(\mathbb{E}_{t}^{Q^{T}}\left[P_{T}^{S}\right]=\)</span> <span class="math inline">\(\mathrm{e}^{\bar{\mu}(t, T, S)+\frac{1}{2} \bar{\nu}^{2}(t, T, S)}\)</span> or equivalently <span class="math inline">\(\tilde{\mu}(t, T, S)=\ln \mathbb{E}_{t}^{\mathrm{Q}^{T}}\left[P_{T}^{S}\right]-\frac{1}{2} \bar{\nu}^{2}(t, T, S)\)</span>. Using this, we may compute the probability of <span class="math inline">\(\left\{K^{*}&gt;P_{T}^{S}\right\}\)</span> under <span class="math inline">\(\mathbb{Q}^{T}\)</span> as follows:
+<span class="math display">\[
+\begin{aligned}
+\mathbb{Q}^{T}\left(K^{*}&gt;P_{T}^{S}\right) &amp;=\mathbb{Q}^{T}\left(\frac{\ln K^{*}-\bar{\mu}(t, T, S)}{\bar{\nu}(t, T, S)}&gt;\frac{\ln P_{T}^{S}-\bar{\mu}(t, T, S)}{\bar{\nu}(t, T, S)}\right) \\
+&amp;=\Phi\left(\frac{\ln K^{*}-\bar{\mu}(t, T, S)}{\bar{\nu}(t, T, S)}\right) \\
+&amp;=\Phi\left(\frac{\ln \left(\frac{K^{*}}{\mathbb{E}_{t}^{0^{T}}\left[P_{T}^{S}\right]}\right)}{\bar{\nu}(t, T, S)}+\frac{1}{2} \bar{\nu}(t, T, S)\right)
+\end{aligned}
+\]</span>
+where <span class="math inline">\(\Phi(\cdot)\)</span> denotes the standard normal CDF. We now recall that <span class="math inline">\(\frac{p_{T}^{S}}{P_{T}^{T}}\)</span> is a martingale under <span class="math inline">\(\mathbb{Q}^{T}\)</span>. Using this property and inserting for <span class="math inline">\(\bar{\nu}(t, T, S)\)</span>, the above probability becomes
+<span class="math display">\[
+\mathbb{Q}^{T}\left(K^{*}&gt;P_{T}^{S}\right)=\Phi\left(\frac{\ln \left(\frac{K^{*} P_{t}^{T}}{P_{t}^{S}}\right)}{B(T, S) \nu(t, T)}+\frac{1}{2} B(T, S) \nu(t, T)\right)
+\]</span>
+The variance of the short rate is derived in appendix A.3 and is given by
+<span class="math display">\[
+\nu^{2}(t, T)=\frac{\sigma^{2}}{2 \kappa}\left(1-\mathrm{e}^{-2 \kappa(T-t)}\right) .
+\]</span>
+By similar argumentation, we can find the probability of <span class="math inline">\(\left\{K^{*}&gt;P_{T}^{S}\right\}\)</span> under <span class="math inline">\(\mathbb{Q}^{S}\)</span>. The only thing that will change is the expectation in (3.58), which should now be evaluated under the <span class="math inline">\(\mathbb{Q}^{S}\)</span>-measure. Appendix A.4 evaluates this expectations and we have that
+<span class="math display">\[
+\mathbb{E}^{Q^{S}}\left[P_{T}^{S}\right]=\frac{P_{t}^{S}}{P_{t}^{T}} \mathrm{e}^{B^{2}(T, S) \nu^{2}(t, T)}
+\]</span>
+By replacing the expectation operator in equation (3.58) with (3.59) we find that
+<span class="math display">\[
+\mathbb{Q}^{S}\left(K^{*}&gt;P_{T}^{S}\right)=\Phi\left(\frac{\ln \left(\frac{K^{*} P_{t}^{T}}{P_{t}^{S}}\right)}{B(T, S) \nu(t, T)}-\frac{1}{2} B(T, S) \nu(t, T)\right)
+\]</span>
+We will summarise the above results in the following theorem.</p>
+<p>Theorem 3.2. In the extended Vasicek model, the price of a cap contract is given by
+<span class="math display">\[
+\operatorname{Cap}_{t}^{T_{N}}=\frac{1}{K^{*}} \sum_{i=1}^{N} P_{t}^{T_{i-1}} K^{*} \Phi\left(-d_{2, i}\right)-P_{t}^{T_{1}} \Phi\left(-d_{1, i}\right)
+\]</span>
+where
+<span class="math display">\[
+d_{1, i}=\frac{\ln \left(\frac{p_{t}^{T_{i}}}{K \cdot P_{t}^{T}-1}\right)}{B\left(T_{i-1}, T_{i}\right) \nu\left(t, T_{i-1}\right)}+\frac{1}{2} B\left(T_{i-1}, T_{i}\right) \nu\left(t, T_{i-1}\right)
+\]</span>
+and
+<span class="math display">\[
+d_{2, i}=d_{1, i}-B\left(T_{i-1}, T_{i}\right) \nu\left(t, T_{t-i}\right)
+\]</span>
+Theorem <span class="math inline">\(3.2\)</span> gives us a closed form solution to the price of an interest rate cap. The price function can be seen as a sum of put options on zero coupon bonds with strike <span class="math inline">\(K^{*}\)</span>, for which Jamshidian (1989) [8] was the first to derive a pricing formula equivalent to the above. It is now possible to calibrate the extended Vasicek model to market quotes. Since interest rate caps are not very liquid in the Danish market, we will use EURIBOR caps as a proxy. As the Danish krone is pegged to the Euro, and since EURIBOR and CIBOR rates tend to move together, we will expect the calibrated parameters to be a good approximation. Figure 5 shows an example of a calibration to Euro cap quotes on the <span class="math inline">\(1^{\text {st }}\)</span> of June 2017 . Given that we have seven quotes and two parameters to be calibrated, the calibration does rather well. The calibrated parameters are <span class="math inline">\(\kappa=4.916 \cdot 10^{-11}\)</span> and <span class="math inline">\(\sigma=0.699 \%\)</span>.</p>
+<p>If we perform this calibration procedure over time, then we will end up with a time series of implied values for <span class="math inline">\(\kappa\)</span> and <span class="math inline">\(\sigma\)</span>. Figure 6 shows the evolution of these parameters. From the figure it is clear that the parameters vary over time but do not diverge or explode. The volatility is low as would be expected for very short interest rates, but the mean reversion hits the zero floor in times of low interest rate levels. The mean reversion could in practice be allowed to become negative, but the model becomes unrealistic for negative <span class="math inline">\(\kappa\)</span> as the short rate will be a diverging process. Hence, it would be meaningless to allow for negative values of <span class="math inline">\(\kappa\)</span>. An extremely low but positive <span class="math inline">\(\kappa\)</span> is also not desirable since <span class="math inline">\(\kappa\)</span> enters as a denominator in the equation for <span class="math inline">\(\hat{\theta}(t)\)</span> in <span class="math inline">\((3.55)\)</span> leading to an explosive behaviour of <span class="math inline">\(\hat{\theta}(t)\)</span>. This calibration problem seems to be very common, see for example Brigo &amp; Mercurio (2006) [5], and is most likely an indication that our model is too simple to describe the behaviour of the cap market. A pragmatic way of proceeding will be to estimate <span class="math inline">\(\kappa\)</span> by maximum likelihood as if we were in the classic Vasicek model and then use this <span class="math inline">\(\kappa\)</span> instead. Appendix A.5 derives the maximum likelihood estimator, and by using the one year swap rate as a proxy for the short rate dynamics we find a <span class="math inline">\(\kappa\)</span> of <span class="math inline">\(7.5 \%\)</span>. Performing a recalibration using this fixed <span class="math inline">\(\kappa\)</span> results in a slightly higher implied volatility, a way more reasonable mean reversion and a non-explosive <span class="math inline">\(\hat{\theta}(t)\)</span>.</p>
+</div>
+<div id="the-delivery-option" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> The Delivery Option</h2>
+<p>With the model extended to take into account the current negative interest rate environment, we remain to incorporate the so called delivery option. We will make the assumption that borrowers are never forced to prepay the remaining notional <span class="math inline">\(F_{t}\)</span> whenever <span class="math inline">\(F_{t}&gt;M_{t}^{a}\)</span>. In this scenario, we will allow the borrower to prepay <span class="math inline">\(M_{t}^{a}\)</span> instead of <span class="math inline">\(F_{t}\)</span>, corresponding to the borrower buying back the bond and delivering it to the mortgage institution. In either case, the borrower will still have to pay the proportional prepayment cost of <span class="math inline">\(X\)</span>, such that the prepaid amount totals <span class="math inline">\((1+X) F_{t}\)</span> if <span class="math inline">\(F_{t}&lt;M_{t}^{a}\)</span> and <span class="math inline">\((1+X) M_{t}^{a}\)</span> if <span class="math inline">\(F_{t}&gt;M_{t}^{a}\)</span>, or equivalently, <span class="math inline">\((1+X) \min \left(F_{t}, M_{t}^{a}\right)\)</span>. We will also collapse the prepayment intensities <span class="math inline">\(\lambda_{1}\)</span> and <span class="math inline">\(\lambda_{2}\)</span> into one prepayment intensity, <span class="math inline">\(\lambda\)</span>. We do so, since there is no longer reason to distinguish the two scenarios, as the mortgage owners can now prepay whenever they find it optimal. Compared to the case with no delivery option, the bond must decrease in value when introducing the delivery option, the reason being that the investor will no longer receive <span class="math inline">\(\min \left(F_{t}, M_{t}^{a}\right) \leq F_{t}\)</span> in a prepayment event. With the new assumptions about the short rate dynamics and the delivery option, we may now modify theorem <span class="math inline">\(3.1\)</span> as follows.</p>
+<p>Theorem 3.3. (The extended Stanton model) A callable mortgage bond will satisfy the following PDEs over the half-open interval <span class="math inline">\(\left[t_{i-1}, t_{i}\right)\)</span>
+<span class="math display">\[
+\begin{aligned}
+&amp;\frac{\partial M^{a}}{\partial t}+\kappa\left(\hat{\theta}(t)-r_{t}\right) \frac{\partial M^{a}}{\partial r}+\frac{1}{2} \sigma^{2} \frac{\partial^{2} M^{a}}{\partial r^{2}}=r_{t} M_{t}^{a}, \\
+&amp;\frac{\partial M^{\ell}}{\partial t}+\kappa\left(\hat{\theta}(t)-r_{t}\right) \frac{\partial M^{\ell}}{\partial r}+\frac{1}{2} \sigma^{2} \frac{\partial^{2} M^{\ell}}{\partial r^{2}}=r_{t} M_{t}^{\ell},
+\end{aligned}
+\]</span>
+with boundary conditions given by
+<span class="math display">\[
+\begin{aligned}
+M_{t_{1}-}^{a} &amp;=\mathrm{e}^{-\frac{1}{n} \lambda_{t_{i}}} M_{t_{i}}^{a}+\left(1-\mathrm{e}^{-\frac{1}{n} \lambda_{t_{2}}}\right) \min \left(F_{t_{1}}, M_{t_{i}}^{a}\right)+\bar{Y} \\
+M_{t_{i}-}^{\ell} &amp;=\mathrm{e}^{-\frac{1}{n} \lambda_{t_{i}}} M_{t_{i}}^{l}+\left(1-\mathrm{e}^{-\frac{1}{n} \lambda_{t_{4}}}\right)(1+X) \min \left(F_{t_{1}}, M_{t_{i}}^{a}\right)+\bar{Y} \\
+\lambda_{t_{i}} &amp;=\lambda 1\left\{M_{t_{i}}^{\ell} \geq(1+X) \min \left(F_{t_{1}}, M_{t_{i}}^{a}\right)\right\}
+\end{aligned}
+\]</span>
+for <span class="math inline">\(i \in\{1,2, \ldots, N\}\)</span> and <span class="math inline">\(M_{t_{N}}^{a}=M_{t_{N}}^{\ell}=0\)</span>.
+Comparing theorem <span class="math inline">\(3.3\)</span> to theorem <span class="math inline">\(3.1\)</span> it might seem that not much has changed, but from a computational viewpoint, we have become challenged. Most importantly <span class="math inline">\(\hat{\theta}(t)\)</span> will have to be respecified each time a new swap curve is available and so will the implied volatility each time new cap quotes are available. From the finite difference implementation in section <span class="math inline">\(3.4\)</span> we found that the matrices <span class="math inline">\(\mathrm{A}\)</span> and <span class="math inline">\(\mathrm{B}\)</span> in equation (3.46) were not changing over time. Hence, only a single matrix inversion of <span class="math inline">\(\mathbf{A}\)</span> was needed, and for that reason we could keep it outside the loop of algorithm 1. Since A and B will now change over time, they will have to be computed in every each loop.</p>
+<p>Prices from the extended Stanton model have been illustrated in figure 7 for a 30 year <span class="math inline">\(2.5 \%\)</span> mortgage bond. From the figure it is clear how negative interest rates are no longer a problem. It can also be seen how the price of the bond decreases as the prepayment intensity increases since it becomes more likely that the borrower will prepay the bond when it becomes optimal. Finally, an increasing prepayment cost increases the price and adds negative convexity to the bond as borrowers will wait for interest rates to become lower before prepaying.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="3-term-strucutre.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="5-estimating-prepayments-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

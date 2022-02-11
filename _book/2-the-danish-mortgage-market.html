@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="1-intro.html"/>
-<link rel="next" href="3-theory.html"/>
+<link rel="next" href="3-term-strucutre.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -54,70 +54,6 @@
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
@@ -169,29 +105,70 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#types-of-mortgage-bonds"><i class="fa fa-check"></i><b>2.1</b> Types of mortgage bonds</a></li>
 <li class="chapter" data-level="2.2" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#the-danish-mortgage-model"><i class="fa fa-check"></i><b>2.2</b> The Danish mortgage model</a></li>
-<li class="chapter" data-level="2.3" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#match-funding-principle"><i class="fa fa-check"></i><b>2.3</b> Match funding principle</a></li>
+<li class="chapter" data-level="2.3" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#balance"><i class="fa fa-check"></i><b>2.3</b> Balance principle</a></li>
 <li class="chapter" data-level="2.4" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#delivery-and-prepayment"><i class="fa fa-check"></i><b>2.4</b> Delivery and prepayment</a></li>
-<li class="chapter" data-level="2.5" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#prepayment-risk"><i class="fa fa-check"></i><b>2.5</b> Prepayment Risk</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="3-theory.html"><a href="3-theory.html"><i class="fa fa-check"></i><b>3</b> Theory</a>
+<li class="chapter" data-level="2.5" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#callable-annuity-bonds"><i class="fa fa-check"></i><b>2.5</b> Callable annuity bonds</a></li>
+<li class="chapter" data-level="2.6" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#prepayment"><i class="fa fa-check"></i><b>2.6</b> Prepayment</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="3-theory.html"><a href="3-theory.html#term-strucutre"><i class="fa fa-check"></i><b>3.1</b> Term Strucutre</a></li>
-<li class="chapter" data-level="3.2" data-path="3-theory.html"><a href="3-theory.html#callable-mortgage-bonds"><i class="fa fa-check"></i><b>3.2</b> Callable Mortgage Bonds</a></li>
-<li class="chapter" data-level="3.3" data-path="3-theory.html"><a href="3-theory.html#estimating-prepayments-application-of-machine-learning"><i class="fa fa-check"></i><b>3.3</b> Estimating prepayments, application of machine learning</a></li>
-<li class="chapter" data-level="3.4" data-path="3-theory.html"><a href="3-theory.html#ke"><i class="fa fa-check"></i><b>3.4</b> Ke</a></li>
+<li class="chapter" data-level="2.6.1" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#calculating-prepayment-gains"><i class="fa fa-check"></i><b>2.6.1</b> Calculating prepayment gains</a></li>
+<li class="chapter" data-level="2.6.2" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#different-types-of-remortgaging-strategies"><i class="fa fa-check"></i><b>2.6.2</b> Different types of remortgaging strategies</a></li>
+<li class="chapter" data-level="2.6.3" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#remortgage-gain-depends-on-several-factors"><i class="fa fa-check"></i><b>2.6.3</b> Remortgage gain depends on several factors</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="4-data.html"><a href="4-data.html"><i class="fa fa-check"></i><b>4</b> Data</a></li>
-<li class="chapter" data-level="5" data-path="5-estimation.html"><a href="5-estimation.html"><i class="fa fa-check"></i><b>5</b> Estimation</a></li>
+<li class="chapter" data-level="2.7" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#estimating-prepayments"><i class="fa fa-check"></i><b>2.7</b> Estimating prepayments</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#data-for-estimating-prepayments"><i class="fa fa-check"></i><b>2.7.1</b> Data for estimating prepayments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html"><i class="fa fa-check"></i><b>3</b> Term strucutre</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#the-short-rate"><i class="fa fa-check"></i><b>3.1</b> The Short Rate</a></li>
+<li class="chapter" data-level="3.2" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#zero-coupon-bonds"><i class="fa fa-check"></i><b>3.2</b> Zero Coupon Bonds</a></li>
+<li class="chapter" data-level="3.3" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#interest-rate-swaps"><i class="fa fa-check"></i><b>3.3</b> Interest Rate Swaps</a></li>
+<li class="chapter" data-level="3.4" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#zero-rates-forward-rates-and-curve-fitting"><i class="fa fa-check"></i><b>3.4</b> Zero Rates, Forward Rates and Curve Fitting</a></li>
+<li class="chapter" data-level="3.5" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#caps-floors"><i class="fa fa-check"></i><b>3.5</b> Caps &amp; Floors</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html"><i class="fa fa-check"></i><b>4</b> Callable Mortgage Bonds</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#callability"><i class="fa fa-check"></i><b>4.1</b> Callability</a></li>
+<li class="chapter" data-level="4.2" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#prepayment-1"><i class="fa fa-check"></i><b>4.2</b> Prepayment</a></li>
+<li class="chapter" data-level="4.3" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#the-mortgage-pde"><i class="fa fa-check"></i><b>4.3</b> The Mortgage PDE</a></li>
+<li class="chapter" data-level="4.4" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#pricing-by-finite-differences"><i class="fa fa-check"></i><b>4.4</b> Pricing by Finite Differences</a></li>
+<li class="chapter" data-level="4.5" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#the-extended-vasicek-model"><i class="fa fa-check"></i><b>4.5</b> The Extended Vasicek Model</a></li>
+<li class="chapter" data-level="4.6" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#the-delivery-option"><i class="fa fa-check"></i><b>4.6</b> The Delivery Option</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-estimating-prepayments-1.html"><a href="5-estimating-prepayments-1.html"><i class="fa fa-check"></i><b>5</b> Estimating Prepayments</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="5-estimating-prepayments-1.html"><a href="5-estimating-prepayments-1.html#the-danish-prepayment-data"><i class="fa fa-check"></i><b>5.1</b> The Danish Prepayment Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-theory.html"><a href="6-theory.html"><i class="fa fa-check"></i><b>6</b> Theory</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="6-theory.html"><a href="6-theory.html#term-strucutre-1"><i class="fa fa-check"></i><b>6.1</b> Term Strucutre</a></li>
+<li class="chapter" data-level="6.2" data-path="6-theory.html"><a href="6-theory.html#callable-mortgage-bonds-1"><i class="fa fa-check"></i><b>6.2</b> Callable Mortgage Bonds</a></li>
+<li class="chapter" data-level="6.3" data-path="6-theory.html"><a href="6-theory.html#estimating-prepayments-application-of-machine-learning"><i class="fa fa-check"></i><b>6.3</b> Estimating prepayments, application of machine learning</a></li>
+<li class="chapter" data-level="6.4" data-path="6-theory.html"><a href="6-theory.html#ke"><i class="fa fa-check"></i><b>6.4</b> Ke</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7-data.html"><a href="7-data.html"><i class="fa fa-check"></i><b>7</b> Data</a></li>
+<li class="chapter" data-level="8" data-path="8-estimation.html"><a href="8-estimation.html"><i class="fa fa-check"></i><b>8</b> Estimation</a></li>
 <li class="chapter" data-level="" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i>Discussion</a></li>
 <li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a></li>
+<li class="chapter" data-level="A" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#vasicek-odes"><i class="fa fa-check"></i><b>A.1</b> Vasicek ODEs</a></li>
+<li class="chapter" data-level="A.2" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#fitting-the-initial-term-structure"><i class="fa fa-check"></i><b>A.2</b> Fitting the Initial Term structure</a></li>
+<li class="chapter" data-level="A.3" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#the-variance-of-the-short-rate"><i class="fa fa-check"></i><b>A.3</b> The Variance of the Short Rate</a></li>
+<li class="chapter" data-level="A.4" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#the-expected-value-under-mathbbqs"><i class="fa fa-check"></i><b>A.4</b> The Expected Value Under <span class="math inline">\(\mathbb{Q}\)</span>^S</a></li>
+<li class="chapter" data-level="A.5" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#vasicek-mle"><i class="fa fa-check"></i><b>A.5</b> Vasicek MLE</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html"><i class="fa fa-check"></i>Roadmap</a>
 <ul>
 <li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#timeline"><i class="fa fa-check"></i>Timeline</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#logbook"><i class="fa fa-check"></i>Logbook</a>
+<ul>
 <li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#theory-1"><i class="fa fa-check"></i>Theory</a></li>
 <li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#data-1"><i class="fa fa-check"></i>Data</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -239,47 +216,137 @@ div.csl-indent {
 <h2><span class="header-section-number">2.2</span> The Danish mortgage model</h2>
 <p>The Danish mortgage model is based upon a stable and transparent system, with several advantages and unique features. Since mortgage banks does not function as commercial banks, and only able to fund loans through the sale of bonds which limits the risk of the mortgage banks Hence, the mortgage bank protects the investor from borrower defaulting. The mortgage bank secures the issued bond by using the cover pool which consist of collateral in terms of the claims against the borrows as well as additional securities posed by the mortgage bank to protect the investor from losses. These securities constitute what is known as overcollateralization and should be of very high credit quality.</p>
 </div>
-<div id="match-funding-principle" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Match funding principle</h2>
-<p>The match-funding principle entails that for every loan made by the mortgage bank, a new bond is issued with matching cash-flow properties. This eliminates mismatch in cash-flows and refinancing risk for the mortgage bank, which also secures payments to the bondholder. In the Danish mortgage system the mortgage bank functions as an intermediary between the investor and the borrower. Mortgage banks funds loans on a current basis, meaning that hte bond must be sold before the loan can be given. This also entails that the market price of the bond determines the loan rate. THe loan is therefore equal to the investment, which passes through the mortgage bank. Repayment and interest from the borrower to investor also passed through them mortgage bank, however the mortgage bank changes the borrower a margin though the lifetime of the loan, which is a percentage of the debt outstanding.</p>
+<div id="balance" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Balance principle</h2>
+<p>The Balance principle entails that for every loan made by the mortgage bank, a new bond is issued with matching cash-flow properties. This eliminates mismatch in cash-flows and refinancing risk for the mortgage bank, which also secures payments to the bondholder. In the Danish mortgage system the mortgage bank functions as an intermediary between the investor and the borrower. Mortgage banks funds loans on a current basis, meaning that hte bond must be sold before the loan can be given. This also entails that the market price of the bond determines the loan rate. THe loan is therefore equal to the investment, which passes through the mortgage bank. Repayment and interest from the borrower to investor also passed through them mortgage bank, however the mortgage bank changes the borrower a margin though the lifetime of the loan, which is a percentage of the debt outstanding.</p>
 <p>Since mortgage banks is only an intermediary it is not affected by changes in the floating rate, as it passes repayments and interest through to the investor. The drawback for the mortgage bank is that it endures the credit risk in the event of a default of the borrower, as it still has to make repayment and interest to the bond holder. This however protects the investor as the credit risk is removed, but is also a great incentive for the mortgage bank to put an emphasis on the due diligence process when issuing loans and adds to the stability of the system. Part of the due diligence is not only the valuing the property when making a credit assessment of a potential borrower, but also assessing the borrower’s current economic situation including income and wealth based on legislation that dictates eligibility for granting and funding loans.</p>
 </div>
 <div id="delivery-and-prepayment" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Delivery and prepayment</h2>
-<p>A central unique feature of the Danish mortgage model is the delivery option which means that the borrower always ahs the possibility of buying the underlying bond in the market, and delivering it back to the mortgage bank, which then cancels the loan. This is unique way for the borrower to reduce the notional amount of the loan if interest rate rises, and the related bond price falls. It is also a hedging effect on the expected drop in house prices that follows increasing interest rates as the two effect offset each other. This has no effect on the investor in terms of payments made from the investors to the bondholders.</p>
+<p>A central unique feature of the Danish mortgage model is the delivery option which means that the borrower always has the possibility of buying the underlying bond in the market, and delivering it back to the mortgage bank, which then cancels the loan. This is unique way for the borrower to reduce the notional amount of the loan if interest rate rises, and the related bond price falls. It is also a hedging effect on the expected drop in house prices that follows increasing interest rates as the two effect offset each other. This has no effect on the investor in terms of payments made from the investors to the bondholders.</p>
 <p>Callables bonds also have a prepayment option( embedded call-option). The prepayment option gives the borrower the opportunity to repay the loan at pari (100) at every quarter throughout the lifetime of the loan.</p>
 <p>Capped floaters have a similar prepayment option, however the prices depends on the contract is typically 105. This is favorable when the current available coupon rate is below the coupon rate on the mortgage.</p>
 <p>The prepayment on Danish callables and capped floaters are more difficult to price than corresponding bond without the prepayment option and come with an additional option and come with an additional prepayment risk for the investor, this is however compensated with a higher interest rate.</p>
-<p>The prepayment risk arises from the option to prepay the loan at pari, which exposes the investor to the risk of not being able to reinvest at the same conditions. The rational scenarios for prepayment are depicted in figure <a href="2-the-danish-mortgage-market.html#fig:prepayment">2.1</a></p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:prepayment"></span>
-<img src="figure/Prepay.png" alt="Pricing curve of Callabalbe Bonds and Non-callable bonds." width="100%" />
+<p>The prepayment risk arises from the option to prepay the loan at pari, which exposes the investor to the risk of not being able to reinvest at the same conditions. The rational scenarios for prepayment are depicted in figure <a href="#fig:prepayment"><strong>??</strong></a></p>
+<div class="figure" style="text-align: center">
+<img src="figure/Prepayment_notice_dates.png" alt="Pricing curve of Callabalbe Bonds and Non-callable bonds." width="100%" />
 <p class="caption">
-Figure 2.1: Pricing curve of Callabalbe Bonds and Non-callable bonds.
+(#fig:important dates)Pricing curve of Callabalbe Bonds and Non-callable bonds.
 </p>
 </div>
 <p>When prices are close to par the price of the callable bond is lower than the price of a non-callable bond, i.e. government bond, as the chance of prepayment increases. However the borrowers are not always rational, which can create opportunities for the active investor, but is also a source of risk for a buy-and-hold strategy.</p>
 </div>
-<div id="prepayment-risk" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Prepayment Risk</h2>
-<p>The borrowers have the possibility to repay (part of) the notional before maturity, these kinds of anticipated and unexpected payments are called prepayment. this make the duration of the mortgage bond stochastic, which creates complication in refinancing for the investor. The investor is interested in prepayment rate on a security level, rather than a single borrower.<br />
-A prepayment option is an option which “reflect the difference between the value of the outstanding loan repayments at the interest rate at the time of the prepayment for the remaining term of the loan minus the amount of the loan then outstanding (which is the value of the outstanding loan repayments at the original loan interest rate) <span class="citation">(SHERRIS 1994)</span>.<br />
-if the interest rate goes down then the option is in the money, controversially if the interest rate goes up the optionality is out of the money. The exercise price of this call is equal to the loan outstanding. Rationally, the call should be exercised only if the difference mentioned above is positive since, otherwise, the option is worth more if you don’t exercise it. Meaning thta it is more convenient to put money in a saving account rather than prepay the mortgage. However borrowers does not always act economically rational though, from now on we will use the the term non-ration to identify something that differs from the economically rational behaviour explained earlier.</p>
-<p>An American call option on an amortizing reducing term swap could be a good instrument to hedge the prepayment option, but the ideal hedge instrument may not exist. For instance, assuming that the duration on the financing and of the loan are perfectly matched, suppose a 20 years mortgage loan at 4% is financed with a 20 years bond paying 3.5 %. If the interest rate goes down to 3%, the borrower will have to refinance at the new rate prepaying the old mortgage and opening a new one at the lower interest rate. However, the bank will still have the obligation of paying 3.5 % interest on the bond used to finance the first loan. Moreover, since the price of the perfect hedge instrument is equal to the cost of the prepayment option., if this instrument existed, it could be use to price the option <span class="citation">(SHERRIS 1994)</span>.</p>
-<p>The possibility to prepay exposes the bank to prepayment risk, which can be divided in two classes <span class="citation">(Consalvi and Freca 2010)</span></p>
+<div id="callable-annuity-bonds" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Callable annuity bonds</h2>
+<p>Callable annuity bonds are unique to the Danish covered bond market. Traditionally,
+callable annuity bonds were the only type of bonds issued in the Danish covered bond market but the introduction of new products has expanded market diversity. Originally, this type of bond had two payment dates per year but four has been the norm since 1985. Standard payment dates are 1 January, 1 April, 1 July and 1 October. Maturities are primarily 10, 15, 20 or 30 years. Callable annuity bonds are fixed rate bonds with an embedded call option. The embedded call option enables borrowers to prepay their loan at par at each payment date during the duration of the loan.</p>
+<p>Traditionally, all callable loans were issued as annuity loans (level-pay loans). Annuity loans amortise with equal payments consisting of principal and interest but the amount of principal repaid increases over time, while the amount of interest decreases. In 2003, deregulation enabled mortgage banks to offer borrowers interest-only payments for up to 10 years. Callable annuity loans with an interest-only option are funded in separate callable bond series (interest-only hybrids).</p>
+<p>Borrowers’ interest payments and redemptions made on the payment dates are distributed to investors in accordance with the percentage of bonds drawn so that any investor’s holding in a given bond series corresponds to the overall percentage of bonds drawn in that series. The amount is rounded to the nearest øre (DKK0.01) for bonds denominated in Danish kroner and euro cents for bonds denominated in euro. The amounts of bonds drawn are published on the publication date.</p>
+<p>There is no direct link between the borrower and the investor in the sense that the investor does not buy a bond in the name of a specific person or property. The pool of borrowers in a bond series may consist of both private and corporate borrowers. The repayments at one payment date are the sum of the redemptions from all borrowers in the pool. Every month the mortgage banks publish the borrower distribution of each bond series to enable investors to predict prepayment behaviour.</p>
+<p>Callable bond series are open for issuance for a period of three years<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, e.g. between 1 September 2014 and 31 August 2017 all 30-year loans were financed through the issuance of bonds maturing in 2047 and all 20-year loans by bonds maturing in 2037. When the bond series with maturity 2037 and 2047 closed for issuance as of 31 August 2017, new callable fixed rate loans are issued in new bond series with maturity 2040 and 2050. On account of this opening period and the possibility of taking a loan with a shorter maturity than the bond’s maturity, the actual cash flow on a bond is not equivalent to the theoretical cash flow of a callable bond. Hence, the calculation of key figures on bonds requires information about the actual cash flow. After each payment date, the mortgage banks
+supply these figures to the OMX Nordic Exchange.</p>
+<p>Mortgage banks have agreed not to offer callable loans based on bonds priced above par, referred to as the par rule, to avoid arbitrage from borrowers simultaneously disbursing a loan at a price above par and prepaying the loan at par. Note, however, that while a loan offer cannot be made to borrowers in a bond series trading above par, the actual disbursement and subsequent tap can happen in bond series trading above par at the time the loan is granted as loan offers can be outstanding for up to six months. If a borrower with a loan size above DKK 3M obtains a loan in a bond series trading above 100 the borrower cannot prepay for the following 12 months. The opening period of a bond series may therefore be shortened if bond prices exceed par but the bond series will be reopened for issuance if the price falls below par again.</p>
+<p>Mortgage banks generally only offer loans in series trading fairly close to but below par due to the pull-to-par effect and risk of a sudden fall in interest rates. If a loan is offered in bonds trading far below par the pull-to-par effect will over time imply that the borrower could become technically insolvent as the LTV would mechanically increase. The same would happen if interest rates were to suddenly fall massively – as the bond would effectively have a 10 to 15 year duration LTV would increase requiring the mortgage bank to fund supplementary collateral. If the bond trades close to par even markedly lower interest rates would not change the LTV by much due to the negative convexity around these price levels.</p>
+<p>The traditional positively convex relationship between the level of interest rates and the prices of traditional bonds is not directly applicable to callable bonds. The reason is that a callable bond can be considered as a portfolio of a non-callable bond and a sold option to repay the bond at par. As interest rates decline and the price of the bond rises above par, the value of the option will rise, see figure <a href="#fig:prepayment"><strong>??</strong></a></p>
+<p>Compared with a non-callable bond, the price is kept down when interest rates decline, as debtors are likely to start repaying the bond at par. When a bond becomes extremely exposed to prepayments, the price will fall when interest rates fall. Conversely, these bonds may offer a defensive investment alternative for investors who expect increasing interest rates.</p>
+</div>
+<div id="prepayment" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Prepayment</h2>
+<p>Borrowers raising a callable mortgage loan are entitled to prepay the mortgage at par prior to maturity. A borrower’s right to prepay is embedded in one or two prepayment options</p>
 <ul>
-<li><p>Interest rate risk - This arises because fixed rate mortgage are hedged against interest rate change using Interest Rate Swaps (IRS). The bank receives the floating rate and pays the fixed one, this means that a prepayment may expose the bank to the possibility of paying a fixed rate on the derivative which is higher than the one obatined on the new loans.</p></li>
-<li><p>Liquidity risk - Arises from the fact that the liquidity profile of the bank is strongly influence by the maturity profile of the mortgage conditional to prepayments. An incorrect estimation of this quantity leads to the risk of under or over funding and of higher long-term liquidity costs.</p></li>
+<li><p>Callable loans have an embedded call option and a delivery option.</p></li>
+<li><p>Non-callable loans have an embedded delivery option only.</p></li>
 </ul>
-<p>Since prepayment are substation risk for the investor, is is fundamental to be able to predict the conditional prepayment rate (CPR), which is the proportion of the pricing of a pool of loans assumed to prepay in each period, in order to better forecast future cash flows.<br />
-When modelling mortgage prepayment, we cannot just use the rational assumption as mentioned earlier to evaluate contracts (e.g. prepay only when the interest rate goes down), but we have to take into account the behaviour aspect as well, and hence we need to have a behavioural approach. In such a model we take into account factors usually estimated through statical analysis, in order to explain effect that otherwise could not have been explained. These kinds of techniques are called exogenous models, in opposition to optional prepayment models that see prepayment just as a consequence of rational behaviour e.g prepayment is always exercised at an optimal time by the borrower.<br />
-For these reason, rather than using a rational prepayment model for which the prepayment rate depends on just the rate evolution, an empirical model which is capable of taking into account other factors is chosen. This CPR is a function of some variable like the refinance incentive, the seasoning, the age of the loan, etc,</p>
-
+<p>To comply with the specific balance principle described in section <a href="2-the-danish-mortgage-market.html#balance">2.3</a>, the borrower’s call option must be embedded in issued covered bonds in order to achieve a perfect hedge, i.e. the mortgage banks do not suffer a loss when call options are exercised. The delivery option is embedded in almost all loans originated by Danish mortgage banks. It should be stressed that a loan does not necessarily have to be terminated or prepaid when a property changes hands. Accordingly, when a property is sold, the mortgage bank decides whether the new
+owner can take over the loan.</p>
+<p>If a borrower wants to exercise the call option and prepay a loan at par, he may choose between immediate prepayment and prepayment on the payment date. The former is the most common choice. Borrowers must give two months’ notice before exercising the call option, i.e. notification dates are 31 January, 30 April, 31 July and 31 October.</p>
+<p>About 40 days prior to the payment date, accurate information on the prepayment volumes for the individual bond series is available on the publication date. Extraordinary prepayments are distributed among investors according to the same principle of drawing as described above for ordinary repayments (see Chapter 5). The bond trades ex-principal (exprepayment) two days before the term date31</p>
+<p>Immediate prepayment means that the remaining debt and interest payments are payable to the mortgage bank within three days, i.e. prior to the payment date. However, as investors are still entitled to their coupon payments, the borrower still has to pay the coupon until the payment date (1 January, 1 April, 1 July and 1 October), which, in principle, is the first date on which the loan may be prepaid.</p>
+<p>Thus, the borrower prepays the remaining principal plus the coupon payment for the period until the payment date. The borrower is compensated for making the funds available to the mortgage bank until the payment date (see chart below). This compensation is normally calculated at a rate close to the current money-market rate.</p>
+<p>Prepayment on the payment date means that the borrower does not have to prepay the
+remaining principal and the coupon due until the payment date.</p>
+<p>When a borrower prepays a loan, it usually raises a new one. This involves two separate transactions and the borrower is therefore free to raise a mortgage loan with a different mortgage bank than the one with which the repaid loan was raised.</p>
+<p>When a borrower exercises the delivery option, the underlying bonds are purchased at market price. By delivering the bonds to the mortgage bank, the loan is – fully or partially – redeemed. The borrower runs the hypothetical risk of not being able to buy the bond due to lock-in effects and the mortgage banks suffer no loss when the option is exercised.</p>
+<p>Borrowers will exercise the delivery option only if the bond price is below par and will be charged a trading fee typically of 0.10-0.30% depending on the loan size.</p>
+<p>Observed prepayment rates are indicated in the chart below and include both delivery and call option prepayments. As can be seen, observed prepayments are closely correlated to a decline in long-term interest rates, suggesting that remortgaging at a lower interest rate is the main reason for prepayment.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:prepaymentvsswap"></span>
+<img src="figure/Interest_rate_and_prepayment_correlation.png" alt="Pricing curve of Callabalbe Bonds and Non-callable bonds." width="100%" />
+<p class="caption">
+Figure 2.1: Pricing curve of Callabalbe Bonds and Non-callable bonds.
+</p>
+</div>
+<div id="calculating-prepayment-gains" class="section level3" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Calculating prepayment gains</h3>
+<p>Most Danish mortgage loans are prepaid in connection with remortgaging (debt management) or in connection with the sale of a house (though prepayment is not compulsory, as the loan may be taken over by the new owner).</p>
+<p>The advisory services provided by banks and mortgage banks focus on the gain on the first year’s net payments and on the net present value of the old loan and the new loan alternative.</p>
+<p>Today, borrowers focus primarily on liquidity savings in the form of lower net payments and their required gains are therefore measured mainly in terms of the difference between the first year’s net payments on the existing loan and the new loan. In some cases, the first year’s net payments are reduced but the gain measured in terms of the net present value of future payments is negative. This would typically be the case if the borrower chooses to raise a loan with a longer term to maturity than the old loan. Under such circumstances, some borrowers will want to refinance, while others prefer to wait until the net present value gain is positive and above a threshold level.</p>
+<p>The second parameter in the advisory service is the difference in net present values, also called the prepayment gain</p>
+<p>The calculation of the prepayment gain is very sensitive to the yield curve applied. In practice, a flat yield curve corresponding to the after-tax yield on the refinancing alternative is often applied. The prepayment gain can be calculated using the following formula.</p>
+<p><span class="math display">\[
+\text { Prepayment gain }=\frac{\text { NPV }(\text { old loan })-(\text { rem. debt }+\text { costs }) \cdot \text { Disc }}{N P V(\text { old loan })}
+\]</span>
+NPV (old loan) is the net present value of the old loan, corresponding to the remaining after-tax payments discounted at the after-tax yield of the new refinancing alternative. The rem. debt is the remaining debt to be refinanced and costs are the refinancing costs. Disc is the discounting factor from the payment date to the actual date on which the borrower decides to prepay the loan (no later than the notification date).</p>
+<p>The borrower will most often be advised to refinance the mortgage based on a financial gain calculated in percent (as shown above) but also in absolute value.</p>
+</div>
+<div id="different-types-of-remortgaging-strategies" class="section level3" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> Different types of remortgaging strategies</h3>
+<p>Borrowers have gradually become more conscious of managing their debt and increasingly use different remortgaging strategies to optimise their home financing.</p>
+<p>Their choice of remortgaging strategy is heavily dependent on interest rate movements since the existing loan was raised and, in certain cases, the borrower’s expectations with regard to future changes in interest rates. Below we set out a brief description of the most commonly used remortgaging strategies.</p>
+<p>Following a substantial decline in interest rates, borrowers will benefit from remortgaging an existing loan to a new loan with a lower nominal rate of interest, as described above. The borrower will receive a gain in the form of lower future net payments and thus lower first-year net payments due to the lower interest rate. However, this type of remortgaging typically results in an increase in outstanding debt, depending on the price of the bonds underlying the new loan.</p>
+<p>Following substantial increases in long-term interest rates, the borrower is able to reduce the outstanding debt by redeeming the old loan at a low market price and refinancing it through new bonds at a higher coupon than that of the original loan. However, this type of remortgaging leads to rising future payments because of the higher interest payments. Such remortgaging is therefore profitable only if interest rates decline again within a short time period. Borrowers initially achieve a reduction in their outstanding debt at the expense of higher payments, which they hope to be able to reduce by remortgaging to a lower coupon later.</p>
+<p>The introduction of interest-reset loans (see Chapter 5) formed the basis of a new type of remortgaging strategy. In periods of rising long-term interest rates and a substantial steepening of the yield curve and in periods of plunging short-term interest rates, borrowers holding a loan funded by long-term fixed rate bonds may remortgage their loans by redeeming the loan and refinancing it by raising a loan based on short-term bonds. The gain achieved from adopting this strategy is a reduction in the outstanding debt and lower future mortgage payments, assuming that future short-term refinancing rates remain low. In the opposite case, where long-term interest rates have plummeted and short-term interest rates are higher than long-term interest rates, the borrower is able to reduce his mortgage payments by remortgaging from an interest-reset loan based on short-term bonds to a fixed interest rate loan based on long-term bonds.</p>
+<p>Following the introduction of interest-reset loans, borrowers have greater opportunities for achieving future remortgaging gains because redemption of the existing loan and disbursement of the new loan may take place at interest rates across the yield curve.</p>
+</div>
+<div id="remortgage-gain-depends-on-several-factors" class="section level3" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> Remortgage gain depends on several factors</h3>
+<p>The remortgaging gain generally depends on several debtor-specific factors. Hence, it is of significance whether the borrower is a private individual or a corporate borrower because the tax deduction rate for interest paid by the borrower varies. However, in recent years, the tax deduction rate for private borrowers has been gradually.</p>
+<p>In ‘The Whitsun Package,’ which was part of the 1998 tax reform, the tax deduction rate for private individuals was reduced from an average of 46% to 33% and in the most recent tax reform, ‘Forårspakken 2.0’ from February 2009, the tax deduction rate was reduced yet again from 33% to 25% over a transitional period from 2012 to 2019. The deductible rate for businesses has also been reduced in recent years and stands at 22% today, compared with 34% in 1998.</p>
+<p>Moreover, the size of the remaining principal typically determines the remortgaging gain. If the remaining principal is small, the refinancing costs in the form of a fixed fee weigh more. The gain is therefore relatively smaller than for a large remaining principal.</p>
+<p>Finally, the remortgaging gain may depend on the term to maturity. Hence, the achieved gain is typically greater when refinancing a 30-year loan than when financing a shorter -term loan.</p>
+<p>In recent years, greater attention in the media and campaigns launched by mortgage banks have resulted in borrowers responding more quickly to the opportunities for a remortgaging gain.</p>
+<p>Advisory services have also become more sophisticated and borrowers are able to have their refinancing opportunities monitored, meaning they are contacted when the remortgaging gain exceeds a pre-agreed level.</p>
+</div>
+</div>
+<div id="estimating-prepayments" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Estimating prepayments</h2>
+<p>Estimating prepayments is essential to the pricing of callable covered bonds — not just for the coming payment date but also for all future payment dates. Prepayments are important to investors as they affect cash flows. As a result, the duration of callable bonds is affected by changes in the estimated prepayment rates.</p>
+<p>There are several different models for estimating prepayments, one of the most commonly used being the so-called capital gain requirement model where the parameters of the model are estimated based on historical prepayment data. This model assumes that a given debtor will refinance his loan if the obtainable remortgaging gain is greater than his debtor-specific required gain. Furthermore, the model allows for different debtor patterns by assuming that the various groups in the debtor distribution behave differently when it comes to borrowers’ inclination to refinance at various rates. Before 1 January 2016, Danske Bank also used such a model to estimate the risk of callable bonds. In the section Danske Bank’s old model for callable bonds (traditional model), we have described our old model, which in many ways is similar to other banks’ models for callable bonds.</p>
+<p>Instead of using a traditional method/model to estimate future levels of prepayments for callable bonds, Danske Bank has chosen a new path. Our new model approach is not to estimate future prepayments based on historical prepayments data (as we did before with the traditional model), but to estimate the prepayments implied by the market. Hence, this is a new and unique method to calculate the risk of callable bonds.</p>
+<div id="data-for-estimating-prepayments" class="section level3" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Data for estimating prepayments</h3>
+<p>One of the most important factors affecting a borrower’s prepayment decision is the gain from refinancing as described in Chapter 7. Historical prepayment rates and debtor distributions are used in the estimation of the parameters in traditional capital gain requirement models (traditional models).</p>
+<p>Historical prepayment rates for each series give a first impression of the remortgaging sensitivity of a bond series. Traditionally, series that have experienced significant prepayments can be characterised as ‘having lost their prepayment potential’ as the remaining borrowers have presumably been able to realise decent refinancing gains at an earlier date. However, we increasingly see so-called burned-out series continuing to experience high prepayment rates.</p>
+<p>The debtor distribution of a bond series is a breakdown of the total underlying remaining debt. A debtor distribution table breaks down loans into five groups according to the size of the remaining debt in DKKm, the share of cash and bond loans and the share of corporate and private loans. This type of distribution makes it possible to divide borrowers into 20 debtor groups.</p>
+<p>In traditional models, large corporate loans are generally assumed to have a higher remortgaging rate than small private loans, because these loans, due to the higher remaining principal, have a lower percentage cost when prepaying. The size of the remaining principal is important due to both its relation to fixed remortgaging costs and the psychological factor that makes a gain of DKK100,000 more tempting than a gain of DKK1,000.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:prepay"></span>
+<img src="figure/Prepay.png" alt="Pricing curve of Callabalbe Bonds and Non-callable bonds." width="100%" />
+<p class="caption">
+Figure 2.2: Pricing curve of Callabalbe Bonds and Non-callable bonds.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:debitor"></span>
+<img src="figure/Debtor%20distribution.png" alt="Pricing curve of Callabalbe Bonds and Non-callable bonds." width="100%" />
+<p class="caption">
+Figure 2.3: Pricing curve of Callabalbe Bonds and Non-callable bonds.
+</p>
+</div>
+<p>Every week, the individual mortgage banks publish preliminary prepayments for each
+series for future, non-published payment dates. These prepayments allow for an estimation of the volume of prepayments for the next payment date (comparison with previous payment dates). They also allow for a calculation of the share of total prepayments for a given announced preliminary prepayment by using prepayment data at the same time prior to the previous payment date. The preliminary prepayment rates are used in Danske Bank’s new model (SuperFly) and in the old model (Danske Analytics).</p>
+<p>Typically, preliminary prepayments are characterised by a strong exponential increase up to expiry of the notification period. Any expectation based on announced prepayments therefore becomes more reliable as the expiry of the notification period approaches. One may also track any differences between the institutions up to the notification date.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:PrepaymentRates"></span>
+<img src="figure/evolution%20in%20prepayments.png" alt="Pricing curve of Callabalbe Bonds and Non-callable bonds." width="100%" />
+<p class="caption">
+Figure 2.4: Pricing curve of Callabalbe Bonds and Non-callable bonds.
+</p>
+</div>
+</div>
 </div>
 </div>
 <div class="footnotes">
 <hr />
 <ol start="1">
 <li id="fn1"><p>Nationalbanken Statistics - DNRUDDKI<a href="2-the-danish-mortgage-market.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>The opening period can in certain circumstances be shorter or longer than three years, e.g. in connection with implementation of the new Mortgage Act in July 2007, the 2038 bond series was closed early and the opening period for the 2041 series was extended to almost four years.<a href="2-the-danish-mortgage-market.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -288,7 +355,7 @@ For these reason, rather than using a rational prepayment model for which the pr
         </div>
       </div>
 <a href="1-intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="3-theory.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="3-term-strucutre.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -342,6 +409,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

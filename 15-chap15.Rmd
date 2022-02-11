@@ -1,0 +1,224 @@
+`r if(knitr:::is_latex_output()) '\\appendix'`
+
+`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'` 
+
+
+# The First Appendix
+
+## Vasicek ODEs
+
+We have to find the solutions to the ODEs of equations (3.51) and (3.52). If we guess a solutions $B(t, T)=\frac{1}{\kappa}\left(1-\mathrm{e}^{-\kappa(T-t)}\right)$ and insert into equation (3.52) we see that the ODE is satisfied
+$$
+1+\frac{\mathrm{d} B(t, T)}{\mathrm{d} t}-\kappa B(t, T)=1-\mathrm{e}^{-\kappa(T-t)}-\kappa \frac{1}{\kappa}\left(1-\mathrm{e}^{-\kappa(T-t)}\right)=0
+$$
+The boundary condition $B(T, T)=\frac{1}{\kappa}\left(1-\mathrm{e}^{-\kappa(T-T)}\right)=0$ is also satisfied. Inserting $B(t, T)$ into the ODE (3.51) and integrating from $t$ to $T$ we get
+$$
+A(T, T)-A(t, T)+\kappa \int_{t}^{T} \hat{\theta}(s) B(s, T) \mathrm{d} s-\frac{1}{2} \sigma^{2} \int_{t}^{T} B^{2}(s, T) \mathrm{d} s=0
+$$
+Using that $A(T, T)=0$ and rearranging we get
+$$
+A(t, T)=\kappa \int_{t}^{T} \hat{\theta}(s) B(s, T) \mathrm{d} s-\frac{1}{2} \sigma^{2} \int_{t}^{T} B^{2}(s, T) \mathrm{d} s
+$$
+We now evaluate the integral over $B^{2}(t, T)$ :
+$$
+\begin{aligned}
+\int_{t}^{T} B^{2}(s, T) \mathrm{d} s &=\int_{t}^{T} \frac{1}{\kappa^{2}}\left(1+\mathrm{e}^{-2 \kappa(T-s)}-2 \mathrm{e}^{-\kappa(T-s)}\right) \mathrm{d} s \\
+&=\frac{1}{\kappa^{2}}\left((T-t)+\frac{1}{2 \kappa}-\frac{1}{2 \kappa} \mathrm{e}^{-2 \kappa(T-t)}-\frac{2}{\kappa}+\frac{2}{\kappa} \mathrm{e}^{-\kappa(T-t)}\right) \\
+&=\frac{1}{\kappa^{2}}\left((T-t)-\frac{1}{2 \kappa}\left(1+\mathrm{e}^{-2 \kappa(T-t)}-2 \mathrm{e}^{-\kappa(T-t)}\right)-B(t, T)\right) \\
+&=\frac{1}{\kappa^{2}}\left((T-t)-\frac{\kappa}{2} B^{2}(t, T)-B(t, T)\right)
+\end{aligned}
+$$
+Inserting (A.2) in (A.1) and we find the expression for $A(t, T)$ :
+$$
+A(t, T)=\kappa \int_{t}^{T} \hat{\theta}(s) B(s, T) \mathrm{d} s+\frac{\sigma^{2}}{4 \kappa} B^{2}(t, T)+\frac{\sigma^{2}}{2 \kappa^{2}}(B(t, T)-(T-t))
+$$
+
+## Fitting the Initial Term structure
+
+We want to confirm that the function for $\hat{\theta}(t)$ given in equation $(3.55)$ indeed fits the initial term structure. We start out by differentiating $A(0, t)$ with the purpose of isolating $\hat{\theta}(t):$
+$$
+\frac{\mathrm{d} A(0, t)}{\mathrm{d} t}=\frac{\mathrm{d}}{\mathrm{d} t}\left(\kappa \int_{0}^{t} \hat{\theta}(s) B(s, t) \mathrm{d} s+\frac{\sigma^{2}}{4 \kappa} B^{2}(0, t)+\frac{\sigma^{2}}{2 \kappa^{2}}(B(0, t)-t)\right)
+$$
+$$
+\begin{aligned}
+&=\kappa \int_{0}^{t} \hat{\theta}(s) \mathrm{e}^{-\kappa(t-s)} \mathrm{d} s+\frac{\sigma^{2}}{2 \kappa} B(0, t) \frac{\mathrm{d} B(0, t)}{\mathrm{d} t}+\frac{\sigma^{2}}{2 \kappa^{2}} \frac{\mathrm{d} B(0, t)}{\mathrm{d} t}-\frac{\sigma^{2}}{2 \kappa^{2}} \\
+&=\kappa \int_{0}^{t} \hat{\theta}(s) \mathrm{e}^{-\kappa(t-s)} \mathrm{d} s-\frac{\sigma^{2}}{2 \kappa^{2}}\left(\mathrm{e}^{-\kappa t}-\mathrm{e}^{-2 \kappa t}\right)-\frac{\sigma^{2}}{2 \kappa^{2}} \mathrm{e}^{-\kappa t}-\frac{\sigma^{2}}{2 \kappa^{2}} \\
+&=\kappa \int_{0}^{t} \hat{\theta}(s) \mathrm{e}^{-\kappa(t-s)} \mathrm{d} s-\frac{\sigma^{2}}{2} B^{2}(0, t)
+\end{aligned}
+$$
+We now find the second derivative to be
+$$
+\begin{aligned}
+\frac{\mathrm{d}^{2} A(0, t)}{\mathrm{d} t^{2}} &=\kappa \hat{\theta}(t)-\kappa^{2} \int_{0}^{t} \hat{\theta}(s) \mathrm{e}^{-\kappa(t-s)} \mathrm{d} s-\sigma^{2} B(0, t) \mathrm{e}^{-\kappa t} \\
+&=\kappa \hat{\theta}(t)-\kappa \frac{\mathrm{d} A(0, t)}{\mathrm{d} t}-\kappa \frac{\sigma^{2}}{2} B^{2}(0, t)-\sigma^{2} B(0, t) \mathrm{e}^{-\kappa t} \\
+&=\kappa \hat{\theta}(t)-\kappa \frac{\mathrm{d} A(0, t)}{\mathrm{d} t}-\frac{\sigma^{2}}{2 \kappa}\left(1-\mathrm{e}^{-2 \kappa t}\right)
+\end{aligned}
+$$
+In the above we have applied Leibnitz's rule ${ }^{8}$ stating that for a function $f=f(x, t)$
+$$
+\frac{\mathrm{d}}{\mathrm{d} x} \int_{u(x)}^{v(x)} f(x, t) \mathrm{d} t=f(x, v(x)) \frac{\mathrm{d} v(x)}{\mathrm{d} x}-f(x, u(x)) \frac{\mathrm{d} u(x)}{\mathrm{d} x}+\int_{u(x)}^{v(x)} \frac{\partial f(x, t)}{\partial x} \mathrm{~d} t
+$$
+We may now isolate $\hat{\theta}(t)$ by rearranging (A.4):
+$$
+\hat{\theta}(t)=\frac{\mathrm{d} A(0, t)}{\mathrm{d} t}+\frac{1}{\kappa} \frac{\mathrm{d}^{2} A(0, t)}{\mathrm{d} t^{2}}+\frac{\sigma^{2}}{2 \kappa^{2}}\left(1-\mathrm{e}^{-2 \kappa t}\right) .
+$$
+Since we want to choose $\hat{\theta}(t)$ such that market prices equals model prices, we must have
+$$
+\bar{P}_{0}^{t}=\mathrm{e}^{-A(0, t)-B(0, t) r_{0}} \Leftrightarrow A(0, t)=-\ln \bar{P}_{0}^{t}-B(0, t) r_{0}
+$$
+Differentiating $A(0, t)$ once and twice we obtain
+$$
+\begin{aligned}
+&\frac{\mathrm{d} A(0, t)}{\mathrm{d} t}=-\frac{\frac{\mathrm{d} P f}{\mathrm{dt}}}{\bar{P}_{0} t}-r_{0} \mathrm{e}^{-\kappa t}=\bar{f}(0, t)-r_{0} \mathrm{e}^{-\kappa t} \\
+&\frac{\mathrm{d}^{2} A(0, t)}{\mathrm{d} t^{2}}=\frac{\mathrm{d} \bar{f}(0, t)}{\mathrm{d} t}+\kappa r_{0} \mathrm{e}^{-\kappa t}
+\end{aligned}
+$$
+where we have to assume that the observed forward curve is differentiable. Inserting these derivatives in (A.5) we get
+$$
+\hat{\theta}(t)=\bar{f}(0, t)+\frac{1}{\kappa} \frac{\mathrm{d} \bar{f}(0, t)}{\mathrm{d} t}+\frac{\sigma^{2}}{2 \kappa^{2}}\left(1-\mathrm{e}^{-2 \kappa t}\right),
+$$
+
+which is exactly equation (3.55). Inserting this in the expression for $A(t, T)$ we get
+$$
+\begin{aligned}
+A(t, T) &=\int_{t}^{T} \bar{f}(0, s)\left(1-\mathrm{e}^{-\kappa(T-s)}\right) \mathrm{d} s+\frac{1}{\kappa} \int_{t}^{T} \frac{\mathrm{d} \bar{f}(0, s)}{\mathrm{d} t}\left(1-\mathrm{e}^{-\kappa(T-s)}\right) \mathrm{d} s \\
+&+\int_{t}^{T} \frac{\sigma^{2}}{2 \kappa}\left(1-\mathrm{e}^{-2 \kappa s}\right) B(s, T) \mathrm{d} s+\frac{\sigma^{2}}{4 \kappa} B^{2}(t, T)+\frac{\sigma^{2}}{2 \kappa^{2}}(B(t, T)-(T-t)) \\
+&=-\ln \left(\frac{\bar{P}_{0}^{T}}{\bar{P}_{0}^{t}}\right)-\int_{t}^{T} \bar{f}(0, s) \mathrm{e}^{-\kappa(T-s)} \mathrm{d} s+\frac{1}{\kappa}(\bar{f}(0, T)-\bar{f}(0, t)) \\
+&-\frac{1}{\kappa} \int_{t}^{T} \frac{\mathrm{d} \bar{f}(0, s)}{\mathrm{d} t} \mathrm{e}^{-\kappa(T-s)} \mathrm{d} s+\int_{t}^{T} \frac{\sigma^{2}}{2 \kappa}\left(1-\mathrm{e}^{-2 \kappa s}\right) B(s, T) \mathrm{d} s+\frac{\sigma^{2}}{4 \kappa} B^{2}(t, T) \\
+&+\frac{\sigma^{2}}{2 \kappa^{2}}(B(t, T)-(T-t))
+\end{aligned}
+$$
+Using partial integration we have that
+$$
+\int_{t}^{T} \frac{\mathrm{d} \bar{f}(0, s)}{\mathrm{d} t} \mathrm{e}^{-\kappa(T-s)} \mathrm{d} s=\bar{f}(0, T)-\bar{f}(0, t) \mathrm{e}^{-\kappa(T-t)}-\kappa \int_{t}^{T} \bar{f}(0, s) \mathrm{e}^{-\kappa(T-s)} \mathrm{d} s .
+$$
+Inserting this in the expression for $A(t, T)$ yields
+$$
+\begin{aligned}
+A(t, T) &=-\ln \left(\frac{\bar{P}_{0}^{T}}{P_{0}^{t}}\right)-B(t, T) \bar{f}(0, t)+\int_{t}^{T} \frac{\sigma^{2}}{2 \kappa}\left(1-\mathrm{e}^{-2 \kappa s}\right) B(s, T) \mathrm{d} s+\frac{\sigma^{2}}{4 \kappa} B^{2}(t, T) \\
+&+\frac{\sigma^{2}}{2 \kappa^{2}}(B(t, T)-(T-t))
+\end{aligned}
+$$
+We will now evaluate the last integral:
+$$
+\begin{aligned}
+\int_{t}^{T} \frac{\sigma^{2}}{2 \kappa}\left(1-\mathrm{e}^{-2 \kappa s}\right) B(s, T) \mathrm{d} s &=\frac{\sigma^{2}}{2 \kappa^{2}} \int_{t}^{T}\left(1-\mathrm{e}^{-2 \kappa s}\right)\left(1-\mathrm{e}^{-\kappa(T-s)}\right) \mathrm{d} s \\
+&=\frac{\sigma^{2}}{2 \kappa^{2}} \int_{t}^{T} 1-\mathrm{e}^{-\kappa(T-s)}-\mathrm{e}^{-2 \kappa s}+\mathrm{e}^{-\kappa(T+s)} \mathrm{d} s \\
+&=\frac{\sigma^{2}}{2 \kappa^{2}}\left[(T-t)-\frac{1}{\kappa}+\frac{1}{\kappa} \mathrm{e}^{-\kappa(T-t)}+\frac{1}{2 \kappa} \mathrm{e}^{-2 \kappa T}-\frac{1}{2 \kappa} \mathrm{e}^{-2 \kappa t}\right.\\
+&\left.-\frac{1}{\kappa} \mathrm{e}^{-2 \kappa T}+\frac{1}{\kappa} \mathrm{e}^{-\kappa(T+t)}\right] \\
+&=\frac{\sigma^{2}}{2 \kappa^{2}}\left[(T-t)-B(t, T)-\frac{1}{2 \kappa} \mathrm{e}^{-2 \kappa T}-\frac{1}{2 \kappa} \mathrm{e}^{-2 \kappa t}+\frac{1}{\kappa} \mathrm{e}^{-\kappa(T+t)}\right] \\
+&=\frac{\sigma^{2}}{2 \kappa^{2}}\left[(T-t)-B(t, T)-\frac{\kappa}{2} \mathrm{e}^{-2 \kappa t} B^{2}(t, T)\right]
+\end{aligned}
+$$
+Now we can insert into $A(t, T)$ and the result follows:
+$$
+A(t, T)=-\ln \left(\frac{\bar{P}_{0}^{T}}{\bar{P}_{0}^{t}}\right)-B(t, T) \bar{f}(0, t)+\frac{\sigma^{2}}{4 \kappa} B^{2}(t, T)\left(1-\mathrm{e}^{-2 \kappa t}\right)
+$$
+
+## The Variance of the Short Rate
+
+We will determine the distribution of the short rate in the extended Vasicek model under the $\mathbb{Q}^{T}$ measure. To do so we apply Ito's lemma to the quantity $\mathrm{e}^{a t} r_{\mathrm{t}}$ :
+$$
+\begin{aligned}
+\mathrm{d}\left(\mathrm{e}^{a t} r_{t}\right) &=a \mathrm{e}^{a t} r_{t} \mathrm{~d} t+\mathrm{e}^{a t} \mathrm{~d} r_{t} \\
+&=a \mathrm{e}^{a t} r_{t} \mathrm{~d} t+\mathrm{e}^{a t}\left[\kappa\left(\hat{\theta}(t)-r_{t}\right)-\sigma^{2} B(t, T)\right] \mathrm{d} t+\mathrm{e}^{a t} \sigma \mathrm{d} W_{t}^{\mathrm{Q}^{T}}
+\end{aligned}
+$$
+Choosing $a=\kappa$ and integrating from $t$ to $T$ and we obtain
+$$
+\mathrm{e}^{\kappa T} r_{T}-\mathrm{e}^{\kappa t} r_{t}=\int_{t}^{T} \kappa \mathrm{e}^{\kappa s} \hat{\theta}(s)-\mathrm{e}^{\kappa s} \sigma^{2} B(s, T) \mathrm{d} s+\sigma \int_{t}^{T} \mathrm{e}^{a s} \mathrm{~d} W_{s}^{\mathrm{Q}^{T}}
+$$
+Moving $\mathrm{e}^{\kappa t}$ to the right hand side and dividing by $\mathrm{e}^{\kappa T}$ we obtain
+$$
+r_{T}=\mathrm{e}^{-\kappa(T-t)} r_{t}+\mathrm{e}^{-\kappa T} \int_{t}^{T} \kappa \mathrm{e}^{\kappa s} \hat{\theta}(s)-\mathrm{e}^{\kappa s} \sigma^{2} B(s, T) \mathrm{d} s+\sigma \mathrm{e}^{-\kappa T} \int_{t}^{T} \mathrm{e}^{\kappa s} \mathrm{~d} W_{s}^{\mathrm{Q}^{T}}
+$$
+Since $e^{\kappa t}$ is just a deterministic function, the stochastic integral will be normally distributed. The variance of $r_{T}$ will therefore be given by
+$$
+\begin{aligned}
+\mathbb{V}_{t}^{\mathbb{Q}^{T}}\left[r_{T}\right] &=\mathbb{V}_{t}^{\mathbb{Q}^{T}}\left[\sigma \mathrm{e}^{-\kappa T} \int_{t}^{T} \mathrm{e}^{\kappa s} \mathrm{~d} W_{s}^{\mathbb{Q}^{T}}\right] \\
+&=\sigma^{2} \mathrm{e}^{-2 \kappa T} \int_{t}^{T} \mathrm{e}^{2 \kappa s} \mathrm{~d} s \\
+&=\frac{\sigma^{2}}{2 \kappa} \mathrm{e}^{-2 \kappa T}\left(\mathrm{e}^{2 \kappa T}-\mathrm{e}^{2 \kappa t}\right) \\
+&=\frac{\sigma^{2}}{2 \kappa}\left(1-\mathrm{e}^{-2 \kappa(T-t)}\right)
+\end{aligned}
+$$
+
+## The Expected Value Under $\mathbb{Q}$^S
+
+We would like to evaluate the expectation $\mathbb{E}^{Q^{S}}\left[P_{T}^{S}\right]$. We know that any price process deflated by $P_{t}^{S}$ is a martingale under $\mathbb{Q}^{S}$ and in particular by equation (2.35) we have that
+$$
+\mathrm{d} \frac{P_{t}^{T}}{P_{t}^{S}}=\left(\beta^{T}\left(t, r_{t}\right)-\beta^{S}\left(t, r_{t}\right)\right) \frac{P_{t}^{T}}{P_{t}^{S}} \mathrm{~d} W_{t}^{Q^{S}}
+$$
+Since we are in the extended Vasicek model we have $\beta^{T}\left(t, r_{t}\right)=-\sigma B(t, T)$ and $\beta^{S}\left(t, r_{t}\right)=$ $-\sigma B(t, S)$. Inserting these we get
+$$
+\mathrm{d} \frac{P_{t}^{T}}{P_{t}^{S}}=\sigma(B(t, S)-B(t, T)) \frac{P_{t}^{T}}{P_{t}^{S}} \mathrm{~d} W_{t}^{Q^{S}}
+$$
+Since $P_{T}^{T}=1$ we must have $\mathbb{E}^{Q^{S}}\left[P_{T}^{S}\right]=\mathbb{E}^{Q^{S}}\left[\frac{P_{T}^{S}}{P_{T}^{T}}\right]$. To evaluate this expectation we will need the distribution of $\frac{p_{t}^{S}}{p_{t}^{X}}$. By Ito's lemma and equation (A.8) we have that
+$$
+\mathrm{d} \frac{P_{t}^{S}}{P_{t}^{T}}=\sigma^{2}(B(t, S)-B(t, T))^{2} \frac{P_{t}^{S}}{P_{t}^{T}} \mathrm{~d} t-\sigma(B(t, S)-B(t, T)) \frac{P_{t}^{S}}{P_{t}^{T}} \mathrm{~d} W_{t}^{Q^{S}}
+$$
+Taking the logarithm of $\frac{P_{t}^{S}}{P_{t}^{T}}$ and using again Ito's lemma we get
+$$
+\mathrm{d} \ln \frac{P_{t}^{S}}{P_{t}^{T}}=\frac{1}{2} \sigma^{2}(B(t, S)-B(t, T))^{2} \mathrm{~d} t-\sigma(B(t, S)-B(t, T)) \mathrm{d} W_{t}^{\mathrm{Q}^{S}}
+$$
+Integrating from $t$ to $T$ and rearranging yields
+$$
+\frac{P_{T}^{S}}{P_{T}^{T}}=\frac{P_{t}^{S}}{P_{t}^{T}} \mathrm{e} J_{t}^{T} \frac{1}{2} \sigma^{2}(B(u, S)-B(u, T))^{2} \mathrm{~d} u-\sigma \int_{t}^{T}(B(u, S)-B(u, T)) \mathrm{d} W_{u}^{0^{S}}
+$$
+The inside of the exponential function will be Gaussian, so we will determine the mean $\hat{\mu}$ and variance $\hat{\sigma}^{2}$. The mean can be found as
+$$
+\begin{aligned}
+\hat{\mu} &=\int_{t}^{T} \frac{1}{2} \sigma^{2}(B(u, S)-B(u, T))^{2} \mathrm{~d} u \\
+&=\frac{\sigma^{2}}{2 \kappa^{2}} \int_{t}^{T}\left(\mathrm{e}^{-\kappa(T-u)}-\mathrm{e}^{-\kappa(S-u)}\right)^{2} \mathrm{~d} u \\
+&=\frac{\sigma^{2}}{2 \kappa^{2}}\left(\mathrm{e}^{-\kappa T}-\mathrm{e}^{-\kappa S}\right)^{2} \int_{t}^{T} \mathrm{e}^{2 \kappa u} \mathrm{~d} u \\
+&=\frac{\sigma^{2}}{4 \kappa^{3}}\left(\mathrm{e}^{-\kappa T}-\mathrm{e}^{-\kappa S}\right)^{2}\left(\mathrm{e}^{2 \kappa T}-\mathrm{e}^{2 \kappa t}\right) \\
+&=\frac{\sigma^{2}}{4 \kappa^{3}} \mathrm{e}^{-2 \kappa T}\left(1-\mathrm{e}^{-\kappa(S-T)}\right)^{2}\left(\mathrm{e}^{2 \kappa T}-\mathrm{e}^{2 \kappa t}\right) \\
+&=\frac{\sigma^{2}}{4 \kappa^{3}}\left(1-\mathrm{e}^{-\kappa(S-T)}\right)^{2}\left(1-\mathrm{e}^{-2 \kappa(T-t)}\right) \\
+&=\frac{1}{2} B^{2}(T, S) \nu^{2}(t, T)
+\end{aligned}
+$$
+The variance can be found as
+$$
+\begin{aligned}
+\hat{\sigma}^{2} &=\mathbb{V}_{t}^{\mathrm{Q}^{S}}\left(-\sigma \int_{t}^{T} B(u, S)-B(u, T) \mathrm{d} W_{u}^{Q^{S}}\right) \\
+&=\sigma^{2} \int_{t}^{T}(B(u, S)-B(u, T))^{2} \mathrm{~d} u \\
+&=2 \hat{\mu} .
+\end{aligned}
+$$
+
+Let $X \sim \mathcal{N}\left(\hat{\mu}, \hat{\sigma}^{2}\right)$, then we can now evaluate the desired expectation:
+$$
+\begin{aligned}
+\mathbb{E}_{t}^{Q^{S}}\left[\frac{P_{T}^{S}}{P_{T}^{T}}\right] &=\frac{P_{t}^{S}}{P_{t}^{T}} \mathbb{E}\left[\mathrm{e}^{X}\right] \\
+&=\frac{P_{t}^{S}}{P_{t}^{T}} \mathrm{e}^{\tilde{\mu}+\frac{1}{2} \dot{\sigma}^{2}} \\
+&=\frac{P_{t}^{S}}{P_{t}^{T}} \mathrm{e}^{B^{2}(T, S) \nu^{2}(t, T)}
+\end{aligned}
+$$
+
+## Vasicek MLE
+
+By similar calculations as in A.3 and using that $\theta(t)=\theta$ is a constant, we can find
+$$
+r_{T}=\mathrm{e}^{-\kappa(T-t)} r_{t}+\theta\left[1-\mathrm{e}^{-\kappa(T-t)}\right]+\sigma \mathrm{e}^{-\kappa T} \int_{t}^{T} \mathrm{e}^{\kappa s} \mathrm{~d} W_{s}^{\mathbb{P}}
+$$
+The conditional mean is given by
+$$
+\mathbb{E}_{t}\left[r_{T}\right]=\mathrm{e}^{-\kappa(T-t)} r_{t}+\theta\left[1-\mathrm{e}^{-\kappa(T-t)}\right]
+$$
+and appendix A.3 derived the variance as
+$$
+\mathbb{V}_{t}\left[r_{T}\right]=\frac{\sigma^{2}}{2 \kappa}\left(1-\mathrm{e}^{-2 \mathrm{k}(T-t)}\right)
+$$
+Since the stochastic integral is Gaussian, we will have that the increments are also Gaussian, and the conditional density will therefore be
+$$
+f_{r_{i_{i}}}\left(x \mid r_{t_{i-1}}, \kappa, \theta, \sigma\right)=\frac{1}{\sqrt{2 \pi \nu_{i}}} \mathrm{e}^{-\frac{\left(x-\mu_{i}\right)^{2}}{2 \nu_{i}}},
+$$
+where
+$$
+\mu_{i}=\mathrm{e}^{-\kappa \Delta t_{i} r_{t_{i-1}}}+\theta\left[1-\mathrm{e}^{-\kappa \Delta t_{i}}\right], \quad \nu_{i}=\frac{\sigma^{2}}{2 \kappa_{i}}\left(1-\mathrm{e}^{-2 \kappa \Delta t_{i}}\right) \quad \text { and } \quad \Delta t_{i}=t_{i}-t_{i-1}
+$$
+The log likelihood is therefore given by
+$$
+\log \mathcal{L}\left(\kappa, \theta, \sigma \mid\left\{r_{t_{i}}\right\}_{i=0}^{N}\right)=-\frac{N}{2} \ln (2 \pi)-\sum_{i=1}^{N} \ln v_{i}+\frac{\left(r_{t_{i}}-\mu_{i}\right)^{2}}{2 \nu_{i}^{2}}
+$$
+Performing an estimation in Matlab for the period 1996 to 2017 with the $1 \mathrm{Y}$ swap rate as a proxy for the dynamics of the short rate and we get the results in table 6 .
+

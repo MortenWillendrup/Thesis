@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Discussion | Pricing Danish Mortgage Bonds using Machine learning for estimation</title>
-  <meta name="description" content="Discussion | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  <title> 5 Estimating Prepayments | Pricing Danish Mortgage Bonds using Machine learning for estimation</title>
+  <meta name="description" content=" 5 Estimating Prepayments | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
   <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Discussion | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  <meta property="og:title" content=" 5 Estimating Prepayments | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Discussion | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  <meta name="twitter:title" content=" 5 Estimating Prepayments | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="8-estimation.html"/>
-<link rel="next" href="conclusion.html"/>
+<link rel="prev" href="4-callable-mortgage-bonds.html"/>
+<link rel="next" href="6-theory.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -190,17 +190,21 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="discussion" class="section level1 unnumbered">
-<h1>Discussion</h1>
+<div id="estimating-prepayments-1" class="section level1" number="5">
+<h1><span class="header-section-number"> 5</span> Estimating Prepayments</h1>
+<div id="the-danish-prepayment-data" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> The Danish Prepayment Data</h2>
+<p>Before we jump into the actual estimation of the model, we will have a look at the characteristics of the data used in the estimation procedure. In contrast to the mortgage market in the USA, the Danish market consists of rather few but very large mortgage pools. The large mortgage pools are a result of the demand for high liquidity in the underlying mortgage bonds. The Danish data are by law <span class="math inline">\(^{4}\)</span> published through the exchange and contains information on the borrower composition (CK92), preliminary prepayments (CK93), cash flows (CK94) and the final prepayments (CK95). The data is therefore very detailed and in practice, it is often seen that prepayment models are extended to take all kind of aspects of the data into account. In this thesis we will only consider the CK95 data, but one could for example extent the model to discriminate borrowers by loan size using the CK92 data. Figure 9 gives an example of the CK95 data for a <span class="math inline">\(5 \% 30\)</span> year callable mortgage bond issued by Nykredit Realkredit. From the figure it is clear how the prepayments increase during times of falling interest rates as the mortgage liabilities increase during these periods. We also see a tendency that some borrowers are more quickly prepaying compared to others. This tendency is consistent with borrowers having different costs associated with prepaying, which will imply that interest rates can stay in a falling trend while prepayments keep occurring. In the next subsection we will look into how these prepayment rates may be estimated.</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="8-estimation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="conclusion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="4-callable-mortgage-bonds.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6-theory.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

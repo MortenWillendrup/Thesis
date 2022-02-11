@@ -1,6 +1,8 @@
 # Roadmap {-}
 
 
+
+
 ## Timeline {-}
 
 ```{r roadmap, echo = FALSE, message = FALSE, warning = FALSE}
@@ -105,19 +107,29 @@ plot_timeline2(
 ```
 
 
-## Introduction {-}
+
+## Logbook {-}
+
+### Introduction {-}
 Need to write a full introduction of the Danish Mortgage Market, furthermore
 leave space for a brief walkthorugh of the thesis
 
-## Theory {-}
+* 10/02/22 - Wrote a section on the Danish Bond market, needs some rewritining
+* 11/02/22 - Wrote section about term structure and the danish bond market mathematically
+
+
+
+### Theory {-}
 Relevant theory should be Machine Learning, which is relevent should be discussed 
 in detail
 
 
-## Data {-}
+### Data {-}
 Get data from DST.  
 Get data from Nasdaq.  
 Get data from Danske Bank Asset Management
+
+
 
 
 

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 3 Term strucutre | Pricing Danish Mortgage Bonds using Machine learning for estimation</title>
+  <meta name="description" content=" 3 Term strucutre | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 3 Term strucutre | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 3 Term strucutre | Pricing Danish Mortgage Bonds using Machine learning for estimation" />
+  
+  
+  
+
+<meta name="author" content="Morten Søby Willendrup" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="2-the-danish-mortgage-market.html"/>
+<link rel="next" href="4-callable-mortgage-bonds.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preliminary Content</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#preface"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#dedication"><i class="fa fa-check"></i>Dedication</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#abstract"><i class="fa fa-check"></i>Abstract</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="abstract-1.html"><a href="abstract-1.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="1-intro.html"><a href="1-intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html"><i class="fa fa-check"></i><b>2</b> The Danish Mortgage Market</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#types-of-mortgage-bonds"><i class="fa fa-check"></i><b>2.1</b> Types of mortgage bonds</a></li>
+<li class="chapter" data-level="2.2" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#the-danish-mortgage-model"><i class="fa fa-check"></i><b>2.2</b> The Danish mortgage model</a></li>
+<li class="chapter" data-level="2.3" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#balance"><i class="fa fa-check"></i><b>2.3</b> Balance principle</a></li>
+<li class="chapter" data-level="2.4" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#delivery-and-prepayment"><i class="fa fa-check"></i><b>2.4</b> Delivery and prepayment</a></li>
+<li class="chapter" data-level="2.5" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#callable-annuity-bonds"><i class="fa fa-check"></i><b>2.5</b> Callable annuity bonds</a></li>
+<li class="chapter" data-level="2.6" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#prepayment"><i class="fa fa-check"></i><b>2.6</b> Prepayment</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#calculating-prepayment-gains"><i class="fa fa-check"></i><b>2.6.1</b> Calculating prepayment gains</a></li>
+<li class="chapter" data-level="2.6.2" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#different-types-of-remortgaging-strategies"><i class="fa fa-check"></i><b>2.6.2</b> Different types of remortgaging strategies</a></li>
+<li class="chapter" data-level="2.6.3" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#remortgage-gain-depends-on-several-factors"><i class="fa fa-check"></i><b>2.6.3</b> Remortgage gain depends on several factors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#estimating-prepayments"><i class="fa fa-check"></i><b>2.7</b> Estimating prepayments</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="2-the-danish-mortgage-market.html"><a href="2-the-danish-mortgage-market.html#data-for-estimating-prepayments"><i class="fa fa-check"></i><b>2.7.1</b> Data for estimating prepayments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html"><i class="fa fa-check"></i><b>3</b> Term strucutre</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#the-short-rate"><i class="fa fa-check"></i><b>3.1</b> The Short Rate</a></li>
+<li class="chapter" data-level="3.2" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#zero-coupon-bonds"><i class="fa fa-check"></i><b>3.2</b> Zero Coupon Bonds</a></li>
+<li class="chapter" data-level="3.3" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#interest-rate-swaps"><i class="fa fa-check"></i><b>3.3</b> Interest Rate Swaps</a></li>
+<li class="chapter" data-level="3.4" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#zero-rates-forward-rates-and-curve-fitting"><i class="fa fa-check"></i><b>3.4</b> Zero Rates, Forward Rates and Curve Fitting</a></li>
+<li class="chapter" data-level="3.5" data-path="3-term-strucutre.html"><a href="3-term-strucutre.html#caps-floors"><i class="fa fa-check"></i><b>3.5</b> Caps &amp; Floors</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html"><i class="fa fa-check"></i><b>4</b> Callable Mortgage Bonds</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#callability"><i class="fa fa-check"></i><b>4.1</b> Callability</a></li>
+<li class="chapter" data-level="4.2" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#prepayment-1"><i class="fa fa-check"></i><b>4.2</b> Prepayment</a></li>
+<li class="chapter" data-level="4.3" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#the-mortgage-pde"><i class="fa fa-check"></i><b>4.3</b> The Mortgage PDE</a></li>
+<li class="chapter" data-level="4.4" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#pricing-by-finite-differences"><i class="fa fa-check"></i><b>4.4</b> Pricing by Finite Differences</a></li>
+<li class="chapter" data-level="4.5" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#the-extended-vasicek-model"><i class="fa fa-check"></i><b>4.5</b> The Extended Vasicek Model</a></li>
+<li class="chapter" data-level="4.6" data-path="4-callable-mortgage-bonds.html"><a href="4-callable-mortgage-bonds.html#the-delivery-option"><i class="fa fa-check"></i><b>4.6</b> The Delivery Option</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-estimating-prepayments-1.html"><a href="5-estimating-prepayments-1.html"><i class="fa fa-check"></i><b>5</b> Estimating Prepayments</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="5-estimating-prepayments-1.html"><a href="5-estimating-prepayments-1.html#the-danish-prepayment-data"><i class="fa fa-check"></i><b>5.1</b> The Danish Prepayment Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-theory.html"><a href="6-theory.html"><i class="fa fa-check"></i><b>6</b> Theory</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="6-theory.html"><a href="6-theory.html#term-strucutre-1"><i class="fa fa-check"></i><b>6.1</b> Term Strucutre</a></li>
+<li class="chapter" data-level="6.2" data-path="6-theory.html"><a href="6-theory.html#callable-mortgage-bonds-1"><i class="fa fa-check"></i><b>6.2</b> Callable Mortgage Bonds</a></li>
+<li class="chapter" data-level="6.3" data-path="6-theory.html"><a href="6-theory.html#estimating-prepayments-application-of-machine-learning"><i class="fa fa-check"></i><b>6.3</b> Estimating prepayments, application of machine learning</a></li>
+<li class="chapter" data-level="6.4" data-path="6-theory.html"><a href="6-theory.html#ke"><i class="fa fa-check"></i><b>6.4</b> Ke</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7-data.html"><a href="7-data.html"><i class="fa fa-check"></i><b>7</b> Data</a></li>
+<li class="chapter" data-level="8" data-path="8-estimation.html"><a href="8-estimation.html"><i class="fa fa-check"></i><b>8</b> Estimation</a></li>
+<li class="chapter" data-level="" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i>Discussion</a></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#vasicek-odes"><i class="fa fa-check"></i><b>A.1</b> Vasicek ODEs</a></li>
+<li class="chapter" data-level="A.2" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#fitting-the-initial-term-structure"><i class="fa fa-check"></i><b>A.2</b> Fitting the Initial Term structure</a></li>
+<li class="chapter" data-level="A.3" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#the-variance-of-the-short-rate"><i class="fa fa-check"></i><b>A.3</b> The Variance of the Short Rate</a></li>
+<li class="chapter" data-level="A.4" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#the-expected-value-under-mathbbqs"><i class="fa fa-check"></i><b>A.4</b> The Expected Value Under <span class="math inline">\(\mathbb{Q}\)</span>^S</a></li>
+<li class="chapter" data-level="A.5" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html#vasicek-mle"><i class="fa fa-check"></i><b>A.5</b> Vasicek MLE</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html"><i class="fa fa-check"></i>Roadmap</a>
+<ul>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#timeline"><i class="fa fa-check"></i>Timeline</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#logbook"><i class="fa fa-check"></i>Logbook</a>
+<ul>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#theory-1"><i class="fa fa-check"></i>Theory</a></li>
+<li class="chapter" data-level="" data-path="roadmap.html"><a href="roadmap.html#data-1"><i class="fa fa-check"></i>Data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Pricing Danish Mortgage Bonds using Machine learning for estimation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="term-strucutre" class="section level1" number="3">
+<h1><span class="header-section-number"> 3</span> Term strucutre</h1>
+<p>In the classic Black-Scholes-Merton model (1973) [9] the variable of interest was the price
+of a stock; a tangible and measurable quantity. Pricing and hedging was an easy task,
+since the model had only one source of risk. When introducing stochastic volatility, as
+done for example in the models by Heston (1993) [28] or Hagan et. al. (2002) [20], a side
+effect was the incomplete market arising as a consequence of volatility itself not being a
+traded asset. By assuming the existence of a market for derivatives, it was possible to
+hedge the volatility risk of one derivative by use of another. The term structure theory
+will seem somewhat similar. Assuming a market for fixed income securities depending on
+a stochastic short rate, we will likewise be able to hedge one fixed income security with
+another. We will start the section out by defining the short rate.</p>
+<div id="the-short-rate" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> The Short Rate</h2>
+<p>We will assume the existence of a locally risk-free short rate, <span class="math inline">\(r(t)\)</span>, which follows a onefactor diffusion model. That is, given the probability space <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span>, where <span class="math inline">\(\Omega\)</span> is a state space, <span class="math inline">\(\mathcal{F}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra and <span class="math inline">\(\mathbb{P}\)</span> is a probability measure, the short rate follows a diffusion of the form:
+<span class="math display">\[
+\begin{aligned}
+\mathrm{d} r_{t} &amp;=\alpha\left(t, r_{t}\right) \mathrm{d} t+\beta\left(t, r_{t}\right) \mathrm{d} W_{t}^{\mathbb{P}} \\
+r_{0} &amp;=\bar{r}_{0}
+\end{aligned}
+\]</span>
+where <span class="math inline">\(W^{\mathbb{P}}=\left(W_{t}^{\mathbb{P}}\right)_{t \geq 0}\)</span> is a standard Brownian motion under the probability measure <span class="math inline">\(\mathbb{P}\)</span>. We are explicit about the measure <span class="math inline">\(\mathbb{P}\)</span> since we will be changing it later. We will let <span class="math inline">\(\left(\mathcal{F}_{t}\right)_{t \geq 0}\)</span> be the information-filtration generated by <span class="math inline">\(\left(W_{t}^{\mathbb{P}}\right)_{t \geq 0}\)</span>. That the short rate is locally risk-free means that during an infinitesimal time period <span class="math inline">\([t, t+\mathrm{d} t]\)</span>, net deposits of size <span class="math inline">\(A_{t}\)</span> will earn <span class="math inline">\(\mathrm{d} A_{t}=r_{t} A_{t} \mathrm{~d} t\)</span> when placed in the risk-free rate. Hence, over a time interval <span class="math inline">\([t, T]\)</span> we will have that <span class="math inline">\(A_{t}\)</span> will grow into <span class="math inline">\(A_{T}\)</span> given by
+<span class="math display">\[
+A_{T}=A_{t} \mathrm{e}^{\int_{t}^{T} r_{s} \mathrm{~d} s}
+\]</span>
+From this general representation of the risk-free rate, we will now turn to the most simple fixed income product; the zero coupon bond.</p>
+</div>
+<div id="zero-coupon-bonds" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Zero Coupon Bonds</h2>
+<p>A zero coupon bond is a bond that promises the holder one unit of currency at maturity. We will make the assumption that these zero coupon bonds trade in the market. This assumption is not that hard to justify since we will often be able to replicate the zero coupon bond’s payoff by static arbitrage arguments. We will further assume that the time- <span class="math inline">\(t\)</span> price, <span class="math inline">\(P_{t}^{T}\)</span>, of a zero coupon bond maturing at time <span class="math inline">\(T\)</span> will at most depend on the current time, the maturity and the short rate, i.e. <span class="math inline">\(P_{t}^{T}\)</span> is given by some function <span class="math inline">\(P\left(t, r_{t}, T\right)\)</span>. If we interpret the bond as a derivative written on the short rate, then by use of standard arbitrage arguments we have the following theorem:</p>
+<p>Theorem 2.1. (The Term Structure PDE) The price function, <span class="math inline">\(P_{t}^{T}\)</span>, for a zero coupon bond maturing at time <span class="math inline">\(T\)</span> must satisfy the following partial differential equation:
+<span class="math inline">\(\frac{\partial P_{t}^{T}}{\partial t}+\left(\alpha\left(t, r_{t}\right)-q_{t} \beta\left(t, r_{t}\right)\right) \frac{\partial P_{t}^{T}}{\partial r}\)</span> with terminal condition <span class="math inline">\(P_{T}^{T}=1\)</span>
+with terminal condition <span class="math inline">\(P_{T}^{T}=1\)</span>. Proof. If we are willing to assume that <span class="math inline">\(P_{t}^{T}=P\left(t, r_{t}, T\right)\)</span> is twice continuously differentiable in <span class="math inline">\(r_{t}\)</span> and once continuously differentiable in <span class="math inline">\(t\)</span> then we may apply Ito’s lemma get
+<span class="math display">\[
+\begin{aligned}
+\mathrm{d} P^{T}\left(t, r_{t}\right) &amp;=\left(\frac{\partial P^{T}}{\partial t}+\alpha\left(t, r_{t}\right) \frac{\partial P^{T}}{\partial r}+\frac{1}{2} \beta^{2}\left(t, r_{t}\right) \frac{\partial^{2} P^{T}}{\partial r^{2}}\right) \mathrm{d} t+\beta\left(t, r_{t}\right) \frac{\partial P^{T}}{\partial r} \mathrm{dW}_{t}^{\mathbb{P}} \\
+&amp;=\alpha^{T}\left(t, r_{t}\right) P_{t}^{T} \mathrm{~d} t+\beta^{T}\left(t, r_{t}\right) P_{t}^{T} \mathrm{~d} W_{t}^{\mathbb{P}}
+\end{aligned}
+\]</span>
+<span class="math display">\[ \mathrm{d} P^{T}\left(t, r_{t}\right)=\left(\frac{\partial P^{T}}{\partial t}+\alpha\left(t, r_{t}\right) \frac{\partial P^{T}}{\partial r}+\frac{1}{2} \beta^{2}\left(t, r_{t}\right) \frac{\partial^{2} P^{T}}{\partial r^{2}}\right) \mathrm{d} t+\beta\left(t, r_{t}\right) \frac{\partial P^{T}}{\partial r} \mathrm{~d} W_{t}^{\mathbb{P}} \]</span> <span class="math inline">\(\quad=\alpha^{T}\left(t, r_{t}\right) P_{t}^{T} \mathrm{~d} t+\beta^{T}\left(t, r_{t}\right) P_{t}^{T} \mathrm{~d} W_{t}^{\mathbb{P}}\)</span> where <span class="math display">\[ \alpha^{T}\left(t, r_{t}\right)=\frac{\frac{\partial P^{T}}{\theta t}+\alpha\left(t, r_{t}\right) \frac{\partial P^{T}}{\theta r}+\frac{1}{2} \beta^{2}\left(t, r_{t}\right) \frac{\partial^{2} P^{T}}{\theta r^{2}}}{P_{t}^{T}} \text { and } \beta^{T}\left(t, r_{t}\right)=\frac{\beta\left(t, r_{t}\right) \frac{\partial P^{T}}{\theta r}}{P_{t}^{T}} \]</span>
+We will now establish a self-financing portfolio <span class="math inline">\(V_{t}\)</span> of <span class="math inline">\(h_{t}^{T}\)</span> zero coupon bonds maturing at time <span class="math inline">\(T\)</span> and <span class="math inline">\(h_{t}^{S}\)</span> zero coupon bonds maturing at time <span class="math inline">\(S\)</span>, i.e. <span class="math inline">\(V_{t}\)</span> satisfies
+<span class="math display">\[
+\begin{aligned}
+V_{t} &amp;=h_{t}^{T} P_{t}^{T}+h_{t}^{S} P_{t}^{S} \\
+\mathrm{~d} V_{t} &amp;=h_{t}^{T} \mathrm{~d} P_{t}^{T}+h_{t}^{S} \mathrm{~d} P_{t}^{S}
+\end{aligned}
+\]</span>
+The portfolio will therefore have the following dynamics
+<span class="math display">\[
+\begin{aligned}
+\mathrm{d} V_{t} &amp;=\left(h_{t}^{T} \alpha^{T}\left(t, r_{t}\right) P_{t}^{T}+h_{t}^{S} \alpha^{S}\left(t, r_{t}\right) P_{t}^{S}\right) \mathrm{d} t \\
+&amp;+\left(h_{t}^{T} \beta^{T}\left(t, r_{t}\right) P_{t}^{T}+h_{t}^{S} \beta^{S}\left(t, r_{t}\right) P_{t}^{S}\right) \mathrm{d} W_{t}^{\mathbb{P}}
+\end{aligned}
+\]</span>
+The idea is now to choose the portfolio in such a way that the stochastic term vanishes. Doing so leaves us with two equations in two unknowns:
+<span class="math display">\[
+\begin{array}{r}
+h_{t}^{T} \beta^{T}\left(t, r_{t}\right) P_{t}^{T}+h_{t}^{S} \beta^{S}\left(t, r_{t}\right) P_{t}^{S}=0 \\
+h_{t}^{T} P_{t}^{T}+h_{t}^{S} P_{t}^{S}=V_{t}
+\end{array}
+\]</span></p>
+<p>where the second equations stems from the self-financing condition. By inserting the second equation in the first yields
+<span class="math display">\[
+h_{t}^{T} \beta^{T}\left(t, r_{t}\right) P_{t}^{T}+\frac{V_{t}-h_{t}^{T} P_{t}^{T}}{P_{t}^{S}} \beta^{S}\left(t, r_{t}\right) P_{t}^{S}=0 .
+\]</span>
+Solving for <span class="math inline">\(h_{t}^{T}\)</span> gives
+<span class="math display">\[
+h_{t}^{T}=\frac{V_{t} \beta^{S}\left(t, r_{t}\right)}{\left(\beta^{S}\left(r, r_{t}\right)-\beta^{T}\left(r, r_{t}\right)\right) P_{t}^{T}}
+\]</span>
+and by using (2.12) we also have
+<span class="math display">\[
+h_{t}^{S}=-\frac{V_{t} \beta^{T}\left(t, r_{t}\right)}{\left(\beta^{S}\left(r, r_{t}\right)-\beta^{T}\left(r, r_{t}\right)\right) P_{t}^{S}} .
+\]</span>
+By selecting exactly this portfolio composition, we have made the stochastic part of (2.10) vanish. Hence, the portfolio has become locally risk free, and for there to be no arbitrage, the portfolio must earn the locally risk free rate. We therefore have
+<span class="math display">\[
+\left(h_{t}^{T} \alpha^{T}\left(t, r_{t}\right) P_{t}^{T}+h_{t}^{S} \alpha^{S}\left(t, r_{t}\right) P_{t}^{S}\right) \mathrm{d} t=r_{t} V_{t} \mathrm{~d} t .
+\]</span>
+Inserting the portfolio holdings and simplifying we get
+<span class="math display">\[
+\left(\frac{\beta^{S}\left(t, r_{t}\right) \alpha^{T}\left(t, r_{t}\right)}{\beta^{S}\left(t, r_{t}\right)-\beta^{T}\left(t, r_{t}\right)}-\frac{\beta^{T}\left(t, r_{t}\right) \alpha^{S}\left(t, r_{t}\right)}{\beta^{S}\left(t, r_{t}\right)-\beta^{T}\left(t, r_{t}\right)}\right) \mathrm{d} t=r_{t} \mathrm{~d} t .
+\]</span>
+Dropping the <span class="math inline">\(\mathrm{d} t\)</span>-terms and rearranging we obtain
+<span class="math display">\[
+\frac{\alpha^{T}\left(t, r_{t}\right)-r_{t}}{\beta^{T}\left(t, r_{t}\right)}=\frac{\alpha^{S}\left(t, r_{t}\right)-r_{t}}{\beta^{S}\left(t, r_{t}\right)} .
+\]</span>
+The special thing about the relation (2.18) is that the left hand side does not depend on <span class="math inline">\(S\)</span> and the right hand side does not depend on <span class="math inline">\(T\)</span>. Hence, the ratios must be maturity independent and we may define the ratio as a function <span class="math inline">\(q_{t}=q\left(t, r_{t}\right)\)</span> of time and the short rate:
+<span class="math display">\[
+q_{t}=\frac{\alpha^{T}\left(t, r_{t}\right)-r_{t}}{\beta^{T}\left(t, r_{t}\right)} \quad \forall \quad T&gt;0 .
+\]</span>
+<span class="math inline">\(q_{t}\)</span> is often referred to as the market price of risk or the Sharpe ratio, as it is the excess return over the risk free rate per unit of risk. We will, nevertheless, simply regard <span class="math inline">\(q_{t}\)</span> as a consistency relation that has to hold in the market for zero coupon bonds. By inserting the expressions for <span class="math inline">\(\alpha^{T}\left(t, r_{t}\right)\)</span> and <span class="math inline">\(\beta^{T}\left(t, r_{t}\right)\)</span> from (2.7) in equation (2.19) and rearranging,</p>
+<p>we arrive at the following PDE:
+<span class="math display">\[
+\frac{\partial P_{t}^{T}}{\partial t}+\left(\alpha\left(t, r_{t}\right)-q_{t} \beta\left(t, r_{t}\right)\right) \frac{\partial P_{t}^{T}}{\partial r}+\frac{1}{2} \beta^{2}\left(t, r_{t}\right) \frac{\partial^{2} P_{t}^{T}}{\partial r^{2}}=r_{t} P_{t}^{T}, \quad\left(t, r_{t}\right) \in[0 ; T) \times \mathbb{R}
+\]</span>
+Since the zero coupon bond matures at time <span class="math inline">\(T\)</span> with value 1 , we may add the terminal condition <span class="math inline">\(P_{T}^{T}=1\)</span>.</p>
+<p>Theorem <span class="math inline">\(2.1\)</span> gives us the price of any zero coupon bond in terms of a PDE. However, we cannot simply solve the PDE since we do not know the explicit formulation of <span class="math inline">\(q_{t}\)</span>. We can deal with this problem in two ways. The first way is to assume some structure for <span class="math inline">\(q_{t}\)</span> in which case we are implicitly making an assumption about the aggregate risk profile in the market for bonds. The second way is to assume that a market already exist and then imply <span class="math inline">\(q_{t}\)</span> from the market prices. As we will see later, this corresponds to stating the short rate dynamics under a market consistent probability measure.</p>
+<p>The solution to the PDE in theorem <span class="math inline">\(2.1\)</span> can be found in different ways, but we will now introduce one particular way. Due to the Feynman-Kac theorem, we can give the price function <span class="math inline">\(P_{t}^{T}\)</span> a stochastic representation, as presented in the following theorem.
+Theorem 2.2. (Feymman-Kac) Let <span class="math inline">\(P_{t}^{T}\)</span> be a solution to the term structure PDE in (2.4), then <span class="math inline">\(P_{t}^{T}\)</span> will have the representation
+<span class="math display">\[
+P_{t}^{T}=\mathbb{E}_{t}^{\mathrm{Q}}\left[\mathrm{e}^{-\int_{t}^{T} r_{x} \mathrm{~d} s}\right]
+\]</span>
+where <span class="math inline">\(Q\)</span> is an alternative probability measure under which the short rate follows the dynamics
+<span class="math display">\[
+\mathrm{d} r_{t}=\left(\alpha\left(t, r_{t}\right)-q_{t} \beta\left(t, r_{t}\right)\right) \mathrm{d} t+\beta\left(t, r_{t}\right) \mathrm{d} W_{t}^{Q}
+\]</span>
+and <span class="math inline">\(W_{t}^{\mathrm{Q}}\)</span> is a standard Browmian motion under <span class="math inline">\(Q\)</span>.
+Proof. Let <span class="math inline">\(r_{t}\)</span> follow the <span class="math inline">\(Q\)</span> dynamics in (2.21). Now we will apply Ito’s product rule to the function <span class="math inline">\(g\left(P_{t}^{T}, A_{t}\right)=\frac{P_{t}^{T}}{A_{t}}\)</span> with <span class="math inline">\(A_{t}=\mathrm{e}^{t_{0}^{t} r_{s} \mathrm{~d} s}\)</span> as usual.
+<span class="math display">\[
+\begin{aligned}
+\mathrm{d} g\left(P_{t}^{T}, A_{t}\right) &amp;=P_{t}^{T} \mathrm{~d} \frac{1}{A_{t}}+\frac{1}{A_{t}} \mathrm{~d} P_{t}^{T}+\mathrm{d} P_{t}^{T} \mathrm{~d} \frac{1}{A_{t}} \\
+&amp;=-r_{\mathrm{t}} \frac{P_{t}^{T}}{A_{t}} \mathrm{~d} t+\frac{1}{A_{t}} \mathrm{~d} P_{t}^{T}
+\end{aligned}
+\]</span>
+where <span class="math inline">\(\mathrm{d} P_{t}^{T} \mathrm{~d} \frac{1}{A_{t}}=0\)</span> since <span class="math inline">\(\mathrm{d} \frac{1}{A_{l}}\)</span> only contains <span class="math inline">\(\mathrm{d} t\)</span> terms. The dynamics of <span class="math inline">\(P_{t}^{T}\)</span> are as follows
+<span class="math display">\[
+\begin{aligned}
+\mathrm{d} P_{t}^{T} &amp;=\left(\frac{\partial P_{t}^{T}}{\partial t}+\left(\alpha\left(t, r_{t}\right)-q_{t} \beta\left(t, r_{t}\right)\right) \frac{\partial P_{t}^{T}}{\partial r}+\frac{1}{2} \beta\left(t, r_{t}\right) \frac{\partial^{2} P_{t}^{T}}{\partial r^{2}}\right) \mathrm{d} t+\beta\left(t, r_{t}\right) \frac{\partial P_{t}^{T}}{\partial r} \mathrm{dW}_{t}^{\mathrm{Q}} \\
+&amp;=r_{t} P_{t}^{T} \mathrm{~d} t+\beta\left(t, r_{t}\right) \frac{\partial P_{t}^{T}}{\partial r} \mathrm{dW}_{t}^{\mathrm{Q}}
+\end{aligned}
+\]</span></p>
+<p>which follows by using the term structure PDE. The dynamics of <span class="math inline">\(g\left(P_{t}^{T}, A_{t}\right)\)</span> become
+<span class="math display">\[
+\mathrm{d} g\left(P_{t}^{T}, A_{t}\right)=\frac{\beta\left(t, r_{t}\right)}{A_{t}} \frac{\partial P_{t}^{T}}{\partial r} \mathrm{~d} W_{t}^{\mathrm{Q}}
+\]</span>
+Integrating from <span class="math inline">\(t\)</span> to <span class="math inline">\(T\)</span> yields
+<span class="math display">\[
+g\left(P_{T}^{T}, A_{T}\right)=g\left(P_{t}^{T}, A_{t}\right)+\int_{t}^{T} \frac{\beta\left(s, r_{s}\right)}{A_{s}} \frac{\partial P_{s}^{T}}{\partial r} \mathrm{~d} W_{s}^{\mathrm{Q}}
+\]</span>
+Taking conditional expectations and assuming the integrand of the stochastic integral to be in <span class="math inline">\(L^{2}\)</span> yields the result <span class="math inline">\(^{1}\)</span>.
+<span class="math display">\[
+P_{t}^{T}=\mathbb{E}_{t}^{\mathbb{Q}}\left[\mathrm{e}^{-\int_{t}^{T} r_{x} \mathrm{~d} d}\right]
+\]</span>
+Theorem <span class="math inline">\(2.2\)</span> provides a very important linkage between the solution to the term structure PDE and the expected value of a random variable. If the PDE is difficult to solve, then it might be more convenient to compute the expected value analytically or by simulations.</p>
+</div>
+<div id="interest-rate-swaps" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Interest Rate Swaps</h2>
+<p>A heavily traded interest rate instrument is the interest rate swap. An interest rate swap is an agreement to exchange a stream of fixed rate payments against a stream of floating rate payments. The counterparty receiving the fixed rate payment is said to have entered a receiver swap while the counterparty paying the fixed rate is said to have entered a payer swap. We will denote the payment dates of the swap by <span class="math inline">\(T_{1}, T_{2}, \ldots, T_{N}\)</span>. For the receiver swap, at each time <span class="math inline">\(T_{i-1}\)</span>, the floating rate <span class="math inline">\(R\left(T_{i-1}, T_{i}\right)\)</span> is determined and paid out at time <span class="math inline">\(T_{i}\)</span> against receiving the fixed rate <span class="math inline">\(K\)</span>. If for example the floating rate is the <span class="math inline">\(6 \mathrm{M}\)</span> CIBOR, then the swap will have semi-annual payments. If the floating rate is the overnight rate then the swap is referred to as an OIS (Overnight Index Swap). In Denmark the OIS rate is also called the CITA (Copenhagen Interbank Tomorrow/Next Average) rate. Swaps with CIBOR as reference rate trade with maturities up to 30 years while CITA swaps typically trade with maturities up to one year.</p>
+<p>If we assume the reference rate to be default-free, then we can value the floating rate leg by the following model independent argument: We consider first a floating rate bond that pays <span class="math inline">\(R\left(T_{i-1}, T_{i}\right) \delta_{i}\)</span> at each <span class="math inline">\(T_{i}\)</span>, with <span class="math inline">\(\delta_{i}=T_{i}-T_{i-1}\)</span>, and repays the notional, <span class="math inline">\(H\)</span>, at time <span class="math inline">\(T_{N}\)</span>. Immediately after the payment at time <span class="math inline">\(T_{N-1}\)</span>, the bond will effectively be a zero coupon bond with payoff <span class="math inline">\(\left(1+R\left(T_{N-1}, T_{N}\right) \delta_{i}\right) H\)</span> at time <span class="math inline">\(T_{N}\)</span>. Since the reference rate is default-free, and by no-arbitrage, it must hold that investing an amount <span class="math inline">\(H\)</span> at time <span class="math inline">\(T_{N-1}\)</span></p>
+<p>in <span class="math inline">\(P_{T_{N-1}}^{T_{N}}\)</span> must yield the same return as the bond. Hence, the bond must have a value of <span class="math inline">\(H\)</span> at time <span class="math inline">\(T_{N-1}\)</span>. As the bond has a value of <span class="math inline">\(H\)</span> at time <span class="math inline">\(T_{N-1}\)</span>, a similar argument will hold for <span class="math inline">\(T_{N-2}\)</span>. Performing this argumentation back to time <span class="math inline">\(T_{0}\)</span>, the date of the first fixing, the floating rate note will have a value of <span class="math inline">\(H\)</span>. The value of the bond at any <span class="math inline">\(t&lt;T_{0}\)</span> will therefore be given by <span class="math inline">\(P_{t}^{T_{0}} H\)</span>. Since the floating rate bond pays back the notional at maturity and the floating rate leg in the swap does not, the value of the floating rate leg in the swap must be <span class="math inline">\(H\left(P_{t}^{T_{0}}-P_{t}^{T_{N}}\right)\)</span>. The fixed leg pays the deterministic amount <span class="math inline">\(K \delta_{i}\)</span> at each payment date, so the value of these must be given by
+<span class="math display">\[
+\sum_{i=1}^{N} P_{t}^{T_{1}} H K \delta_{i}
+\]</span>
+It is customary to initiate a swap at a value of zero. This is ensured by finding the value of <span class="math inline">\(K\)</span> that makes the value of the floating rate leg equal to the value of the fixed rate leg. We will denote this <span class="math inline">\(K\)</span> as the par swap rate and it will be given by
+<span class="math display">\[
+S\left(t, T_{0}, T_{N}\right)=\frac{P_{t}^{T_{0}}-P_{t}^{T_{N}}}{\sum_{i=1}^{N} P_{t}^{T_{i}} \delta_{i}}
+\]</span>
+If <span class="math inline">\(T_{0}=t\)</span>, then we will denote the mapping <span class="math inline">\(T \mapsto S(t, t, T)\)</span> the swap curve. Two other important curves are the zero coupon curve and the forward rate curve that we will define below.</p>
+</div>
+<div id="zero-rates-forward-rates-and-curve-fitting" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Zero Rates, Forward Rates and Curve Fitting</h2>
+<p>If swap rates are available in the market for every maturity, then we can in principle solve for all the zero coupon bonds. Say that the prices of these zero coupon bonds are available, then we will define the zero rate <span class="math inline">\(y_{t}^{T}\)</span> as the continuously compounded yield satisfying
+<span class="math display">\[
+\bar{P}_{t}^{T}=\mathrm{e}^{-(T-t) y_{t}^{T}}
+\]</span>
+or equivalently
+<span class="math display">\[
+y_{t}^{T}=-\frac{1}{T-t} \ln \bar{P}_{t}^{T}
+\]</span>
+where <span class="math inline">\(\bar{P}_{t}^{T}\)</span> denotes the observed price in the market. Note that <span class="math inline">\(y_{t}^{T}\)</span> contains the exact same amount of information as the zero coupon bonds themselves. However, yields can be more intuitive than prices since they take into account the time to maturity.</p>
+<p>Another important interest rate is the forward rate. If for example funding is needed between two future points in time <span class="math inline">\(T\)</span> and <span class="math inline">\(T+\Delta\)</span> where <span class="math inline">\(\Delta&gt;0\)</span>, then we can lock in a future interest rate by buying one zero coupon bond maturing at time <span class="math inline">\(T\)</span> against selling <span class="math inline">\(\frac{\bar{P}_{t}^{T}}{\bar{P}_{t}^{T+\Delta}}\)</span></p>
+<p>zero coupon bonds maturing at time <span class="math inline">\(T+\Delta\)</span>. The return earned per unit of time over the period <span class="math inline">\([T ; T+\Delta]\)</span> will be given by
+<span class="math display">\[
+F(t, T, T+\Delta)=\frac{1}{\Delta}\left(\frac{\bar{P}_{t}^{T}}{\bar{P}_{t}^{T+\Delta}}-1\right),
+\]</span>
+which we will denote the time <span class="math inline">\(t\)</span> forward rate for the future period <span class="math inline">\([T ; T+\Delta]\)</span>. If we let <span class="math inline">\(\Delta \rightarrow 0^{+}\)</span>in (2.25) then we get the instantaneous forward rate <span class="math inline">\(f(t, T)\)</span> :
+<span class="math display">\[
+\begin{aligned}
+f(t, T) &amp;=\lim _{\Delta \rightarrow 0+} \frac{1}{\Delta}\left(\frac{\bar{P}_{t}^{T}}{\bar{P}_{t}^{T+\Delta}}-1\right) \\
+&amp;=\lim _{\Delta \rightarrow 0+} \frac{\bar{P}_{t}^{T}-\bar{P}_{t}^{T+\Delta}}{\Delta} \lim _{\Delta \rightarrow 0+} \frac{1}{\bar{P}_{t}^{T+\Delta}} \\
+&amp;=-\frac{\partial \bar{P}_{t}^{T}}{\partial T} \frac{1}{\bar{P}_{t}^{T}} \\
+&amp;=-\frac{\partial \ln \bar{P}_{t}^{T}}{\partial T} .
+\end{aligned}
+\]</span>
+In all of the above we have assumed that zero coupon bond prices are available for all maturities. In reality though, only a very few zero coupon bonds are available. For this reason we will rather be using the liquid swap market to imply zero coupon bonds and thereof the zero rates and forward rates. It is customary to impose some kind of interpolation scheme for the yield curve in order to connect the market observed yields. Hagan &amp; West (2006) [21] discuss a wide range of these interpolation schemes and in particular the so called Cubic Spline. Having observed a set of data point <span class="math inline">\(\left(\tau_{i}, y_{i}\right)\)</span> for <span class="math inline">\(i \in\{1,2, \ldots, n\}\)</span> from some mapping <span class="math inline">\(\tau \mapsto y(\tau)\)</span> the Cubic Spline interpolates <span class="math inline">\(y\)</span> by use of the following polynomial structure:
+<span class="math display">\[
+y(\tau)=a_{i}+b_{i}\left(\tau-\tau_{i}\right)+c_{i}\left(\tau-\tau_{i}\right)^{2}+d_{i}\left(\tau-\tau_{i}\right)^{3} \quad \tau_{i} \leq \tau \leq \tau_{i+1}
+\]</span>
+To ensure the Cubic Spline to pass through the observed points <span class="math inline">\(\left(\tau_{i}, y_{i}\right)\)</span> we need <span class="math inline">\(a_{i}=\)</span> <span class="math inline">\(y_{i}\)</span>. The Cubic Spline also ensures continuity of the function itself and its derivative by imposing the relations <span class="math inline">\(y_{i+1}=y_{i}+b_{i}\left(\tau_{i+1}-\tau_{i}\right)+c_{i}\left(\tau_{i+1}-\tau_{i}\right)^{2}+d_{i}\left(\tau_{i+1}-\tau_{i}\right)^{3}\)</span> and <span class="math inline">\(b_{i+1}=b_{i}+c_{i}\left(\tau_{i+1}-\tau_{i}\right)+d_{i}\left(\tau_{i+1} \tau_{i}\right)^{2}\)</span>. For each <span class="math inline">\(i\)</span>, we now have three equations and four unknowns. Different possibilities are suggested to complete this system of equations and one such is the Hermite Spline which is also discussed by Hagan &amp; West. The Hermite Spline defines <span class="math inline">\(b_{i}\)</span> as being the slope at <span class="math inline">\(\tau_{i}\)</span> for the quadratic passing through the points <span class="math inline">\(\left(\tau_{i-1}, y_{i-1}\right),\left(\tau_{i}, y_{i}\right)\)</span> and <span class="math inline">\(\left(\tau_{i+1}, y_{i+1}\right)\)</span>. The Hermite Spline therefore completes the system of equations and we can now use the scheme for interpolating zero rates. Since we do not observe the zero rates but instead the swap rates, we will have to find a way of computing zero rates from swap rates. If we rewrite the swap rate (2.22) for <span class="math inline">\(T_{0}=t\)</span> in terms of the longest zero coupon bond, then we get
+<span class="math display">\[
+P_{t}^{T_{N}}=\frac{1-S\left(t, t, T_{N}\right) \sum_{i=1}^{N-1} P_{t}^{T_{1}} \delta_{i}}{1+S\left(t, t, T_{N}\right) \delta_{N}} .
+\]</span>
+By the definition of the <span class="math inline">\(T_{N}\)</span> zero rate in equation (2.24), we find the corresponding zero rate as
+<span class="math display">\[
+y_{t}^{T_{N}}=-\frac{1}{\tau_{N}} \ln \left(\frac{1-S\left(t, t, T_{N}\right) \sum_{i=1}^{N-1} P_{t}^{T_{i}} \delta_{i}}{1+S\left(t, t, T_{N}\right) \delta_{N}}\right)
+\]</span>
+where <span class="math inline">\(\tau_{N}=T_{N}-t\)</span>. In order to find <span class="math inline">\(y_{t}^{T_{N}}\)</span> from the market swap quotes, Hagan &amp; West suggested an algorithm where we choose an initial guess for <span class="math inline">\(y_{t}^{T_{N}}\)</span> for each of the maturities for which we have swap quotes available. Then we will interpolate the zero yields by Hermite Spline for all maturities entering equation (2.28) through the zero coupon bonds, <span class="math inline">\(P_{t}^{T_{i}}=\mathrm{e}^{-\tau_{i} y_{l}\left(\tau_{i}\right)}\)</span>. From this set of zero rates, we will calculate a new set of zero rates through equation (2.28). Repeating this iterative procedure until the sum of absolute deviation of theoretical swap rates from market swap rates are less than 1 basis point results in a fast convergence.</p>
+<p>When the Hermite Spline is applied to the zero rates, then we assure the zero curve to be differentiable and the forward curve to be continuous. As nothing assures the forward curve to be differentiable, we may end up with a non-smooth curve. If we combine equations (2.23) and (2.26), then we can find the forward curve as
+<span class="math display">\[
+f(t, T)=\frac{\partial}{\partial \tau}(\tau y(\tau))
+\]</span>
+Hagan &amp; West suggested to apply the Hermite Spline directly to the quantity <span class="math inline">\(\tau y(\tau)\)</span> which results in a more smooth forward curve. In figure 2 , a set of market quotes as well as the bootstrapped zero and forward curves are presented for the method suggested by Hagan &amp; West. Note that the zero curve should not pass through the market quotes; only the swap rates implied by the zero curve should. The forward curve will be above the zero curve whenever the slope of the zero curve is positive as can be seen from the figure. Whenever we refer to the zero curve or forward curve in the rest of this thesis we will mean the interpolated approximations described in the above.</p>
+</div>
+<div id="caps-floors" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Caps &amp; Floors</h2>
+<p>Two important interest rate derivatives that will be of importance later are the so called caps and floors contracts. Since these products are highly sensitive towards changes in volatility, they are often used for calibration purposes. The cap is used to protect against increasing interest rates while the
+floor is used to protect against falling interest rates</p>
+<p>A typical cap contract could be specified to pay <span class="math inline">\(\delta_{i}\left(R\left(T_{i-1}, T_{i}\right)-K\right)^{+}\)</span>at time <span class="math inline">\(T_{i}\)</span> for <span class="math inline">\(i=1,2, \ldots, N\)</span>, where <span class="math inline">\(R\left(T_{i-1}, T_{i}\right)\)</span> is some reference rate and <span class="math inline">\(K\)</span> is the fixed cap rate. As can be seen from this payment structure, the cap is effectively a payer swap in which payments only take place if <span class="math inline">\(R\left(T_{i-1}, T_{i}\right)&gt;K\)</span>. We will say that the cap contract is AtThe-Money (ATM) if the cap rate equals the par swap rate, i.e. <span class="math inline">\(K=S\left(t, T_{0}, T_{N}\right)\)</span>. If we consider a single payment <span class="math inline">\(\delta_{i}\left(R\left(T_{i-1}, T_{i}\right)-K\right)^{+}\)</span>from a cap, also known as a caplet, then this amount will be known at time <span class="math inline">\(T_{i-1}\)</span> and hence its value must be <span class="math inline">\(\Pi\left(r_{T_{i-1}}\right)=\)</span> <span class="math inline">\(P_{T_{i-1}}^{T_{i}} \delta_{i}\left(R\left(T_{i-1}, T_{i}\right)-K\right)^{+}\)</span>at time <span class="math inline">\(T_{i-1}\)</span>. We write the value of the payment as <span class="math inline">\(\Pi\left(r_{T_{i-1}}\right)\)</span> to denote that it only depends on the realised value of the short rate at time <span class="math inline">\(T_{i-1}\)</span>. Noting that the derivations of the term structure PDE of theorem (2.1) and the Feynman-Kac theorem (2.2) remain intact when changing the terminal condition to a function <span class="math inline">\(\Pi\left(r_{T}\right)\)</span>, we can write the value of the caplet as follows
+<span class="math display">\[
+\text { Caplet }_{t}^{T_{i-1}}=\mathbb{E}_{t}^{\mathrm{Q}}\left[\mathrm{e}^{-\int_{1}^{T_{i-1}} r_{x} \mathrm{~d} s} P_{T_{i-1}}^{T_{i}} \delta_{i}\left(R\left(T_{i-1}, T_{i}\right)-K\right)^{+}\right]
+\]</span>
+Writing <span class="math inline">\(R\left(T_{i-1}, T_{i}\right)\)</span> in terms of <span class="math inline">\(P_{T_{i-1}}^{T_{i}}\)</span> we can rewrite (2.30) as follows:
+<span class="math display">\[
+\text { Caplet }_{t}^{T_{i-1}}=\frac{1}{K^{*}} \mathbb{E}_{t}^{\mathrm{Q}}\left[\mathrm{e}^{-\int_{t}^{T_{i-1}} r_{x} \mathrm{~d} s} K^{*} 1\left\{K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right\}-\mathrm{e}^{-\int_{t}^{T_{i-1}} r_{x} \mathrm{~d} s} P_{T_{i-1}}^{T_{i}} 1\left\{K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right\}\right]
+\]</span>
+where <span class="math inline">\(K^{*}=\frac{1}{1+5 K}\)</span>. The two terms of equation <span class="math inline">\((2.31)\)</span> can be viewed as two separate securities with payoff functions given by <span class="math inline">\(K^{*} 1\left\{K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right\}\)</span> and <span class="math inline">\(1\left\{K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right\} P_{T_{i-1}}^{T_{i}}\)</span></p>
+<p>respectively. In order to value each of these two it will make sense to make a change of measure. Consider first the price function, <span class="math inline">\(F_{t}^{T}\)</span>, of an interest rate dependent derivative expiring at time <span class="math inline">\(T\)</span> and let <span class="math inline">\(P_{t}^{T}\)</span> denote the time <span class="math inline">\(t\)</span> price of a zero coupon bond maturing at time <span class="math inline">\(T\)</span>. By Ito’s lemma we can find the process followed by the quantity <span class="math inline">\(F_{t}^{T} / P_{t}^{T}\)</span> to be
+<span class="math display">\[
+\mathrm{d} \frac{F_{t}^{T}}{P_{t}^{T}}=\left[\left(\beta^{T}\left(t, r_{t}\right)\right)^{2}-\beta^{T}\left(t, r_{t}\right) \beta^{F}\left(t, r_{t}\right)\right] \frac{F_{t}^{T}}{P_{t}^{T}} \mathrm{~d} t+\left(\beta^{F}\left(t, r_{t}\right)-\beta^{T}\left(t, r_{t}\right)\right) \frac{F_{t}^{T}}{P_{t}^{T}} \mathrm{~d} W_{t}^{\mathrm{Q}},
+\]</span>
+where we have used that both <span class="math inline">\(F_{t}^{T}\)</span> and <span class="math inline">\(P_{t}^{T}\)</span> have drift <span class="math inline">\(r_{t}\)</span> under <span class="math inline">\(\mathbb{Q}\)</span> and <span class="math inline">\(\beta^{F}\left(t, r_{t}\right)\)</span> indicates the volatility of <span class="math inline">\(F_{t}^{T}\)</span>. Assuming <span class="math inline">\(\beta^{T}\left(t, r_{t}\right)\)</span> to be an adapted process then the Girsanov theorem tells us that we may define a new probability measure <span class="math inline">\(\mathbb{Q}^{T}\)</span> through the following Radon-Nikodym derivative:
+<span class="math display">\[
+\frac{\mathrm{dQ}^{T}}{\mathrm{dQ}}=\mathrm{e}^{\int_{0}^{T} \beta^{T}\left(t, r_{t}\right) d W_{t}^{Q}-\frac{1}{2}\left(\beta^{T}\left(t, r_{t}\right)\right)^{2} \mathrm{~d} t}
+\]</span>
+Under this new measure we will have that
+<span class="math display">\[
+W_{t}^{Q^{T}}=W_{t}^{Q}-\int_{0}^{t} \beta^{T}\left(s, r_{s}\right) \mathrm{d} s
+\]</span>
+defines a Brownian motion under <span class="math inline">\(\mathbb{Q}^{T}\)</span>. The Girsanov theorem may be found in e.g. Björk <span class="math inline">\((2009)[31]\)</span>. Inserting <span class="math inline">\((2.34)\)</span> in <span class="math inline">\((2.32)\)</span> we obtain
+<span class="math display">\[
+\mathrm{d} \frac{F_{t}^{T}}{P_{t}^{T}}=\left(\beta^{F}\left(t, r_{t}\right)-\beta^{T}\left(t, r_{t}\right)\right) \frac{F_{t}^{T}}{P_{t}^{T}} \mathrm{~d} W_{t}^{\mathrm{Q}^{T}}
+\]</span>
+From equation (2.35) we now see that the quantity <span class="math inline">\(F_{t}^{T} / P_{t}^{T}\)</span> has no drift under <span class="math inline">\(\mathbb{Q}^{T}\)</span>. Hence, <span class="math inline">\(F_{t}^{T} / P_{t}^{T}\)</span> must be a martingale under the <span class="math inline">\(Q^{T}\)</span> measure and we may establish the following relation
+<span class="math display">\[
+F_{t}^{T}=P_{t}^{T} \mathbb{E}_{t}^{\mathrm{Q}^{T}}\left[\frac{F_{T}^{T}}{P_{T}^{T}}\right]=P_{t}^{T} \mathbb{E}_{t}^{\mathrm{Q}^{T}}\left[F_{T}^{T}\right]
+\]</span>
+where <span class="math inline">\(P_{t}^{T}\)</span> is often called the numeraire asset. Using this technique for the first term in the expectation of (2.31) with <span class="math inline">\(P_{t}^{T_{i-1}}\)</span> as numeraire, we find
+<span class="math display">\[
+\begin{aligned}
+\mathbb{E}_{t}^{\mathbb{Q}}\left[\mathrm{e}^{-\int_{t}^{T_{i-1}} r_{x} \mathrm{~d} s} K^{*} 1\left\{K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right\}\right] &amp;=P_{t}^{T_{i-1}} K^{*} \mathbb{E}_{t}^{\mathrm{Q}^{T_{i-1}}}\left[1\left\{K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right\}\right] \\
+&amp;=P_{t^{2-1}}^{T_{i}} K^{*} \mathbb{Q}_{t}^{T_{i-1}}\left(K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right)
+\end{aligned}
+\]</span></p>
+<p>For the second term it will be convenient to use <span class="math inline">\(P_{t}^{T_{i}}\)</span> as a numeraire asset. Doing so and the second term of (2.31) may be written as follows
+<span class="math display">\[
+\begin{aligned}
+\mathbb{E}_{t}^{Q}\left[\mathrm{e}^{-\int_{t}^{T_{i-1}} r_{x} \mathrm{~d} s} 1\left\{K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right\} P_{T_{i-1}}^{T_{i}}\right] &amp;=P_{t}^{T_{i}} \mathbb{E}_{t}^{Q^{T_{i}}}\left[\frac{1\left\{K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right\} P_{T_{i-1}}^{T_{i}}}{P_{T_{i}-1}^{T_{i}}}\right] \\
+&amp;=P_{t}^{T_{i}} \mathbb{Q}_{t}^{T_{i}}\left(K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right)
+\end{aligned}
+\]</span>
+Bringing the two terms back together, we find the price of the caplet to be
+<span class="math display">\[
+\text { Caplet }_{t}^{T_{i-1}}=\frac{1}{K^{*}}\left[P_{t}^{T_{i-1}} K^{*} \mathbb{Q}_{t}^{T_{i-1}}\left(K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right)-P_{t}^{T_{1}} \mathbb{Q}_{t}^{T_{1}}\left(K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right)\right]
+\]</span>
+Equation (2.39) has a very nice representation since we can determine the price of the caplet by calculating two probabilities under two seperate measures. The Girsanov theorem provides a linkage between these measures through equation <span class="math inline">\((2.34)\)</span>, and by using this relation, we may find the relevant short rate dynamics to be used when calculating the probabilities as
+<span class="math display">\[
+\mathrm{d} r=\left(\alpha\left(t, r_{t}\right)-q_{t} \beta\left(t, r_{t}\right)+\beta\left(t, r_{t}\right) \beta^{T}\left(t, r_{t}\right)\right) \mathrm{d} t+\beta\left(t, r_{t}\right) \mathrm{d} W_{t}^{\mathrm{Q}^{T}}, \quad T \in\left\{T_{i-1}, T_{i}\right\}
+\]</span>
+When we have calculated the probabilities to be used, then all there is left to do is to sum up all the caplets to get the price of the cap. The price of the cap with maturity <span class="math inline">\(T_{N}\)</span> becomes
+<span class="math display">\[
+\operatorname{Cap}_{t}^{T_{N}}=\frac{1}{K^{*}} \sum_{i=1}^{N} P_{t}^{T_{i-1}} K^{*} \mathbb{Q}_{t}^{T_{i-1}}\left(K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right)-P_{t}^{T} \mathbb{Q}_{t}^{T_{i}}\left(K^{*}&gt;P_{T_{i-1}}^{T_{i}}\right)
+\]</span>
+The probabilities in (2.41) will be model dependent, so we must return to the computation of these when we have specified a short rate model. The corresponding floor contract simply pays <span class="math inline">\(\delta\left(K-R\left(T_{i-1}, T_{i}\right)\right)^{+}\)</span>instead of <span class="math inline">\(\delta\left(R\left(T_{i-1}, T_{i}\right)-K\right)^{+}\)</span>. Going long one cap and short one floor with same strike must therefore pay <span class="math inline">\(R\left(T_{i-1}, T_{i}\right)-K\)</span>, which is exactly the payment of a payer swap. Hence, we can price the interest rate floor by parity.</p>
+<p>The interest rate curves and derivatives we have now defined will constitute our market, which we will assume to be available for the rest of the thesis. With our market in place, we can now turn to the callable mortgage bond.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-the-danish-mortgage-market.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-callable-mortgage-bonds.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

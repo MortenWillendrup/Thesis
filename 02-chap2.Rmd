@@ -1,9 +1,75 @@
-# Theory {#theory}
 
-## Term Strucutre 
 
-## Callable Mortgage Bonds
+# The Danish Mortgage Market
 
-## Estimating prepayments, application of machine learning
+Being one of the oldest and most stable bond markets in the world, the Danish Bond market has it's root all the way back to 1797 where the first mortgage bank Kreditkassen for Husejere i Kjøbenhavn was established to help rebuild Copenhagen after the devastating fire of 1795 where a quarter of the city was lost to the fire.  
 
-## Ke
+The objective of stabilibty can also be seen in the resistance of the Danish Mortgage Market to economic crises, as the Danish economy has gone through several crises the past 50 years.
+
+* The two oil crises of the 1970's
+* The 1986 austerity package and the 1987 tax reform
+* The Dot-com bubble in 2000
+* The financial crises
+
+Arguable each crises has had an effect on the mortgage system differently and have even caused substitutional losses to the mortgage banks. However the losses have never affected the investors, as not one Danish Mortgage bondholder has lost the investment or even part of it. Moreover, the market stayed active and liquid under the financial crisis as evidenced by [@dick2012corporate; @Gundersen2011], where both find that the Danish Mortgage Bonds were as liqui as the Danish Government bonds during years from 2008 to 2009.
+
+## Types of mortgage bonds
+The Danish mortgage market mainly consists of the following types of mortgage bonds 
+
+* ARMs - Adjustable Rate Mortgage Securities. which are subject to refinancing until the longer-term underlying loan has matured. The maturities match the fixed-rate period of the underlying loan, and are mainly 1 to 5 yers and the bond type is bullet
+
+* Floating-rate note - Variable-rate annuities with redemptions matching the underlying loans. The maturites mainly range from 1 to 5 years. 
+
+* Capped floater - Variable-rate annuities with redemptions not matching the underlying loans. The maturites are mainly from 5 to 30 years
+
+* Callable bonds - Fixed rate callable annuities, where payments and redemptions match the underlying loan. The maturities are mainly 15, 20 or 30 years.
+
+All 4 types of mortgage bonds have underlying loans where maturires of up to 30 years are available. Furthermore, most loans can be offered with an interest only(IO) period up to 30 years. If the IO option is chosen, the loan must be repaid as an bullet bond at maturity, otherwise if a IO period of 10 years is chosen, the loan must be repaid as an annuity profile for the remaining lifetime of the loan i.e. 20 years. In recent years the amount of loans with interest only option has declined and as of December 2021, interest only loans accounts for 43.5 %^[Nationalbanken Statistics - DNRUDDKI] of the loans to Danish house-holds.  
+
+## The Danish mortgage model 
+The Danish mortgage model is based upon a stable and transparent system, with several advantages and unique features. Since mortgage banks does not function as commercial banks, and only able to fund loans through the sale of bonds which limits the risk of the mortgage banks Hence, the mortgage bank protects the investor from borrower defaulting. The mortgage bank secures the issued bond by using the cover pool which consist of collateral in terms of the claims against the borrows as well as additional securities posed by the mortgage bank to protect the investor from losses. These securities constitute what is known as overcollateralization and should be of very high credit quality.  
+
+
+## Balance principle  {#balance}
+The Balance principle entails that for every loan made by the mortgage bank, a new bond is issued with matching cash-flow properties. This eliminates mismatch in cash-flows and refinancing risk for the mortgage bank, which also secures payments to the bondholder. In the Danish mortgage system the mortgage bank functions as an intermediary between the investor and the borrower. Mortgage banks funds loans on a current basis, meaning that hte bond must be sold before the loan can be given. This also entails that the market price of the bond determines the loan rate. THe loan is therefore equal to the investment, which passes through the mortgage bank. Repayment and interest from the borrower to investor also passed through them mortgage bank, however the mortgage bank changes the borrower a margin though the lifetime of the loan, which is a percentage of the debt outstanding.  
+
+Since mortgage banks is only an intermediary it is not affected by changes in the floating rate, as it passes repayments and interest through to the investor. The drawback for the mortgage bank is that it endures the credit risk in the event of a default of the borrower, as it still has to make repayment and interest to the bond holder. This however protects the investor as the credit risk is removed, but is also a great incentive for the mortgage bank to put an emphasis on the due diligence process when issuing loans and adds to the stability of the system. Part of the due diligence is not only the valuing the property when making a credit assessment of a potential borrower, but also assessing the borrower's current economic situation including income and wealth based on legislation that dictates eligibility for granting and funding loans.
+
+## Delivery and prepayment
+A central unique feature of the Danish mortgage model is the delivery option which means that the borrower always has the possibility of buying the underlying bond in the market, and delivering it back to the mortgage bank, which then cancels the loan. This is unique way for the borrower to reduce the notional amount of the loan if interest rate rises, and the related bond price falls. It is also a hedging effect on the expected drop in house prices that follows increasing interest rates as the two effect offset each other. This has no effect on the investor in terms of payments made from the investors to the bondholders.  
+
+Callables bonds also have a prepayment option( embedded call-option). The prepayment option gives the borrower the opportunity to repay the loan at pari (100) at every quarter throughout the lifetime of the loan.  
+
+Capped floaters have a similar prepayment option, however the prices depends on the contract is typically 105. This is favorable when the current available coupon rate is below the coupon rate on the mortgage.  
+
+The prepayment on Danish callables and capped floaters are more difficult to price than corresponding bond without the prepayment option and come with an additional option and come with an additional prepayment risk for the investor, this is however compensated with a higher interest rate.  
+
+The prepayment risk arises from the option to prepay the loan at pari, which exposes the investor to the risk of not being able to reinvest at the same conditions. The rational scenarios for prepayment are depicted in figure \@ref(fig:prepayment)
+
+```{r important dates, echo = FALSE, fig.align='center', out.width="100%", fig.cap="Pricing curve of Callabalbe Bonds and Non-callable bonds."}
+knitr::include_graphics("figure/Prepayment_notice_dates.png")
+```
+
+When prices are close to par the price of the callable bond is lower than the price of a non-callable bond, i.e. government bond, as the chance of prepayment increases. However the borrowers are not always rational, which can create opportunities for the active investor, but is also a source of risk for a buy-and-hold strategy.
+
+
+## Callable annuity bonds
+Callable annuity bonds are unique to the Danish covered bond market. Traditionally,
+callable annuity bonds were the only type of bonds issued in the Danish covered bond market but the introduction of new products has expanded market diversity. Originally, this type of bond had two payment dates per year but four has been the norm since 1985. Standard payment dates are 1 January, 1 April, 1 July and 1 October. Maturities are primarily 10, 15, 20 or 30 years. Callable annuity bonds are fixed rate bonds with an embedded call option. The embedded call option enables borrowers to prepay their loan at par at each payment date during the duration of the loan.  
+
+Traditionally, all callable loans were issued as annuity loans (level-pay loans). Annuity loans amortise with equal payments consisting of principal and interest but the amount of principal repaid increases over time, while the amount of interest decreases. In 2003, deregulation enabled mortgage banks to offer borrowers interest-only payments for up to 10 years. Callable annuity loans with an interest-only option are funded in separate callable bond series (interest-only hybrids).
+
+Borrowers’ interest payments and redemptions made on the payment dates are distributed to investors in accordance with the percentage of bonds drawn so that any investor’s holding in a given bond series corresponds to the overall percentage of bonds drawn in that series. The amount is rounded to the nearest øre (DKK0.01) for bonds denominated in Danish kroner and euro cents for bonds denominated in euro. The amounts of bonds drawn are published on the publication date.
+
+There is no direct link between the borrower and the investor in the sense that the investor does not buy a bond in the name of a specific person or property. The pool of borrowers in a bond series may consist of both private and corporate borrowers. The repayments at one payment date are the sum of the redemptions from all borrowers in the pool. Every month the mortgage banks publish the borrower distribution of each bond series to enable investors to predict prepayment behaviour.
+
+Callable bond series are open for issuance for a period of three years^[The opening period can in certain circumstances be shorter or longer than three years, e.g. in connection with implementation of the new Mortgage Act in July 2007, the 2038 bond series was closed early and the opening period for the 2041 series was extended to almost four years.], e.g. between 1 September 2014 and 31 August 2017 all 30-year loans were financed through the issuance of bonds maturing in 2047 and all 20-year loans by bonds maturing in 2037. When the bond series with maturity 2037 and 2047 closed for issuance as of 31 August 2017, new callable fixed rate loans are issued in new bond series with maturity 2040 and 2050. On account of this opening period and the possibility of taking a loan with a shorter maturity than the bond’s maturity, the actual cash flow on a bond is not equivalent to the theoretical cash flow of a callable bond. Hence, the calculation of key figures on bonds requires information about the actual cash flow. After each payment date, the mortgage banks
+supply these figures to the OMX Nordic Exchange.
+
+Mortgage banks have agreed not to offer callable loans based on bonds priced above par, referred to as the par rule, to avoid arbitrage from borrowers simultaneously disbursing a loan at a price above par and prepaying the loan at par. Note, however, that while a loan offer cannot be made to borrowers in a bond series trading above par, the actual disbursement and subsequent tap can happen in bond series trading above par at the time the loan is granted as loan offers can be outstanding for up to six months. If a borrower with a loan size above DKK 3M obtains a loan in a bond series trading above 100 the borrower cannot prepay for the following 12 months. The opening period of a bond series may therefore be shortened if bond prices exceed par but the bond series will be reopened for issuance if the price falls below par again.  
+
+Mortgage banks generally only offer loans in series trading fairly close to but below par due to the pull-to-par effect and risk of a sudden fall in interest rates. If a loan is offered in bonds trading far below par the pull-to-par effect will over time imply that the borrower could become technically insolvent as the LTV would mechanically increase. The same would happen if interest rates were to suddenly fall massively – as the bond would effectively have a 10 to 15 year duration LTV would increase requiring the mortgage bank to fund supplementary collateral. If the bond trades close to par even markedly lower interest rates would not change the LTV by much due to the negative convexity around these price levels.
+
+The traditional positively convex relationship between the level of interest rates and the prices of traditional bonds is not directly applicable to callable bonds. The reason is that a callable bond can be considered as a portfolio of a non-callable bond and a sold option to repay the bond at par. As interest rates decline and the price of the bond rises above par, the value of the option will rise, see figure \@ref(fig:prepayment)
+
+Compared with a non-callable bond, the price is kept down when interest rates decline, as debtors are likely to start repaying the bond at par. When a bond becomes extremely exposed to prepayments, the price will fall when interest rates fall. Conversely, these bonds may offer a defensive investment alternative for investors who expect increasing interest rates.
